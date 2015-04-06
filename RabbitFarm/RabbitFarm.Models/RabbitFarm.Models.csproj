@@ -39,7 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cage.cs" />
+    <Compile Include="CageChange.cs" />
+    <Compile Include="Farm.cs" />
+    <Compile Include="Feed.cs" />
+    <Compile Include="Feeding.cs" />
+    <Compile Include="FeedMixes.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="Litter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs" />
+    <Compile Include="PurchaseCategory.cs" />
+    <Compile Include="Rabbit.cs" />
+    <Compile Include="Unit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
