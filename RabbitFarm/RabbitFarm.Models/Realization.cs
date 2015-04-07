@@ -2,19 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
     public class Realization
     {
+        [Key, ForeignKey("Rabbit")]
         public int Id { get; set; }
 
         public DateTime RealizationDate { get; set; }
 
         public RealizationChannel RealizationChannel { get; set; }
-
-        public int RabbitId { get; set; }
 
         public Rabbit Rabbit { get; set; }
 

@@ -8,11 +8,11 @@
 
     public class Feed
     {
-        private ICollection<FeedMixes> ingredients;
+        private ICollection<FeedMix> ingredients;
 
         public Feed()
         {
-            this.ingredients = new HashSet<FeedMixes>();
+            this.ingredients = new HashSet<FeedMix>();
         }
 
         public int Id { get; set; }
@@ -21,7 +21,7 @@
 
         public Unit Unit { get; set; }
 
-        public virtual ICollection<FeedMixes> Ingredients
+        public virtual ICollection<FeedMix> Ingredients
         {
             get { return this.ingredients; }
             set { this.ingredients = value; }

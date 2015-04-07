@@ -8,21 +8,22 @@ namespace RabbitFarm.Data.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
+            
         }
-
+        
         protected override void Seed(RabbitFarmContext context)
         {
-            SeedAcquisition(context);
-            SeedCage(context);
-            SeedCageChange(context);
-            SeedFarm(context);
-            SeedFeed(context);
-            SeedFeeding(context);
-            SeedFeedMixes(context);
-            SeedLitter(context);
-            SeedPurchase(context);
-            SeedRabbit(context);
-            SeedRealization(context);
+            //SeedAcquisition(context);
+            //SeedCage(context);
+            //SeedCageChange(context);
+            //SeedFarm(context);
+            //SeedFeed(context);
+            //SeedFeeding(context);
+            //SeedFeedMixes(context);
+            //SeedLitter(context);
+            //SeedPurchase(context);
+            //SeedRabbit(context);
+            //SeedRealization(context);
         }
 
         private void SeedAcquisition(RabbitFarmContext context)

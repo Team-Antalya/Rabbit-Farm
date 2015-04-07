@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -18,9 +19,7 @@
 
         public virtual Acquisition Acquisition { get; set; }
 
-        public int RealizationId { get; set; }
-
-        public Realization Realization { get; set; }
+        public virtual Realization Realization { get; set; }
 
         public Guid FarmId { get; set; }
 

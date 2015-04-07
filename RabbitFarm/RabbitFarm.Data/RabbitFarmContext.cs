@@ -3,11 +3,15 @@
     using System.Data.Entity;
 
     using Models;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     public class RabbitFarmContext : DbContext
     {
         public const string ConnectionString =
-            "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
+        "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
+
+        //public const string ConnectionString =
+        //    "RabbitFarmConn";
 
         public RabbitFarmContext()
             : base(ConnectionString)
@@ -27,7 +31,7 @@
 
         public IDbSet<Feeding> Feeding { get; set; }
 
-        public IDbSet<FeedMixes> FeedMixes { get; set; }
+        public IDbSet<FeedMix> FeedMixes { get; set; }
 
         public IDbSet<Litter> Litter { get; set; }
 
@@ -36,5 +40,11 @@
         public IDbSet<Rabbit> Rabbit { get; set; }
 
         public IDbSet<Realization> Realization { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 }
