@@ -25,7 +25,7 @@
 
         public double Length { get; set; }
 
-        public Guid FarmId { get; set; }
+        public int FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
 

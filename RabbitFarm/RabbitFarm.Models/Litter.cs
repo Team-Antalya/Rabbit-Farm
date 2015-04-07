@@ -33,7 +33,7 @@
             set { this.rabbits = value; }
         }
 
-        public Guid FarmId { get; set; }
+        public int FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
     }

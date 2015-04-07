@@ -1,7 +1,6 @@
 namespace RabbitFarm.Data.Migrations
 {
     using RabbitFarm.Models;
-    using System;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<RabbitFarmContext>
@@ -10,7 +9,6 @@ namespace RabbitFarm.Data.Migrations
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
-
         }
 
         protected override void Seed(RabbitFarmContext context)
@@ -32,7 +30,6 @@ namespace RabbitFarm.Data.Migrations
         {
             context.Acquisitions.AddOrUpdate(new Acquisition()
             {
-                FarmId = new Guid("")
             });
         }
 
@@ -50,7 +47,6 @@ namespace RabbitFarm.Data.Migrations
         {
             context.Farms.AddOrUpdate(new Farm()
             {
-                Id = new Guid("{0352111C-0607-459B-B9F6-374A2BBE10A9}"),
                 Name = "My Rabbit Farm"
             });
         }

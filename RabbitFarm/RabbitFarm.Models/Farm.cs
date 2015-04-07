@@ -16,7 +16,6 @@
 
         public Farm()
         {
-            this.Id = Guid.NewGuid();
             this.cages = new HashSet<Cage>();
             this.litters = new HashSet<Litter>();
             this.rabbits = new HashSet<Rabbit>();
@@ -24,7 +23,7 @@
             this.feedings = new HashSet<Feeding>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
