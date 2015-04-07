@@ -1,18 +1,15 @@
 ﻿namespace RabbitFarm.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Acquisition
     {
+        [Key, ForeignKey("Rabbit")]
         public int Id { get; set; }
 
         public DateTime AcquisitionDate { get; set; }
-
-        public int RabbitId { get; set; }
 
         public virtual Rabbit Rabbit { get; set; }
 
