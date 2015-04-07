@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="RabbitFarm.Models.Acquisition" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAwAggAAAAAAAAAQEAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Acquisition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Cage" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAABAIAgAAAAAAAAERAAAAEAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Cage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.CageChange" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAgAAAAAAAAAQEAAAAAAAAAAIAAJAAAAA=</HashCode>
+      <FileName>CageChange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Farm" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAgAEAAIAAAAAIAQAACwEAAAAAAAAQAAAAEAAAAA=</HashCode>
+      <FileName>Farm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Feed" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAIAAAACQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Feed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Feeding" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAgAAEAAAgAAAAAAAEASAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Feeding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.FeedMixes" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAgAAFAAAgAAAAAAAAASAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeedMixes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Litter" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAIBiAAAAAAAAAQAAAAgAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Litter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Purchase" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAABAAAAgAAAIAAAAASAAAgAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Purchase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Rabbit" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAQAAgACAAAAAAAQQAAABAAAAAACAAAAAEAA=</HashCode>
+      <FileName>Rabbit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RabbitFarm.Models.Realization" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAQAAgAAAAAAAAAQEAAAIAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Realization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="RabbitFarm.Models.AcqusitionSource" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>AcqusitionSource.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RabbitFarm.Models.Gender" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Gender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RabbitFarm.Models.PurchaseCategory" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>PurchaseCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RabbitFarm.Models.RabbitStatus" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>RabbitStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RabbitFarm.Models.RealizationChannel" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAQAAAAAA=</HashCode>
+      <FileName>RealizationChannel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RabbitFarm.Models.Unit" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAQAAAAAIgAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

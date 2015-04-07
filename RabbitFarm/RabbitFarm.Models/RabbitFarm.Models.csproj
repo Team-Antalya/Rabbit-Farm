@@ -55,14 +55,11 @@
     <Compile Include="Feeding.cs" />
     <Compile Include="FeedMixes.cs" />
     <Compile Include="Gender.cs" />
-    <Compile Include="GrowingEvent.cs" />
-    <Compile Include="GrowingScenario.cs" />
     <Compile Include="Litter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase.cs" />
     <Compile Include="PurchaseCategory.cs" />
     <Compile Include="Rabbit.cs" />
-    <Compile Include="RabbitScenario.cs" />
     <Compile Include="RabbitStatus.cs" />
     <Compile Include="Realization.cs" />
     <Compile Include="RealizationChannel.cs" />
@@ -71,6 +68,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="RabbitFarmModelsDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

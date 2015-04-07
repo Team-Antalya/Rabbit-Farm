@@ -10,6 +10,8 @@
     {
         public int Id { get; set; }
 
+        public DateTime FeedingDate { get; set; }
+
         public int CageId { get; set; }
 
         public virtual Cage Cage { get; set; }
