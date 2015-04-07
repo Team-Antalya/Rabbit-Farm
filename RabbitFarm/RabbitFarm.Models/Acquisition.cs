@@ -6,19 +6,19 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class FeedMixes
+    public class Acquisition
     {
         public int Id { get; set; }
 
-        public int PurchaseId { get; set; }
+        public DateTime AcquisitionDate { get; set; }
 
-        public virtual Purchase Purchase { get; set; }
+        public int RabbitId { get; set; }
 
-        public double Amount { get; set; }
+        public virtual Rabbit Rabbit { get; set; }
 
-        public int FeedId { get; set; }
+        public AcqusitionSource Source { get; set; }
 
-        public Feed Feed { get; set; }
+        public decimal Price { get; set; }
 
         public Guid FarmId { get; set; }
 

@@ -27,7 +27,7 @@
             set { this.ingredients = value; }
         }
 
-        public object FarmId { get; set; }
+        public Guid FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
 

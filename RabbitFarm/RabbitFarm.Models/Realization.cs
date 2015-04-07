@@ -6,19 +6,21 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class CageChange
+    public class Realization
     {
         public int Id { get; set; }
 
-        public DateTime StartingDate { get; set; }
+        public DateTime RealizationDate { get; set; }
 
-        public int CageId { get; set; }
-
-        public virtual Cage Cage { get; set; }
+        public RealizationChannel RealizationChannel { get; set; }
 
         public int RabbitId { get; set; }
 
-        public virtual Rabbit Rabbit { get; set; }
+        public Rabbit Rabbit { get; set; }
+
+        public double LiveWeight { get; set; }
+
+        public decimal Price { get; set; }
 
         public Guid FarmId { get; set; }
 

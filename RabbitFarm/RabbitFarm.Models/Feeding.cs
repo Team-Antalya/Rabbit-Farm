@@ -19,5 +19,9 @@
         public virtual Feed Feed { get; set; }
 
         public double Amount { get; set; }
+
+        public Guid FarmId { get; set; }
+
+        public virtual Farm Farm { get; set; }
     }
 }

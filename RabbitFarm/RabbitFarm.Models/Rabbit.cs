@@ -14,11 +14,25 @@
 
         public Gender Gender { get; set; }
 
+        public RabbitStatus Status { get; set; }
+
         public int CageId { get; set; }
 
         public virtual Cage Cage { get; set; }
 
-        public object FarmId { get; set; }
+        public int AcqusitionId { get; set; }
+
+        public virtual Acquisition Acquisition { get; set; }
+
+        public int RealizationId { get; set; }
+
+        public Realization Realization { get; set; }
+
+        public int GrowingScenarioId { get; set; }
+
+        public virtual GrowingScenario GrowingScenario { get; set; }
+
+        public Guid  FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
     }
