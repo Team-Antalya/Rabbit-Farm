@@ -7,15 +7,15 @@
 
     public class RabbitFarmContext : DbContext, IRabbitFarmDBContext
     {
+        
         public const string ConnectionString =
-        "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
-
-        //public const string ConnectionString = "RabbitFarmConn";
+            // "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;"; // Windows Azure
+            "Server=.;Database=RabbitFarm;Integrated Security=True;"; // Local DB
 
         public RabbitFarmContext()
             : base(ConnectionString)
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RabbitFarmContext>());
+            // Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RabbitFarmContext>());
         }
 
         public IDbSet<Acquisition> Acquisitions { get; set; }
