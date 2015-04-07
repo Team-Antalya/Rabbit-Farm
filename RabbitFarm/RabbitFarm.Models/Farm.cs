@@ -13,7 +13,7 @@
         private ICollection<Litter> litters;
         private ICollection<Purchase> purchases;
         private ICollection<Feed> feeds;
-        private ICollection<FeedMixes> feedMixes;
+        private ICollection<FeedMix> feedMixes;
 
         public Farm()
         {
@@ -23,7 +23,7 @@
             this.rabbits = new HashSet<Rabbit>();
             this.purchases = new HashSet<Purchase>();
             this.feeds = new HashSet<Feed>();
-            this.feedMixes = new HashSet<FeedMixes>();
+            this.feedMixes = new HashSet<FeedMix>();
         }
 
         public Guid Id { get; set; }
@@ -62,7 +62,7 @@
             set { this.feeds = value; }
         }
 
-        public virtual ICollection<FeedMixes> FeedMixes
+        public virtual ICollection<FeedMix> FeedMixes
         {
             get { return this.feedMixes; }
             set { this.feedMixes = value; }

@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class FeedMixes
+    public class FeedMix
     {
         public int Id { get; set; }
 
