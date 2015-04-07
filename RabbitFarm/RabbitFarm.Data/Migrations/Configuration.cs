@@ -1,5 +1,7 @@
 namespace RabbitFarm.Data.Migrations
 {
+    using RabbitFarm.Models;
+    using System;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<RabbitFarmContext>
@@ -8,27 +10,30 @@ namespace RabbitFarm.Data.Migrations
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
-            
+
         }
-        
+
         protected override void Seed(RabbitFarmContext context)
         {
-            //SeedAcquisition(context);
+            SeedFarm(context);
+            SeedAcquisition(context);
+            //SeedRabbit(context);
             //SeedCage(context);
             //SeedCageChange(context);
-            //SeedFarm(context);
             //SeedFeed(context);
             //SeedFeeding(context);
             //SeedFeedMixes(context);
             //SeedLitter(context);
             //SeedPurchase(context);
-            //SeedRabbit(context);
             //SeedRealization(context);
         }
 
         private void SeedAcquisition(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            context.Acquisitions.AddOrUpdate(new Acquisition()
+            {
+                FarmId = new Guid("")
+            });
         }
 
         private void SeedCage(RabbitFarmContext context)
@@ -43,7 +48,11 @@ namespace RabbitFarm.Data.Migrations
 
         private void SeedFarm(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            context.Farms.AddOrUpdate(new Farm()
+            {
+                Id = new Guid("{0352111C-0607-459B-B9F6-374A2BBE10A9}"),
+                Name = "My Rabbit Farm"
+            });
         }
 
         private void SeedFeed(RabbitFarmContext context)

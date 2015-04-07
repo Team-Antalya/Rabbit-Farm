@@ -17,6 +17,8 @@
 
         public RabbitStatus Status { get; set; }
 
+        public int AcquisitionId { get; set; }
+
         public virtual Acquisition Acquisition { get; set; }
 
         public virtual Realization Realization { get; set; }

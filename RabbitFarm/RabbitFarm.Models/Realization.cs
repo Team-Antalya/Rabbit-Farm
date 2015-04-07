@@ -1,12 +1,8 @@
 ﻿namespace RabbitFarm.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Realization
     {
@@ -19,9 +15,9 @@
 
         public Rabbit Rabbit { get; set; }
 
-        public double LiveWeight { get; set; }
+        public double? LiveWeight { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         public Guid FarmId { get; set; }
 

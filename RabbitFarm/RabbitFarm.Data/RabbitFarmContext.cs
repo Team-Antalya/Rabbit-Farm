@@ -10,13 +10,12 @@
         public const string ConnectionString =
         "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
 
-        //public const string ConnectionString =
-        //    "RabbitFarmConn";
+        //public const string ConnectionString = "RabbitFarmConn";
 
         public RabbitFarmContext()
             : base(ConnectionString)
         {
-            // Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SupermarketSqlContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RabbitFarmContext>());
         }
 
         public IDbSet<Acquisition> Acquisitions { get; set; }
@@ -27,11 +26,7 @@
 
         public IDbSet<Farm> Farms { get; set; }
 
-        public IDbSet<Feed> Feeds { get; set; }
-
         public IDbSet<Feeding> Feedings { get; set; }
-
-        public IDbSet<FeedMix> FeedMixes { get; set; }
 
         public IDbSet<Litter> Litters { get; set; }
 

@@ -14,11 +14,7 @@
 
         IDbSet<Farm> Farms { get; set; }
 
-        IDbSet<Feed> Feeds { get; set; }
-
         IDbSet<Feeding> Feedings { get; set; }
-
-        IDbSet<FeedMix> FeedMixes { get; set; }
 
         IDbSet<Litter> Litters { get; set; }
 

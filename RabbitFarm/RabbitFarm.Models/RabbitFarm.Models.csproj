@@ -51,9 +51,7 @@
     <Compile Include="Cage.cs" />
     <Compile Include="CageChange.cs" />
     <Compile Include="Farm.cs" />
-    <Compile Include="Feed.cs" />
     <Compile Include="Feeding.cs" />
-    <Compile Include="FeedMix.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Litter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

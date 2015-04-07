@@ -18,8 +18,6 @@
 
         public int FeedId { get; set; }
 
-        public virtual Feed Feed { get; set; }
-
         public double Amount { get; set; }
 
         public Guid FarmId { get; set; }
