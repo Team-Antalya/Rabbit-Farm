@@ -43,6 +43,11 @@
             this.ChangeEntityState(entity, EntityState.Detached);
         }
 
+        public void SaveChanges()
+        {
+            this.context.SaveChanges();
+        }
+
         private void ChangeEntityState(T entity, EntityState state)
         {
             var entry = this.context.Entry(entity);
