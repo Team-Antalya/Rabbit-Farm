@@ -20,7 +20,7 @@ namespace RabbitFarm.Data.Migrations
             SeedRabbit(context);
             SeedCage(context);
             SeedFeeding(context);
-            //SeedLitter(context);
+            SeedLitter(context);
             //SeedCageChange(context);
             //SeedRealization(context);
         }
@@ -398,7 +398,7 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 3, 22),
                 Cost = 40m,
                 Source = AcqusitionSource.Litter,
-                FarmId = 1
+                FarmId = 2
             };
             var acquisitionLitter2 = new Acquisition()
             {
@@ -414,7 +414,7 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 12, 20),
                 Cost = 60m,
                 Source = AcqusitionSource.Litter,
-                FarmId = 3
+                FarmId = 1
             };
 
             var acquisitionLitter4 = new Acquisition()
@@ -422,24 +422,24 @@ namespace RabbitFarm.Data.Migrations
                 Id = 4,
                 AcquisitionDate = new DateTime(2014, 12, 21),
                 Cost = 60m,
-                Source = AcqusitionSource.Litter,
-                FarmId = 4
+                Source = AcqusitionSource.OuterFarm,
+                FarmId = 5
             };
             var acquisitionLitter5 = new Acquisition()
             {
                 Id = 5,
                 AcquisitionDate = new DateTime(2014, 12, 21),
                 Cost = 60m,
-                Source = AcqusitionSource.Litter,
-                FarmId = 5
+                Source = AcqusitionSource.OuterFarm,
+                FarmId = 4
             };
             var acquisitionLitter6 = new Acquisition()
             {
                 Id = 6,
                 AcquisitionDate = new DateTime(2014, 12, 22),
                 Cost = 60m,
-                Source = AcqusitionSource.Litter,
-                FarmId = 2
+                Source = AcqusitionSource.OuterFarm,
+                FarmId = 3
             };
             var acquisitionLitter7 = new Acquisition()
             {
@@ -447,15 +447,15 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 12, 23),
                 Cost = 70m,
                 Source = AcqusitionSource.OuterFarm,
-                FarmId = 1
+                FarmId = 2
             };
             var acquisitionLitter8 = new Acquisition()
             {
                 Id = 8,
                 AcquisitionDate = new DateTime(2014, 10, 10),
                 Cost = 40m,
-                Source = AcqusitionSource.Litter,
-                FarmId = 5
+                Source = AcqusitionSource.OuterFarm,
+                FarmId = 1
             };
             context.Acquisitions.AddOrUpdate(acquisitionLitter1);
             context.Acquisitions.AddOrUpdate(acquisitionLitter2);
@@ -473,7 +473,7 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 2, 18),
                 Cost = 20m,
                 Source = AcqusitionSource.OuterFarm,
-                FarmId = 1
+                FarmId = 5
             };
             var acquisitionOuterFarm2 = new Acquisition()
             {
@@ -481,14 +481,14 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 1, 7),
                 Cost = 15m,
                 Source = AcqusitionSource.OuterFarm,
-                FarmId = 2
+                FarmId = 4
             };
             var acquisitionOuterFarm3 = new Acquisition()
             {
                 Id = 11,
                 AcquisitionDate = new DateTime(2014, 9, 13),
                 Cost = 20m,
-                Source = AcqusitionSource.Litter,
+                Source = AcqusitionSource.OuterFarm,
                 FarmId = 3
             };
             var acquisitionOuterFarm4 = new Acquisition()
@@ -497,7 +497,7 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 9, 17),
                 Cost = 20m,
                 Source = AcqusitionSource.OuterFarm,
-                FarmId = 4
+                FarmId = 1
             };
             var acquisitionOuterFarm5 = new Acquisition()
             {
@@ -505,7 +505,7 @@ namespace RabbitFarm.Data.Migrations
                 AcquisitionDate = new DateTime(2014, 7, 7),
                 Cost = 10m,
                 Source = AcqusitionSource.OuterFarm,
-                FarmId = 5
+                FarmId = 2
             };
 
             context.Acquisitions.AddOrUpdate(acquisitionOuterFarm1);
@@ -598,7 +598,7 @@ namespace RabbitFarm.Data.Migrations
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
                 AcquisitionId = 5,
-                FarmId = 4
+                FarmId = 5
             };
             var rabbit10 = new Rabbit()
             {
@@ -1034,7 +1034,7 @@ namespace RabbitFarm.Data.Migrations
                 Id = 1,
                 BirthDate = new DateTime(2014, 3, 22),
                 MotherId = 8,
-                FatherId = 1,
+                FatherId = 12,
                 FarmId = 1
             };
             var litter2 = new Litter()
@@ -1049,8 +1049,8 @@ namespace RabbitFarm.Data.Migrations
             {
                 Id = 3,
                 BirthDate = new DateTime(2014, 12, 20),
-                MotherId = 9,
-                FatherId = 5,
+                MotherId = 6,
+                FatherId = 11,
                 FarmId = 3
             };
 
@@ -1058,47 +1058,47 @@ namespace RabbitFarm.Data.Migrations
             {
                 Id = 4,
                 BirthDate = new DateTime(2014, 12, 21),
-                MotherId = 9,
-                FatherId = 5,
+                MotherId = 5,
+                FatherId = 10,
                 FarmId = 4
             };
             var litter5 = new Litter()
             {
                 BirthDate = new DateTime(2014, 12, 21),
-                MotherId = 21,
-                FatherId = 20,
+                MotherId = 4,
+                FatherId = 9,
                 FarmId = 5
             };
-            var litter6 = new Litter()
-            {
-                BirthDate = new DateTime(2014, 12, 22),
-                MotherId = 25,
-                FatherId = 24,
-                FarmId = 2
-            };
-            var litter7 = new Litter()
-            {
-                BirthDate = new DateTime(2014, 12, 23),
-                MotherId = 28,
-                FatherId = 27,
-                FarmId = 1
-            };
-            var litter8 = new Litter()
-            {
-                BirthDate = new DateTime(2014, 10, 10),
-                MotherId = 31,
-                FatherId = 30,
-                FarmId = 5
-            };
+            //var litter6 = new Litter()
+            //{
+            //    BirthDate = new DateTime(2014, 12, 22),
+            //    MotherId = 25,
+            //    FatherId = 24,
+            //    FarmId = 2
+            //};
+            //var litter7 = new Litter()
+            //{
+            //    BirthDate = new DateTime(2014, 12, 23),
+            //    MotherId = 28,
+            //    FatherId = 27,
+            //    FarmId = 1
+            //};
+            //var litter8 = new Litter()
+            //{
+            //    BirthDate = new DateTime(2014, 10, 10),
+            //    MotherId = 31,
+            //    FatherId = 30,
+            //    FarmId = 5
+            //};
 
             context.Litters.AddOrUpdate(litter1);
             context.Litters.AddOrUpdate(litter2);
             context.Litters.AddOrUpdate(litter3);
             context.Litters.AddOrUpdate(litter4);
             context.Litters.AddOrUpdate(litter5);
-            context.Litters.AddOrUpdate(litter6);
-            context.Litters.AddOrUpdate(litter7);
-            context.Litters.AddOrUpdate(litter8);
+            //context.Litters.AddOrUpdate(litter6);
+            //context.Litters.AddOrUpdate(litter7);
+            //context.Litters.AddOrUpdate(litter8);
         }
 
         private void SeedCageChange(RabbitFarmContext context)
