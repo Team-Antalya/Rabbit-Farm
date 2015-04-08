@@ -1,6 +1,7 @@
 ﻿namespace RabbitFarm.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Feeding
     {
@@ -12,7 +13,9 @@
 
         public virtual Cage Cage { get; set; }
 
-        public Purchase FeedId { get; set; }
+        public int PurchaseId { get; set; }
+
+        public virtual Purchase Feed { get; set; }
 
         public double Amount { get; set; }
 

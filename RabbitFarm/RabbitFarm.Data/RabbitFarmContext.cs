@@ -54,6 +54,10 @@
             modelBuilder.Entity<Acquisition>()
                 .HasOptional(acq => acq.Rabbit)
                 .WithRequired(r => r.Acquisition);
+
+            modelBuilder.Entity<Rabbit>()
+               .HasOptional(r => r.Realization)
+               .WithRequired(realiz => realiz.Rabbit);
         }
     }
 }

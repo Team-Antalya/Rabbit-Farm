@@ -6,14 +6,16 @@
 
     public class Realization
     {
-        [Key, ForeignKey("Rabbit")]
+
         public int Id { get; set; }
 
         public DateTime RealizationDate { get; set; }
 
         public RealizationChannel RealizationChannel { get; set; }
 
-        public Rabbit Rabbit { get; set; }
+        public int RabbitId { get; set; }
+
+        public virtual Rabbit Rabbit { get; set; }
 
         public double? LiveWeight { get; set; }
 

@@ -11,11 +11,16 @@ namespace RabbitFarm.Models
         public Gender Gender { get; set; }
 
         public RabbitStatus Status { get; set; }
+
+        public int? LitterId { get; set; }
+
+        public virtual Litter Litter { get; set; }
+
         public int AcquisitionId { get; set; }
 
         public virtual Acquisition Acquisition { get; set; }
 
-        public virtual Realization Realization { get; set; }
+        public Realization Realization { get; set; }
 
         public int FarmId { get; set; }
 
