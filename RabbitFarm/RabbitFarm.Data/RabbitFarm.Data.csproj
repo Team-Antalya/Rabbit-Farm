@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRabbitFarmData.cs" />
     <Compile Include="IRabbitFarmDBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RabbitFarmContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RabbitFarmData.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
