@@ -12,7 +12,7 @@
 
         public virtual Cage Cage { get; set; }
 
-        public int FeedId { get; set; }
+        public Purchase FeedId { get; set; }
 
         public double Amount { get; set; }
 

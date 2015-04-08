@@ -17,9 +17,9 @@ namespace RabbitFarm.Data.Migrations
             SeedFarm(context);
             SeedAcquisition(context);
             SeedRabbit(context);
-            //SeedCage(context);
+            SeedCage(context);
             //SeedCageChange(context);
-            //SeedFeeding(context);
+            SeedFeeding(context);
             SeedLitter(context);
             SeedPurchase(context);
             //SeedRealization(context);
@@ -141,7 +141,74 @@ namespace RabbitFarm.Data.Migrations
 
         private void SeedCage(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            var cage1 = new Cage()
+            {
+                Height = 200,
+                Width = 200,
+                Length = 200,
+                FarmId = 1,
+                Rabbits = 
+                {
+                    context.Rabbits.Find(1),context.Rabbits.Find(6),context.Rabbits.Find(7),
+                    context.Rabbits.Find(11),context.Rabbits.Find(12),context.Rabbits.Find(27),
+                    context.Rabbits.Find(28),context.Rabbits.Find(29)
+                }
+            };
+            var cage2 = new Cage()
+            {
+                Height = 160,
+                Width = 180,
+                Length = 160,
+                FarmId = 2,
+                Rabbits = 
+                {
+                    context.Rabbits.Find(2),context.Rabbits.Find(3),context.Rabbits.Find(4),
+                    context.Rabbits.Find(8),context.Rabbits.Find(10),context.Rabbits.Find(24),
+                    context.Rabbits.Find(25),context.Rabbits.Find(26)
+                }
+            };
+            var cage3 = new Cage()
+            {
+                Height = 150,
+                Width = 150,
+                Length = 150,
+                FarmId = 3,
+                Rabbits = 
+                {
+                    context.Rabbits.Find(5),context.Rabbits.Find(9),context.Rabbits.Find(13),
+                    context.Rabbits.Find(14),context.Rabbits.Find(15)
+                }
+            };
+            var cage4 = new Cage()
+            {
+                Height = 350,
+                Width = 160,
+                Length = 210,
+                FarmId = 4,
+                Rabbits = 
+                {
+                    context.Rabbits.Find(16),context.Rabbits.Find(17),context.Rabbits.Find(18),
+                    context.Rabbits.Find(19)
+                }
+            };
+            var cage5 = new Cage()
+            {
+                Height = 300,
+                Width = 200,
+                Length = 100,
+                FarmId = 5,
+                Rabbits = 
+                {
+                    context.Rabbits.Find(20),context.Rabbits.Find(21),context.Rabbits.Find(22),
+                    context.Rabbits.Find(23),context.Rabbits.Find(30),context.Rabbits.Find(31),
+                    context.Rabbits.Find(32),context.Rabbits.Find(33)
+                }
+            };
+            context.Cages.AddOrUpdate(cage1);
+            context.Cages.AddOrUpdate(cage2);
+            context.Cages.AddOrUpdate(cage3);
+            context.Cages.AddOrUpdate(cage4);
+            context.Cages.AddOrUpdate(cage5);
         }
 
         private void SeedCageChange(RabbitFarmContext context)
@@ -170,8 +237,92 @@ namespace RabbitFarm.Data.Migrations
             {
                 FeedingDate = new DateTime(2015, 2, 15),
                 Amount = 100,
-
+                FeedId = context.Purchases.Find(1),
+                CageId = 1,
+                FarmId = 1
             };
+            var feeding2 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 2, 15),
+                Amount = 100,
+                FeedId = context.Purchases.Find(5),
+                CageId = 1,
+                FarmId = 1
+            };
+            var feeding3 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 2, 20),
+                Amount = 200,
+                FeedId = context.Purchases.Find(5),
+                CageId = 2,
+                FarmId = 2
+            };
+            var feeding4 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 2, 20),
+                Amount = 200,
+                FeedId = context.Purchases.Find(10),
+                CageId = 2,
+                FarmId = 2
+            };
+            var feeding5 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 1, 15),
+                Amount = 150,
+                FeedId = context.Purchases.Find(1),
+                CageId = 3,
+                FarmId = 3
+            };
+            var feeding6 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 1, 15),
+                Amount = 150,
+                FeedId = context.Purchases.Find(5),
+                CageId = 3,
+                FarmId = 3
+            };
+            var feeding7 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 1, 25),
+                Amount = 180,
+                FeedId = context.Purchases.Find(1),
+                CageId = 4,
+                FarmId = 4
+            };
+            var feeding8 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 1, 25),
+                Amount = 180,
+                FeedId = context.Purchases.Find(10),
+                CageId = 4,
+                FarmId = 4
+            };
+            var feeding9 = new Feeding()
+            {
+                FeedingDate = new DateTime(2014, 12, 20),
+                Amount = 250,
+                FeedId = context.Purchases.Find(5),
+                CageId = 5,
+                FarmId = 5
+            };
+            var feeding10 = new Feeding()
+            {
+                FeedingDate = new DateTime(2014, 12, 20),
+                Amount = 250,
+                FeedId = context.Purchases.Find(10),
+                CageId = 5,
+                FarmId = 5
+            };
+            context.Feedings.AddOrUpdate(feeding1);
+            context.Feedings.AddOrUpdate(feeding2);
+            context.Feedings.AddOrUpdate(feeding3);
+            context.Feedings.AddOrUpdate(feeding4);
+            context.Feedings.AddOrUpdate(feeding5);
+            context.Feedings.AddOrUpdate(feeding6);
+            context.Feedings.AddOrUpdate(feeding7);
+            context.Feedings.AddOrUpdate(feeding8);
+            context.Feedings.AddOrUpdate(feeding9);
+            context.Feedings.AddOrUpdate(feeding10);
         }
         private void SeedRabbit(RabbitFarmContext context)
         {
