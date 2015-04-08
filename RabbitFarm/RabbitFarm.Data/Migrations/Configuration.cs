@@ -166,7 +166,12 @@ namespace RabbitFarm.Data.Migrations
 
         private void SeedFeeding(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            var feeding1 = new Feeding()
+            {
+                FeedingDate = new DateTime(2015, 2, 15),
+                Amount = 100,
+
+            };
         }
         private void SeedRabbit(RabbitFarmContext context)
         {
@@ -527,7 +532,7 @@ namespace RabbitFarm.Data.Migrations
                 BirthDate = new DateTime(2014, 12, 23),
                 MotherId = 28,
                 FatherId = 27,
-                Rabbits = { context.Rabbits.Find(29)) },
+                Rabbits = { context.Rabbits.Find(29), },
                 FarmId = 1
             };
             var litter8 = new Litter()
