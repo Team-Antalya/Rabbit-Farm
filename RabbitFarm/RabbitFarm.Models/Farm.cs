@@ -1,6 +1,7 @@
 ﻿namespace RabbitFarm.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Farm
     {
@@ -19,11 +20,16 @@
             this.feedings = new HashSet<Feeding>();
         }
 
+        [Key]
+        [Required]
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(3)]
         public string Name { get; set; }
 
-        public object UserId { get; set; }
+       // [Required]
+        public string UserId { get; set; }
 
         public virtual ICollection<Cage> Cages
         {

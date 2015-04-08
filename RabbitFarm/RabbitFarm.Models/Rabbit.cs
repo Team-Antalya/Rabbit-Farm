@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace RabbitFarm.Models
 {
     public class Rabbit
     {
@@ -10,9 +12,7 @@
 
         public RabbitStatus Status { get; set; }
 
-        public int AcquisitionId { get; set; }
-
-        public virtual Acquisition Acquisition { get; set; }
+        public Acquisition Acquisition { get; set; }
 
         public virtual Realization Realization { get; set; }
 

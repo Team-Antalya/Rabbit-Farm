@@ -6,14 +6,14 @@
 
     public class Acquisition
     {
-        [Key, ForeignKey("Rabbit")]
+
         public int Id { get; set; }
 
         public DateTime AcquisitionDate { get; set; }
 
-        public virtual Rabbit Rabbit { get; set; }
-
         public AcqusitionSource Source { get; set; }
+
+        public Rabbit Rabbit { get; set; }
 
         public decimal Cost { get; set; }
 
