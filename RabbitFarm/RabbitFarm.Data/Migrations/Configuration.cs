@@ -16,7 +16,7 @@ namespace RabbitFarm.Data.Migrations
         {
             SeedFarm(context);
             SeedAcquisition(context);
-            //SeedPurchase(context);
+            SeedPurchase(context);
             //SeedRabbit(context);
             //SeedCage(context);
             //SeedCageChange(context);
