@@ -1149,7 +1149,7 @@ namespace RabbitFarm.Data.Migrations
             context.CageChanges.AddOrUpdate(cageChanges3);
             context.CageChanges.AddOrUpdate(cageChanges4);
             context.CageChanges.AddOrUpdate(cageChanges5);
-			context.SaveChanges();
+            context.SaveChanges();
         }
 
         private void SeedRealization(RabbitFarmContext context)
@@ -1218,6 +1218,5 @@ namespace RabbitFarm.Data.Migrations
 
 
         }
-    }
     }
 }
