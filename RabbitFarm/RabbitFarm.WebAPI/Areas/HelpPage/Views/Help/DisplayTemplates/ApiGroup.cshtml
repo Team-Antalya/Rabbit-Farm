@@ -1,9 +1,10 @@
+@using System
 @using System.Web.Http
 @using System.Web.Http.Controllers
 @using System.Web.Http.Description
 @using RabbitFarm.WebAPI.Areas.HelpPage
 @using RabbitFarm.WebAPI.Areas.HelpPage.Models
-@model IGrouping<HttpControllerDescriptor, ApiDescription>
+@model System.Linq.IGrouping<HttpControllerDescriptor, ApiDescription>
 
 @{
     var controllerDocumentation = ViewBag.DocumentationProvider != null ? 
