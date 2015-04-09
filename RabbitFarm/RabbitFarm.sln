@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitFarm.Models", "Rabbit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitFarm.Data", "RabbitFarm.Data\RabbitFarm.Data.csproj", "{115FDD5E-CE4D-4418-A219-938813688BD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitFarm.WebAPI", "RabbitFarm.WebAPI\RabbitFarm.WebAPI.csproj", "{3F794CC7-0D76-485D-B098-9770B45CB01A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{115FDD5E-CE4D-4418-A219-938813688BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{115FDD5E-CE4D-4418-A219-938813688BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{115FDD5E-CE4D-4418-A219-938813688BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F794CC7-0D76-485D-B098-9770B45CB01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F794CC7-0D76-485D-B098-9770B45CB01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F794CC7-0D76-485D-B098-9770B45CB01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F794CC7-0D76-485D-B098-9770B45CB01A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1103,12 +1103,120 @@ namespace RabbitFarm.Data.Migrations
 
         private void SeedCageChange(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            var cageChanges1 = new CageChange()
+            {
+                Id = 1,
+                StartingDate = new DateTime(2015, 1, 13),
+                CageId = 7,
+                RabbitId = 12,
+                FarmId = 2
+            };
+            var cageChanges2 = new CageChange()
+            {
+                Id = 2,
+                StartingDate = new DateTime(2015, 2, 9),
+                CageId = 8,
+                RabbitId = 12,
+                FarmId = 1
+            };
+            var cageChanges3 = new CageChange()
+            {
+                Id = 3,
+                StartingDate = new DateTime(2015, 1, 25),
+                CageId = 4,
+                RabbitId = 12,
+                FarmId = 5
+            };
+            var cageChanges4 = new CageChange()
+            {
+                Id = 4,
+                StartingDate = new DateTime(2015, 1, 17),
+                CageId = 10,
+                RabbitId = 12,
+                FarmId = 4
+            };
+            var cageChanges5 = new CageChange()
+            {
+                Id = 5,
+                StartingDate = new DateTime(2015, 2, 8),
+                CageId = 11,
+                RabbitId = 12,
+                FarmId = 3
+            };
+
+            context.CageChanges.AddOrUpdate(cageChanges1);
+            context.CageChanges.AddOrUpdate(cageChanges2);
+            context.CageChanges.AddOrUpdate(cageChanges3);
+            context.CageChanges.AddOrUpdate(cageChanges4);
+            context.CageChanges.AddOrUpdate(cageChanges5);
+            context.SaveChanges();
         }
 
         private void SeedRealization(RabbitFarmContext context)
         {
-            throw new System.NotImplementedException();
+            //seed some Death realization
+            var realizationDeath1 = new Realization()
+            {
+                Id = 1,
+                RealizationDate = new DateTime(2014, 2, 10),
+                RealizationChannel = RealizationChannel.Death,
+                RabbitId = 1,
+                LiveWeight = 2.3,
+                FarmId = 2
+            };
+            var realizationDeath2 = new Realization()
+            {
+                Id = 7,
+                RealizationDate = new DateTime(2014, 2, 15),
+                RealizationChannel = RealizationChannel.Death,
+                RabbitId = 7,
+                LiveWeight = 2.1,
+                FarmId = 2
+            };
+            context.Realizations.AddOrUpdate(realizationDeath1);
+            context.Realizations.AddOrUpdate(realizationDeath2);
+
+            //seed some Sold realization
+
+            var realizationSold1 = new Realization()
+            {
+
+                Id = 2,
+                RealizationDate = new DateTime(2014, 12, 23),
+                RealizationChannel = RealizationChannel.Sold,
+                RabbitId = 2,
+                LiveWeight = 3.1,
+                FarmId = 2
+            };
+            var realizationSold2 = new Realization()
+            {
+
+                Id = 5,
+                RealizationDate = new DateTime(2014, 12, 22),
+                RealizationChannel = RealizationChannel.Sold,
+                RabbitId = 5,
+                LiveWeight = 2.7,
+                FarmId = 4
+            };
+
+            context.Realizations.AddOrUpdate(realizationSold1);
+            context.Realizations.AddOrUpdate(realizationSold2);
+            //seed slain realization
+            var realizationsSlain = new Realization()
+            {
+
+                Id = 9,
+                RealizationDate = new DateTime(2014, 8, 10),
+                RealizationChannel = RealizationChannel.Slain,
+                RabbitId = 9,
+                LiveWeight = 3.4,
+                FarmId = 5
+            };
+            context.Realizations.AddOrUpdate(realizationsSlain);
+
+            context.SaveChanges();
+
+
         }
     }
 }
