@@ -21,9 +21,92 @@ namespace RabbitFarm.Data.Migrations
             SeedCage(context);
             SeedFeeding(context);
             SeedLitter(context);
-            //SeedCageChange(context);
-            //SeedRealization(context);
+            SeedCageChange(context);
+            SeedRealization(context);
         }
+
+        #region Cages
+        Cage cage1 = new Cage()
+        {
+            Id = 1,
+            Height = 200,
+            Width = 200,
+            Length = 200,
+            FarmId = 1
+        };
+        Cage cage2 = new Cage()
+        {
+            Id = 2,
+            Height = 160,
+            Width = 180,
+            Length = 160,
+            FarmId = 2
+        };
+        Cage cage3 = new Cage()
+        {
+            Id = 3,
+            Height = 150,
+            Width = 150,
+            Length = 150,
+            FarmId = 3
+        };
+        Cage cage4 = new Cage()
+        {
+            Id = 4,
+            Height = 350,
+            Width = 160,
+            Length = 210,
+            FarmId = 4
+        };
+        Cage cage5 = new Cage()
+        {
+            Id = 5,
+            Height = 300,
+            Width = 200,
+            Length = 100,
+            FarmId = 5
+        };
+        Cage cage6 = new Cage()
+        {
+            Id = 6,
+            Height = 200,
+            Width = 200,
+            Length = 200,
+            FarmId = 1
+        };
+        Cage cage7 = new Cage()
+        {
+            Id = 7,
+            Height = 160,
+            Width = 180,
+            Length = 160,
+            FarmId = 2
+        };
+        Cage cage8 = new Cage()
+        {
+            Id = 8,
+            Height = 150,
+            Width = 150,
+            Length = 150,
+            FarmId = 3
+        };
+        Cage cage9 = new Cage()
+        {
+            Id = 9,
+            Height = 350,
+            Width = 160,
+            Length = 210,
+            FarmId = 4
+        };
+        Cage cage10 = new Cage()
+        {
+            Id = 10,
+            Height = 300,
+            Width = 200,
+            Length = 100,
+            FarmId = 5
+        };
+        #endregion
 
         private void SeedFarm(RabbitFarmContext context)
         {
@@ -840,87 +923,6 @@ namespace RabbitFarm.Data.Migrations
 
         private void SeedCage(RabbitFarmContext context)
         {
-            var cage1 = new Cage()
-            {
-                Id = 1,
-                Height = 200,
-                Width = 200,
-                Length = 200,
-                FarmId = 1
-            };
-            var cage2 = new Cage()
-            {
-                Id = 2,
-                Height = 160,
-                Width = 180,
-                Length = 160,
-                FarmId = 2
-            };
-            var cage3 = new Cage()
-            {
-                Id = 3,
-                Height = 150,
-                Width = 150,
-                Length = 150,
-                FarmId = 3
-            };
-            var cage4 = new Cage()
-            {
-                Id = 4,
-                Height = 350,
-                Width = 160,
-                Length = 210,
-                FarmId = 4
-            };
-            var cage5 = new Cage()
-            {
-                Id = 5,
-                Height = 300,
-                Width = 200,
-                Length = 100,
-                FarmId = 5
-            };
-            var cage6 = new Cage()
-            {
-                Id = 6,
-                Height = 200,
-                Width = 200,
-                Length = 200,
-                FarmId = 1
-            };
-            var cage7 = new Cage()
-            {
-                Id = 7,
-                Height = 160,
-                Width = 180,
-                Length = 160,
-                FarmId = 2
-            };
-            var cage8 = new Cage()
-            {
-                Id = 8,
-                Height = 150,
-                Width = 150,
-                Length = 150,
-                FarmId = 3
-            };
-            var cage9 = new Cage()
-            {
-                Id = 9,
-                Height = 350,
-                Width = 160,
-                Length = 210,
-                FarmId = 4
-            };
-            var cage10 = new Cage()
-            {
-                Id = 10,
-                Height = 300,
-                Width = 200,
-                Length = 100,
-                FarmId = 5
-            };
-
             context.Cages.AddOrUpdate(cage1);
             context.Cages.AddOrUpdate(cage2);
             context.Cages.AddOrUpdate(cage3);
@@ -1107,42 +1109,47 @@ namespace RabbitFarm.Data.Migrations
             {
                 Id = 1,
                 StartingDate = new DateTime(2015, 1, 13),
-                CageId = 7,
-                RabbitId = 12,
+
+                RabbitId = 13,
                 FarmId = 2
             };
+            cageChanges1.Cages.Add(cage2);
+
             var cageChanges2 = new CageChange()
             {
                 Id = 2,
                 StartingDate = new DateTime(2015, 2, 9),
-                CageId = 8,
                 RabbitId = 12,
                 FarmId = 1
             };
+            cageChanges2.Cages.Add(cage1);
+
             var cageChanges3 = new CageChange()
             {
                 Id = 3,
                 StartingDate = new DateTime(2015, 1, 25),
-                CageId = 4,
-                RabbitId = 12,
+                RabbitId = 4,
                 FarmId = 5
             };
+            cageChanges3.Cages.Add(cage5);
+
             var cageChanges4 = new CageChange()
             {
                 Id = 4,
                 StartingDate = new DateTime(2015, 1, 17),
-                CageId = 10,
-                RabbitId = 12,
+                RabbitId = 10,
                 FarmId = 4
             };
+            cageChanges4.Cages.Add(cage10);
+
             var cageChanges5 = new CageChange()
             {
                 Id = 5,
                 StartingDate = new DateTime(2015, 2, 8),
-                CageId = 11,
-                RabbitId = 12,
+                RabbitId = 6,
                 FarmId = 3
             };
+            cageChanges5.Cages.Add(cage8);
 
             context.CageChanges.AddOrUpdate(cageChanges1);
             context.CageChanges.AddOrUpdate(cageChanges2);
@@ -1162,7 +1169,8 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 1,
                 LiveWeight = 2.3,
-                FarmId = 2
+                FarmId = 2,
+                Price = 0
             };
             var realizationDeath2 = new Realization()
             {
@@ -1171,7 +1179,8 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 7,
                 LiveWeight = 2.1,
-                FarmId = 2
+                FarmId = 2,
+                Price = 0m
             };
             context.Realizations.AddOrUpdate(realizationDeath1);
             context.Realizations.AddOrUpdate(realizationDeath2);
@@ -1186,7 +1195,8 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Sold,
                 RabbitId = 2,
                 LiveWeight = 3.1,
-                FarmId = 2
+                FarmId = 2,
+                Price = 9.85m
             };
             var realizationSold2 = new Realization()
             {
@@ -1196,7 +1206,8 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Sold,
                 RabbitId = 5,
                 LiveWeight = 2.7,
-                FarmId = 4
+                FarmId = 4,
+                Price = 9.29m
             };
 
             context.Realizations.AddOrUpdate(realizationSold1);
@@ -1210,7 +1221,8 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Slain,
                 RabbitId = 9,
                 LiveWeight = 3.4,
-                FarmId = 5
+                FarmId = 5,
+                Price = 0
             };
             context.Realizations.AddOrUpdate(realizationsSlain);
 
