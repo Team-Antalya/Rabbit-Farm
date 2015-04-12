@@ -10,6 +10,7 @@
         private ICollection<Litter> litters;
         private ICollection<Purchase> purchases;
         private ICollection<Feeding> feedings;
+        private ICollection<User> users;
 
         public Farm()
         {
@@ -18,6 +19,7 @@
             this.rabbits = new HashSet<Rabbit>();
             this.purchases = new HashSet<Purchase>();
             this.feedings = new HashSet<Feeding>();
+            this.users = new HashSet<User>();
         }
 
         [Key]
@@ -28,8 +30,12 @@
         [MinLength(3)]
         public string Name { get; set; }
 
-       // [Required]
-        public string UserId { get; set; }
+        [Required]
+        public virtual ICollection<User> Users
+        {
+            get { return this.users; }
+            set { this.users = value; }
+        }
 
         public virtual ICollection<Cage> Cages
         {

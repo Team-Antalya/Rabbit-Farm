@@ -1,18 +1,16 @@
 ﻿namespace RabbitFarm.Data.Repositories
 {
+    using System;
     using System.Data.Entity;
     using System.Linq;
-    public class Repository<T>  : IRepository<T> where T : class
+    using System.Linq.Expressions;
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private IRabbitFarmDBContext context;
-        private IDbSet<T> set; 
+        private DbContext context;
+        private IDbSet<T> set;
 
-        public Repository() : this (new RabbitFarmContext())
-        {
 
-        }
-
-        public Repository(IRabbitFarmDBContext context)
+        public Repository(DbContext context)
         {
             this.context = context;
             this.set = context.Set<T>();
@@ -23,9 +21,10 @@
             return this.set;
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
             this.ChangeEntityState(entity, EntityState.Added);
+            return entity;
         }
 
         public void Update(T entity)
@@ -33,9 +32,10 @@
             this.ChangeEntityState(entity, EntityState.Modified);
         }
 
-        public void Delete(T entity)
+        public T Delete(T entity)
         {
             this.ChangeEntityState(entity, EntityState.Deleted);
+            return entity;
         }
 
         public void Detach(T entity)
@@ -43,9 +43,9 @@
             this.ChangeEntityState(entity, EntityState.Detached);
         }
 
-        public void SaveChanges()
+        public int SaveChanges()
         {
-            this.context.SaveChanges();
+            return this.context.SaveChanges();
         }
 
         private void ChangeEntityState(T entity, EntityState state)
@@ -57,6 +57,30 @@
             }
 
             entry.State = state;
+        }
+
+
+        public T Find(object id)
+        {
+            return this.set.Find(id);
+        }
+
+        public IQueryable<T> Search(Expression<Func<T, bool>> predicate)
+        {
+            return this.set.Where(predicate);
+        }
+
+        public void Update(object id)
+        {
+            var entity = this.Find(id);
+            this.ChangeEntityState(entity, EntityState.Modified);
+        }
+
+        public T Delete(object Id)
+        {
+            var entity = this.Find(Id);
+            this.ChangeEntityState(entity, EntityState.Deleted);
+            return entity;
         }
     }
 }

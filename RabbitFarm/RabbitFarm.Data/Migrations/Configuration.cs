@@ -1,8 +1,13 @@
 namespace RabbitFarm.Data.Migrations
 {
     using System;
-    using RabbitFarm.Models;
     using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity;
+
+    using RabbitFarm.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<RabbitFarmContext>
     {
@@ -14,7 +19,8 @@ namespace RabbitFarm.Data.Migrations
 
         protected override void Seed(RabbitFarmContext context)
         {
-            SeedFarm(context);
+            SeedUserWithFarms(context);
+            //SeedFarm(context);
             SeedPurchase(context);
             SeedAcquisition(context);
             SeedRabbit(context);
@@ -108,13 +114,81 @@ namespace RabbitFarm.Data.Migrations
         };
         #endregion
 
-        private void SeedFarm(RabbitFarmContext context)
+        private void SeedUserWithFarms(RabbitFarmContext context)
         {
-            var farm1 = new Farm() { Name = "My Rabbit Farm" };
-            var farm2 = new Farm() { Name = "Happy easter day" };
-            var farm3 = new Farm() { Name = "Rabbit heaven" };
-            var farm4 = new Farm() { Name = "Farm for rabbit" };
-            var farm5 = new Farm() { Name = "Rabbitlandia" };
+            //The UserStore is ASP Identity's data layer. Wrap context with the UserStore.
+            UserStore<User> userStore = new UserStore<User>(context);
+
+            //The UserManager is ASP Identity's implementation layer: contains the methods.
+            //The constructor takes the UserStore: how the methods will interact with the database.
+            UserManager<User> userManager = new UserManager<User>(userStore);
+
+            //Add or Update the initial Users into the database as normal.
+            context.Users.AddOrUpdate(
+                x => x.Email,  //Using Email as the Unique Key: If a record exists with the same email, AddOrUpdate skips it.
+                new User() { Email = "pesho@email.co.uk", UserName = "pesho", PasswordHash = new PasswordHasher().HashPassword("Som3Pass!") },
+                new User() { Email = "gosho@email.co.uk", UserName = "gosho", PasswordHash = new PasswordHasher().HashPassword("MyPassword") },
+                new User() { Email = "penka@dir.bg", UserName = "penka", PasswordHash = new PasswordHasher().HashPassword("PenkasPassword") },
+                new User() { Email = "milka@abv.bg", UserName = "milka", PasswordHash = new PasswordHasher().HashPassword("MilkasPassword") }
+            );
+
+            //Save changes so the Id columns will auto-populate.
+            context.SaveChanges();
+
+            //ASP Identity User Id's are Guids stored as nvarchar(128), and exposed as strings.
+
+            //Get the UserId only if the SecurityStamp is not set yet.
+            string userId = context.Users.Where(x => x.Email == "pesho@email.co.uk" && string.IsNullOrEmpty(x.SecurityStamp)).Select(x => x.Id).FirstOrDefault();
+
+            //If the userId is not null, then the SecurityStamp needs updating.
+            if (!string.IsNullOrEmpty(userId)) userManager.UpdateSecurityStamp(userId);
+
+            //Repeat for next user: good opportunity to make a helper method.
+            userId = context.Users
+                .Where(x => x.Email == "gosho@email.co.uk" && string.IsNullOrEmpty(x.SecurityStamp))
+                .Select(x => x.Id)
+                .FirstOrDefault();
+            if (!string.IsNullOrEmpty(userId)) userManager.UpdateSecurityStamp(userId);
+
+            userId = context.Users
+                .Where(x => x.Email == "penka@dir.bg" && string.IsNullOrEmpty(x.SecurityStamp))
+                .Select(x => x.Id)
+                .FirstOrDefault();
+            if (!string.IsNullOrEmpty(userId)) userManager.UpdateSecurityStamp(userId);
+
+            userId = context.Users
+                .Where(x => x.Email == "milka@abv.bg" && string.IsNullOrEmpty(x.SecurityStamp))
+                .Select(x => x.Id)
+                .FirstOrDefault();
+            if (!string.IsNullOrEmpty(userId)) userManager.UpdateSecurityStamp(userId);
+
+            //Continue on with Seed.
+
+            var farm1 = new Farm()
+            {
+                Name = "My Rabbit Farm",
+                Users = context.Users.Where(u => u.Email == "gosho@email.co.uk").ToList()
+            };
+            var farm2 = new Farm()
+            {
+                Name = "Happy easter day",
+                Users = context.Users.Where(u => u.Email == "pesho@email.co.uk").ToList()
+            };
+            var farm3 = new Farm()
+            {
+                Name = "Rabbit heaven",
+                Users = context.Users.Where(u => u.Email == "penka@dir.bg").ToList()
+            };
+            var farm4 = new Farm()
+            {
+                Name = "Farm for rabbit",
+                Users = context.Users.Where(u => u.Email == "penka@dir.bg").ToList()
+            };
+            var farm5 = new Farm()
+            {
+                Name = "Rabbitlandia",
+                Users = context.Users.Where(u => u.Email == "milka@abv.bg").ToList()
+            };
             context.Farms.AddOrUpdate(farm1);
             context.Farms.AddOrUpdate(farm2);
             context.Farms.AddOrUpdate(farm3);
@@ -122,6 +196,21 @@ namespace RabbitFarm.Data.Migrations
             context.Farms.AddOrUpdate(farm5);
             context.SaveChanges();
         }
+
+        //private void SeedFarm(RabbitFarmContext context)
+        //{
+        //    var farm1 = new Farm() { Name = "My Rabbit Farm", };
+        //    var farm2 = new Farm() { Name = "Happy easter day" };
+        //    var farm3 = new Farm() { Name = "Rabbit heaven" };
+        //    var farm4 = new Farm() { Name = "Farm for rabbit" };
+        //    var farm5 = new Farm() { Name = "Rabbitlandia" };
+        //    context.Farms.AddOrUpdate(farm1);
+        //    context.Farms.AddOrUpdate(farm2);
+        //    context.Farms.AddOrUpdate(farm3);
+        //    context.Farms.AddOrUpdate(farm4);
+        //    context.Farms.AddOrUpdate(farm5);
+        //    context.SaveChanges();
+        //}
 
         private void SeedPurchase(RabbitFarmContext context)
         {

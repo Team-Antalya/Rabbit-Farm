@@ -22,10 +22,6 @@
             set { this.cages = value; }
         }
 
-        //public int CageId { get; set; }
-
-        //public virtual Cage Cage { get; set; }
-
         public int RabbitId { get; set; }
 
         public virtual Rabbit Rabbit { get; set; }

@@ -4,13 +4,11 @@
 
     public class Cage
     {
-       // private ICollection<Rabbit> rabbits;
         private ICollection<Feeding> feedings;
         private ICollection<CageChange> cageChanges;
 
         public Cage()
         {
-        //    this.rabbits = new HashSet<Rabbit>();
             this.feedings = new HashSet<Feeding>();
             this.cageChanges = new HashSet<CageChange>();
         }
@@ -26,12 +24,6 @@
         public int FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
-
-        //public virtual ICollection<Rabbit> Rabbits
-        //{
-        //    get { return this.rabbits; }
-        //    set { this.rabbits = value; }
-        //}
 
         public virtual ICollection<CageChange> CageChanges
         {

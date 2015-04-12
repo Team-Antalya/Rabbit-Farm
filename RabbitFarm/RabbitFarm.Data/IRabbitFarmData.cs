@@ -22,6 +22,6 @@
 
         IRepository<Realization> Realizations { get; }
 
-        void SaveChanges();
+        int SaveChanges();
     }
 }

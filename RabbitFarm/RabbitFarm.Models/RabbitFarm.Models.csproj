@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Acquisition.cs" />
     <Compile Include="AcqusitionSource.cs" />
-    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Cage.cs" />
     <Compile Include="CageChange.cs" />
     <Compile Include="Farm.cs" />

@@ -1,1 +1,0 @@
-﻿Added only because empty folders cannot be committed to GitHub

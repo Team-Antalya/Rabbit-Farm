@@ -1,22 +1,29 @@
 ﻿namespace RabbitFarm.Data
 {
     using System.Data.Entity;
-
-    using Models;
     using System.Data.Entity.ModelConfiguration.Conventions;
 
-    public class RabbitFarmContext : ApplicationDbContext, IRabbitFarmDBContext
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using RabbitFarm.Models;
+
+    public class RabbitFarmContext : IdentityDbContext<User>
     {
+        //public const string ConnectionStringSQL = "Server=.;Database=RabbitFarm;Integrated Security=True;";
+        //public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
+        //public const string ConnectionStringLocalDB = "Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;";
 
-        //public const string ConnectionString =
-        //    // "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;"; // Windows Azure
-        //    //"Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;"; // Local DB
-        //    "Server=.;Database=RabbitFarm;Integrated Security=True;"; // MS SQL
-
+        // DefaultConnection
+        // RabbitFarmConn
         public RabbitFarmContext()
-            : base()
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RabbitFarmContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
+        }
+
+        public static RabbitFarmContext Create()
+        {
+            return new RabbitFarmContext();
         }
 
         public IDbSet<Acquisition> Acquisitions { get; set; }
@@ -36,17 +43,6 @@
         public IDbSet<Rabbit> Rabbits { get; set; }
 
         public IDbSet<Realization> Realizations { get; set; }
-
-
-        public new void SaveChanges()
-        {
-            base.SaveChanges();
-        }
-
-        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
-        {
-            return base.Set<TEntity>();
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

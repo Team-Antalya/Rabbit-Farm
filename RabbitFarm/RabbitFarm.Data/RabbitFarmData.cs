@@ -2,22 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
 
     using Models;
     using Repositories;
 
     public class RabbitFarmData : IRabbitFarmData
     {
-        private IRabbitFarmDBContext context;
+        private DbContext context;
         private IDictionary<Type, object> repositories;
 
-        public RabbitFarmData()
-            : this(new RabbitFarmContext())
-        {
-
-        }
-
-        public RabbitFarmData(IRabbitFarmDBContext context)
+        public RabbitFarmData(DbContext context)
         {
             this.context = context;
             this.repositories = new Dictionary<Type, object>();
@@ -95,9 +90,9 @@
             }
         }
 
-        public void SaveChanges()
+        public int SaveChanges()
         {
-            this.context.SaveChanges();
+            return this.context.SaveChanges();
         }
 
         private IRepository<T> GetRepository<T>() where T : class
