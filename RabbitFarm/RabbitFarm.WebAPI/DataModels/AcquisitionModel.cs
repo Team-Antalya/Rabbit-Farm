@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq.Expressions;
-using Microsoft.Ajax.Utilities;
-using RabbitFarm.Models;
-
-namespace RabbitFarm.WebAPI.DataModels
+﻿namespace RabbitFarm.WebAPI.DataModels
 {
+    using System;
+    using System.Linq.Expressions;
+    using RabbitFarm.Models;
+
     public class AcquisitionModel
     {
         public DateTime AcquisitionDate { get; set; }
