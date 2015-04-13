@@ -12,8 +12,8 @@ namespace RabbitFarm.WebAPI.Controllers
 {
     public class CageController : RabbitFarmBaseApiController<CageModel>
     {
-        public CageController() :
-            base(new RabbitFarmData(new RabbitFarmContext()), new AspNetUserProvider())
+        public CageController(IUserProvider userProvider) :
+            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
             
         }
