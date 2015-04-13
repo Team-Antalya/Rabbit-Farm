@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using RabbitFarm.Data;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.Infrastructure;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Web.Http;
+
+    using RabbitFarm.Data;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.Infrastructure;
+
+    using AutoMapper;
+
     public class RealizationController : RabbitFarmBaseApiController
     {
         public RealizationController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
-            
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Realizations.All());
+            var realizations = this.data.Realizations.All();
+            var realizationsViewModel = Mapper.Map<Realization>(realizations);
+
+            return Ok(realizationsViewModel);
         }
 
         [HttpGet]
@@ -32,7 +32,10 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No Realization with this id!");
             }
-            return Ok(realization);
+
+            var realizationViewModel = Mapper.Map<Realization>(realization);
+
+            return Ok(realizationViewModel);
         }
 
         [HttpPut]
@@ -46,7 +49,9 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Realization obj)
         {
             var newRealization = this.data.Realizations.Add(obj);
-            return Ok(newRealization);
+            var newRealizationViewModel = Mapper.Map<Realization>(newRealization);
+
+            return Ok(newRealizationViewModel);
         }
 
         [HttpDelete]

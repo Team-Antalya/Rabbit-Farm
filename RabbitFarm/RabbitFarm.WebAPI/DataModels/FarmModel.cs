@@ -1,9 +1,5 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
-    using System.Collections.Generic;
-
-    using RabbitFarm.Models;
-
     public class FarmModel
     {
         public string Name { get; set; }

@@ -10,7 +10,7 @@
 
         public double Amount { get; set; }
 
-        public Farm Farm { get; set; }
+       // public Farm Farm { get; set; }
 
         /*public static Expression<Func<Feeding, FeedingModel>> PurchasesToViewModel
         {

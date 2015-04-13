@@ -1,5 +1,7 @@
 ﻿namespace RabbitFarm.WebAPI
 {
+    using System.Collections.Generic;
+
     using RabbitFarm.Models;
     using RabbitFarm.WebAPI.DataModels;
 
@@ -12,7 +14,11 @@
             Mapper.CreateMap<Acquisition, AcquisitionModel>();
             Mapper.CreateMap<Cage, CageModel>();
             Mapper.CreateMap<CageChange, CageChangeModel>();
+
             Mapper.CreateMap<Farm, FarmModel>();
+            Mapper.CreateMap<FarmModel, Farm>();
+            Mapper.CreateMap<ICollection<Cage>, ICollection<CageModel>>();
+
             Mapper.CreateMap<Feeding, FeedingModel>();
             Mapper.CreateMap<Litter, LitterModel>();
             Mapper.CreateMap<Purchase, PurchaseModel>();

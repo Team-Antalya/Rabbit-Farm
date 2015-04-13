@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using RabbitFarm.Data;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.Infrastructure;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Web.Http;
+    
+    using RabbitFarm.Data;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.DataModels;
+    using RabbitFarm.WebAPI.Infrastructure;
+
+    using AutoMapper;
+
     public class RabbitController : RabbitFarmBaseApiController
     {
         public RabbitController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
-            
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Rabbits.All());
+            var rabbit = this.data.Rabbits.All();
+            var rabbitsViewModel = Mapper.Map<RabbitModel>(rabbit);
+
+            return Ok(rabbitsViewModel);
         }
 
         [HttpGet]
@@ -32,7 +33,9 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No Rabbit with this id!");
             }
-            return Ok(rabbit);
+
+            var rabbitViewModel = Mapper.Map<RabbitModel>(rabbit);
+            return Ok(rabbitViewModel);
         }
 
         [HttpPut]
@@ -46,7 +49,9 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Rabbit obj)
         {
             var newRabbit = this.data.Rabbits.Add(obj);
-            return Ok(newRabbit);
+            var newRabbitViewModel = Mapper.Map<RabbitModel>(newRabbit);
+
+            return Ok(newRabbitViewModel);
         }
 
         [HttpDelete]
