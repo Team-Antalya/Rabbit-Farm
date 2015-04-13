@@ -23,7 +23,6 @@
         }
 
         [Key]
-        [Required]
         public int Id { get; set; }
 
         [Required]

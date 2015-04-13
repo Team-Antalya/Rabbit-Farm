@@ -48,9 +48,10 @@
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<Acquisition>()
+
+            /*modelBuilder.Entity<Acquisition>()
                 .HasOptional(acq => acq.Rabbit)
-                .WithRequired(r => r.Acquisition);
+                .WithRequired(r => r.Acquisition);*/
 
             modelBuilder.Entity<Rabbit>()
                .HasOptional(r => r.Realization)

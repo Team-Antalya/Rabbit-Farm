@@ -20,99 +20,24 @@ namespace RabbitFarm.Data.Migrations
         protected override void Seed(RabbitFarmContext context)
         {
             SeedUserWithFarms(context);
-            //SeedFarm(context);
-            SeedPurchase(context);
+
             SeedAcquisition(context);
-            SeedRabbit(context);
+            SeedRabbitsWithLitters(context);
+
+            SeedPurchase(context);
+
             SeedCage(context);
-            SeedFeeding(context);
-            SeedLitter(context);
             SeedCageChange(context);
-            SeedRealization(context);
+
+            SeedFeeding(context);
+            
+           SeedRealization(context);
         }
 
-        #region Cages
-        Cage cage1 = new Cage()
+        public void Seeder()
         {
-            Id = 1,
-            Height = 200,
-            Width = 200,
-            Length = 200,
-            FarmId = 1
-        };
-        Cage cage2 = new Cage()
-        {
-            Id = 2,
-            Height = 160,
-            Width = 180,
-            Length = 160,
-            FarmId = 2
-        };
-        Cage cage3 = new Cage()
-        {
-            Id = 3,
-            Height = 150,
-            Width = 150,
-            Length = 150,
-            FarmId = 3
-        };
-        Cage cage4 = new Cage()
-        {
-            Id = 4,
-            Height = 350,
-            Width = 160,
-            Length = 210,
-            FarmId = 4
-        };
-        Cage cage5 = new Cage()
-        {
-            Id = 5,
-            Height = 300,
-            Width = 200,
-            Length = 100,
-            FarmId = 5
-        };
-        Cage cage6 = new Cage()
-        {
-            Id = 6,
-            Height = 200,
-            Width = 200,
-            Length = 200,
-            FarmId = 1
-        };
-        Cage cage7 = new Cage()
-        {
-            Id = 7,
-            Height = 160,
-            Width = 180,
-            Length = 160,
-            FarmId = 2
-        };
-        Cage cage8 = new Cage()
-        {
-            Id = 8,
-            Height = 150,
-            Width = 150,
-            Length = 150,
-            FarmId = 3
-        };
-        Cage cage9 = new Cage()
-        {
-            Id = 9,
-            Height = 350,
-            Width = 160,
-            Length = 210,
-            FarmId = 4
-        };
-        Cage cage10 = new Cage()
-        {
-            Id = 10,
-            Height = 300,
-            Width = 200,
-            Length = 100,
-            FarmId = 5
-        };
-        #endregion
+            Seed(new RabbitFarmContext());
+        }
 
         private void SeedUserWithFarms(RabbitFarmContext context)
         {
@@ -217,7 +142,6 @@ namespace RabbitFarm.Data.Migrations
             //seed corn feed
             var feedCorn1 = new Purchase()
             {
-                Id = 1,
                 Name = "Corn",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 1,
@@ -228,7 +152,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedCorn2 = new Purchase()
             {
-                Id = 2,
                 Name = "Corn",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 1.2,
@@ -239,7 +162,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedCorn3 = new Purchase()
             {
-                Id = 3,
                 Name = "Corn",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 1.5,
@@ -250,7 +172,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedCorn4 = new Purchase()
             {
-                Id = 4,
                 Name = "Corn",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 1.6,
@@ -267,7 +188,6 @@ namespace RabbitFarm.Data.Migrations
             //seed wheat feed
             var feedWheat1 = new Purchase()
             {
-                Id = 5,
                 Name = "Wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 2.5,
@@ -278,7 +198,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedWheat2 = new Purchase()
             {
-                Id = 6,
                 Name = "Wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 2.6,
@@ -289,7 +208,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedWheat3 = new Purchase()
             {
-                Id = 7,
                 Name = "Wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 2.1,
@@ -300,7 +218,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedWheat4 = new Purchase()
             {
-                Id = 8,
                 Name = "Wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 2,
@@ -311,7 +228,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedWheat5 = new Purchase()
             {
-                Id = 9,
                 Name = "Wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 3.5,
@@ -329,7 +245,6 @@ namespace RabbitFarm.Data.Migrations
             //seed mix feed
             var feedMix1 = new Purchase()
             {
-                Id = 10,
                 Name = "Mix-lucerne, vegetables, corn, seed, wheat",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 100,
@@ -340,7 +255,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedMix2 = new Purchase()
             {
-                Id = 11,
                 Name = "Mix-algae, seed, vegetables, grain, fruit",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 50,
@@ -351,7 +265,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var feedMix3 = new Purchase()
             {
-                Id = 12,
                 Name = "Mix- algae, grain, seed, herbs",
                 PurchaseCategory = PurchaseCategory.Feed,
                 Amount = 100,
@@ -368,7 +281,6 @@ namespace RabbitFarm.Data.Migrations
 
             var toyEquipment1 = new Purchase()
             {
-                Id = 13,
                 Name = "Tunnel of willow twigs",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 20,
@@ -378,7 +290,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var toyEquipment2 = new Purchase()
             {
-                Id = 14,
                 Name = "Tunnel of willow twigs",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 15,
@@ -388,7 +299,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var toyEquipment3 = new Purchase()
             {
-                Id = 15,
                 Name = "Wooden hut",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 10,
@@ -398,7 +308,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var drinkEquipment1 = new Purchase()
             {
-                Id = 16,
                 Name = "Glass drinker",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 40,
@@ -408,7 +317,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var drinkEquipment2 = new Purchase()
             {
-                Id = 17,
                 Name = "Glass drinker",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 45,
@@ -418,7 +326,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var drinkEquipment3 = new Purchase()
             {
-                Id = 18,
                 Name = "Glass drinker",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 60,
@@ -428,7 +335,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var drinkEquipment4 = new Purchase()
             {
-                Id = 19,
                 Name = "Glass drinker",
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 35,
@@ -448,7 +354,6 @@ namespace RabbitFarm.Data.Migrations
 
             var vaccinePestorin1 = new Purchase()
             {
-                Id = 20,
                 Name = "PESTORIN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 70,
@@ -458,7 +363,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccinePestorin2 = new Purchase()
             {
-                Id = 21,
                 Name = "PESTORIN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 55,
@@ -468,7 +372,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineMyxoren1 = new Purchase()
             {
-                Id = 22,
                 Name = "MYXOREN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 60,
@@ -478,7 +381,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineMyxoren2 = new Purchase()
             {
-                Id = 23,
                 Name = "MYXOREN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 65,
@@ -488,7 +390,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineMyxoren3 = new Purchase()
             {
-                Id = 24,
                 Name = "MYXOREN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 80,
@@ -498,7 +399,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineErisin1 = new Purchase()
             {
-                Id = 25,
                 Name = "ERISIN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 20,
@@ -508,7 +408,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineErisin2 = new Purchase()
             {
-                Id = 26,
                 Name = "ERISIN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 15,
@@ -518,7 +417,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineErisin3 = new Purchase()
             {
-                Id = 27,
                 Name = "ERISIN",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 30,
@@ -528,7 +426,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineCanverm1 = new Purchase()
             {
-                Id = 28,
                 Name = "CANIVERM",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 15,
@@ -538,7 +435,6 @@ namespace RabbitFarm.Data.Migrations
             };
             var vaccineCanverm2 = new Purchase()
             {
-                Id = 29,
                 Name = "CANIVERM",
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 20,
@@ -558,7 +454,6 @@ namespace RabbitFarm.Data.Migrations
             context.Purchases.AddOrUpdate(vaccineErisin3);
 
             context.SaveChanges();
-
         }
 
         private void SeedAcquisition(RabbitFarmContext context)
@@ -686,14 +581,15 @@ namespace RabbitFarm.Data.Migrations
             context.Acquisitions.AddOrUpdate(acquisitionOuterFarm4);
             context.Acquisitions.AddOrUpdate(acquisitionOuterFarm5);
 
-
+            context.SaveChanges();
         }
 
-        private void SeedRabbit(RabbitFarmContext context)
+        private void SeedRabbitsWithLitters(RabbitFarmContext context)
         {
+            #region Rabbits
             var rabbit1 = new Rabbit()
             {
-                Id = 13,
+                Id = 1,
                 Mark = "10-12-35-43",
                 Gender = Gender.Male,
                 Status = RabbitStatus.InFarm,
@@ -702,7 +598,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit2 = new Rabbit()
             {
-                Id = 12,
+                Id = 2,
                 Mark = "15-15-36-32",
                 Gender = Gender.Male,
                 Status = RabbitStatus.InFarm,
@@ -711,7 +607,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit3 = new Rabbit()
             {
-                Id = 11,
+                Id = 3,
                 Mark = "11-24-65-23",
                 Gender = Gender.Male,
                 Status = RabbitStatus.InFarm,
@@ -720,7 +616,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit4 = new Rabbit()
             {
-                Id = 10,
+                Id = 4,
                 Mark = "24-21-46-32",
                 Gender = Gender.Male,
                 Status = RabbitStatus.InFarm,
@@ -729,7 +625,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit5 = new Rabbit()
             {
-                Id = 9,
+                Id = 5,
                 Mark = "32-23-12-43",
                 Gender = Gender.Male,
                 Status = RabbitStatus.InFarm,
@@ -738,7 +634,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit6 = new Rabbit()
             {
-                Id = 8,
+                Id = 6,
                 Mark = "10-12-35-43",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
@@ -756,7 +652,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit8 = new Rabbit()
             {
-                Id = 6,
+                Id = 8,
                 Mark = "23-11-54-32",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
@@ -765,7 +661,7 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit9 = new Rabbit()
             {
-                Id = 5,
+                Id = 9,
                 Mark = "23-11-54-32",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
@@ -774,43 +670,14 @@ namespace RabbitFarm.Data.Migrations
             };
             var rabbit10 = new Rabbit()
             {
-                Id = 4,
+                Id = 10,
                 Mark = "23-11-54-32",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
                 AcquisitionId = 4,
                 FarmId = 5
             };
-            var rabbit11 = new Rabbit()
-            {
-                Id = 3,
-                Mark = "21-42-53-21",
-                Gender = Gender.Female,
-                Status = RabbitStatus.InFarm,
-                AcquisitionId = 3,
-                LitterId = 1,
-                FarmId = 1
-            };
-            var rabbit12 = new Rabbit()
-            {
-                Id = 2,
-                Mark = "32-25-42-12",
-                Gender = Gender.Female,
-                Status = RabbitStatus.InFarm,
-                AcquisitionId = 2,
-                LitterId = 2,
-                FarmId = 2
-            };
-            var rabbit13 = new Rabbit()
-            {
-                Id = 1,
-                Mark = "32-25-42-12",
-                Gender = Gender.Female,
-                Status = RabbitStatus.InFarm,
-                LitterId = 2,
-                AcquisitionId = 1,
-                FarmId = 2
-            };
+            
             //var rabbit14 = new Rabbit()
             //{
             //    Mark = "32-25-42-12",
@@ -972,7 +839,6 @@ namespace RabbitFarm.Data.Migrations
             //    FarmId = 5
             //};
 
-
             context.Rabbits.AddOrUpdate(rabbit1);
             context.Rabbits.AddOrUpdate(rabbit2);
             context.Rabbits.AddOrUpdate(rabbit3);
@@ -983,9 +849,90 @@ namespace RabbitFarm.Data.Migrations
             context.Rabbits.AddOrUpdate(rabbit8);
             context.Rabbits.AddOrUpdate(rabbit9);
             context.Rabbits.AddOrUpdate(rabbit10);
+
+            context.SaveChanges();
+            #endregion
+
+            #region Litters
+            var litter1 = new Litter()
+            {
+                BirthDate = new DateTime(2014, 3, 22),
+                Mother = rabbit5,
+                Father = rabbit6,
+                FarmId = 1
+            };
+            var litter2 = new Litter()
+            {
+                BirthDate = new DateTime(2014, 4, 14),
+                Mother = rabbit4,
+                Father = rabbit7,
+                FarmId = 2
+            };
+            var litter3 = new Litter()
+            {
+                BirthDate = new DateTime(2014, 12, 20),
+                Mother = rabbit3,
+                Father = rabbit8,
+                FarmId = 3
+            };
+
+            var litter4 = new Litter()
+            {
+                BirthDate = new DateTime(2014, 12, 21),
+                Mother = rabbit2,
+                Father = rabbit9,
+                FarmId = 4
+            };
+            var litter5 = new Litter()
+            {
+                BirthDate = new DateTime(2014, 12, 21),
+                Mother = rabbit1,
+                Father = rabbit10,
+                FarmId = 5
+            };
+
+
+            context.Litters.AddOrUpdate(litter1);
+            context.Litters.AddOrUpdate(litter2);
+            context.Litters.AddOrUpdate(litter3);
+            context.Litters.AddOrUpdate(litter4);
+            context.Litters.AddOrUpdate(litter5);
+            #endregion
+
+            #region Rabbits With Litters
+            var rabbit11 = new Rabbit()
+            {
+                Mark = "21-42-53-21",
+                Gender = Gender.Female,
+                Status = RabbitStatus.InFarm,
+                AcquisitionId = 3,
+                Litter = litter1,
+                FarmId = 1
+            };
+            var rabbit12 = new Rabbit()
+            {
+                Mark = "32-25-42-12",
+                Gender = Gender.Female,
+                Status = RabbitStatus.InFarm,
+                AcquisitionId = 2,
+                Litter = litter2,
+                FarmId = 2
+            };
+            var rabbit13 = new Rabbit()
+            {
+                Mark = "32-25-42-12",
+                Gender = Gender.Female,
+                Status = RabbitStatus.InFarm,
+                Litter = litter2,
+                AcquisitionId = 1,
+                FarmId = 2
+            };
+
+            
             context.Rabbits.AddOrUpdate(rabbit11);
             context.Rabbits.AddOrUpdate(rabbit12);
             context.Rabbits.AddOrUpdate(rabbit13);
+            #endregion
 
             //context.Rabbits.AddOrUpdate(rabbit14);
             //context.Rabbits.AddOrUpdate(rabbit15);
@@ -1008,10 +955,85 @@ namespace RabbitFarm.Data.Migrations
             //context.Rabbits.AddOrUpdate(rabbit32);
             //context.Rabbits.AddOrUpdate(rabbit33);
 
+            context.SaveChanges();
         }
 
         private void SeedCage(RabbitFarmContext context)
         {
+            #region Cages
+            Cage cage1 = new Cage()
+            {
+                Height = 200,
+                Width = 200,
+                Length = 200,
+                FarmId = 1
+            };
+            Cage cage2 = new Cage()
+            {
+                Height = 160,
+                Width = 180,
+                Length = 160,
+                FarmId = 2
+            };
+            Cage cage3 = new Cage()
+            {
+                Height = 150,
+                Width = 150,
+                Length = 150,
+                FarmId = 3
+            };
+            Cage cage4 = new Cage()
+            {
+                Height = 350,
+                Width = 160,
+                Length = 210,
+                FarmId = 4
+            };
+            Cage cage5 = new Cage()
+            {
+                Height = 300,
+                Width = 200,
+                Length = 100,
+                FarmId = 5
+            };
+            Cage cage6 = new Cage()
+            {
+                Height = 200,
+                Width = 200,
+                Length = 200,
+                FarmId = 1
+            };
+            Cage cage7 = new Cage()
+            {
+                Height = 160,
+                Width = 180,
+                Length = 160,
+                FarmId = 2
+            };
+            Cage cage8 = new Cage()
+            {
+                Height = 150,
+                Width = 150,
+                Length = 150,
+                FarmId = 3
+            };
+            Cage cage9 = new Cage()
+            {
+                Height = 350,
+                Width = 160,
+                Length = 210,
+                FarmId = 4
+            };
+            Cage cage10 = new Cage()
+            {
+                Height = 300,
+                Width = 200,
+                Length = 100,
+                FarmId = 5
+            };
+            #endregion
+
+
             context.Cages.AddOrUpdate(cage1);
             context.Cages.AddOrUpdate(cage2);
             context.Cages.AddOrUpdate(cage3);
@@ -1022,6 +1044,8 @@ namespace RabbitFarm.Data.Migrations
             context.Cages.AddOrUpdate(cage8);
             context.Cages.AddOrUpdate(cage9);
             context.Cages.AddOrUpdate(cage10);
+
+            context.SaveChanges();
         }
 
         private void SeedFeeding(RabbitFarmContext context)
@@ -1116,135 +1140,58 @@ namespace RabbitFarm.Data.Migrations
             context.Feedings.AddOrUpdate(feeding8);
             context.Feedings.AddOrUpdate(feeding9);
             context.Feedings.AddOrUpdate(feeding10);
-        }
 
-        private void SeedLitter(RabbitFarmContext context)
-        {
-            var litter1 = new Litter()
-            {
-                Id = 1,
-                BirthDate = new DateTime(2014, 3, 22),
-                MotherId = 8,
-                FatherId = 12,
-                FarmId = 1
-            };
-            var litter2 = new Litter()
-            {
-                Id = 2,
-                BirthDate = new DateTime(2014, 4, 14),
-                MotherId = 7,
-                FatherId = 13,
-                FarmId = 2
-            };
-            var litter3 = new Litter()
-            {
-                Id = 3,
-                BirthDate = new DateTime(2014, 12, 20),
-                MotherId = 6,
-                FatherId = 11,
-                FarmId = 3
-            };
-
-            var litter4 = new Litter()
-            {
-                Id = 4,
-                BirthDate = new DateTime(2014, 12, 21),
-                MotherId = 5,
-                FatherId = 10,
-                FarmId = 4
-            };
-            var litter5 = new Litter()
-            {
-                BirthDate = new DateTime(2014, 12, 21),
-                MotherId = 4,
-                FatherId = 9,
-                FarmId = 5
-            };
-            //var litter6 = new Litter()
-            //{
-            //    BirthDate = new DateTime(2014, 12, 22),
-            //    MotherId = 25,
-            //    FatherId = 24,
-            //    FarmId = 2
-            //};
-            //var litter7 = new Litter()
-            //{
-            //    BirthDate = new DateTime(2014, 12, 23),
-            //    MotherId = 28,
-            //    FatherId = 27,
-            //    FarmId = 1
-            //};
-            //var litter8 = new Litter()
-            //{
-            //    BirthDate = new DateTime(2014, 10, 10),
-            //    MotherId = 31,
-            //    FatherId = 30,
-            //    FarmId = 5
-            //};
-
-            context.Litters.AddOrUpdate(litter1);
-            context.Litters.AddOrUpdate(litter2);
-            context.Litters.AddOrUpdate(litter3);
-            context.Litters.AddOrUpdate(litter4);
-            context.Litters.AddOrUpdate(litter5);
-            //context.Litters.AddOrUpdate(litter6);
-            //context.Litters.AddOrUpdate(litter7);
-            //context.Litters.AddOrUpdate(litter8);
+            context.SaveChanges();
         }
 
         private void SeedCageChange(RabbitFarmContext context)
         {
             var cageChanges1 = new CageChange()
             {
-                Id = 1,
                 StartingDate = new DateTime(2015, 1, 13),
-
                 RabbitId = 13,
                 FarmId = 2
             };
-            cageChanges1.Cages.Add(cage2);
+            cageChanges1.Cages.Add(context.Cages.Find(1));
 
             var cageChanges2 = new CageChange()
             {
-                Id = 2,
                 StartingDate = new DateTime(2015, 2, 9),
                 RabbitId = 12,
                 FarmId = 1
             };
-            cageChanges2.Cages.Add(cage1);
+            cageChanges2.Cages.Add(context.Cages.Find(2));
 
             var cageChanges3 = new CageChange()
             {
-                Id = 3,
                 StartingDate = new DateTime(2015, 1, 25),
                 RabbitId = 4,
                 FarmId = 5
             };
-            cageChanges3.Cages.Add(cage5);
+            cageChanges3.Cages.Add(context.Cages.Find(3));
 
             var cageChanges4 = new CageChange()
             {
-                Id = 4,
                 StartingDate = new DateTime(2015, 1, 17),
                 RabbitId = 10,
                 FarmId = 4
             };
-            cageChanges4.Cages.Add(cage10);
+            cageChanges4.Cages.Add(context.Cages.Find(4));
 
             var cageChanges5 = new CageChange()
             {
-                Id = 5,
                 StartingDate = new DateTime(2015, 2, 8),
                 RabbitId = 6,
                 FarmId = 3
             };
-            cageChanges5.Cages.Add(cage8);
+            cageChanges5.Cages.Add(context.Cages.Find(5));
 
             context.CageChanges.AddOrUpdate(cageChanges1);
             context.CageChanges.AddOrUpdate(cageChanges2);
             context.CageChanges.AddOrUpdate(cageChanges3);
             context.CageChanges.AddOrUpdate(cageChanges4);
             context.CageChanges.AddOrUpdate(cageChanges5);
+
             context.SaveChanges();
         }
 
@@ -1258,39 +1205,36 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 1,
                 LiveWeight = 2.3,
-                FarmId = 2,
+                FarmId = 1,
                 Price = 0
             };
             var realizationDeath2 = new Realization()
             {
-                Id = 7,
+                Id = 2,
                 RealizationDate = new DateTime(2014, 2, 15),
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 7,
                 LiveWeight = 2.1,
                 FarmId = 2,
-                Price = 0m
+                Price = 0
             };
             context.Realizations.AddOrUpdate(realizationDeath1);
             context.Realizations.AddOrUpdate(realizationDeath2);
 
             //seed some Sold realization
-
             var realizationSold1 = new Realization()
             {
-
-                Id = 2,
+                Id = 3,
                 RealizationDate = new DateTime(2014, 12, 23),
                 RealizationChannel = RealizationChannel.Sold,
                 RabbitId = 2,
                 LiveWeight = 3.1,
-                FarmId = 2,
+                FarmId = 3,
                 Price = 9.85m
             };
             var realizationSold2 = new Realization()
             {
-
-                Id = 5,
+                Id = 4,
                 RealizationDate = new DateTime(2014, 12, 22),
                 RealizationChannel = RealizationChannel.Sold,
                 RabbitId = 5,
@@ -1298,14 +1242,13 @@ namespace RabbitFarm.Data.Migrations
                 FarmId = 4,
                 Price = 9.29m
             };
-
             context.Realizations.AddOrUpdate(realizationSold1);
             context.Realizations.AddOrUpdate(realizationSold2);
+
             //seed slain realization
             var realizationsSlain = new Realization()
             {
-
-                Id = 9,
+                Id = 5,
                 RealizationDate = new DateTime(2014, 8, 10),
                 RealizationChannel = RealizationChannel.Slain,
                 RabbitId = 9,
@@ -1316,8 +1259,6 @@ namespace RabbitFarm.Data.Migrations
             context.Realizations.AddOrUpdate(realizationsSlain);
 
             context.SaveChanges();
-
-
         }
     }
 }

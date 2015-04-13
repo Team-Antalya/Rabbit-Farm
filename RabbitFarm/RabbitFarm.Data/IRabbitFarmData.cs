@@ -2,6 +2,7 @@
 {
     using Repositories;
     using Models;
+
     public interface IRabbitFarmData
     {
         IRepository<Acquisition> Acquisitions { get; }

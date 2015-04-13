@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RabbitFarm.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,15 +14,17 @@
             this.rabbits = new HashSet<Rabbit>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Required]
         public DateTime BirthDate { get; set; }
 
-        public int MotherId { get; set; }
+        public int? MotherId { get; set; }
 
         public virtual Rabbit Mother { get; set; }
 
-        public int FatherId { get; set; }
+        public int? FatherId { get; set; }
 
         public virtual Rabbit Father { get; set; }
 
@@ -30,6 +34,7 @@
             set { this.rabbits = value; }
         }
 
+        [Required]
         public int FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }

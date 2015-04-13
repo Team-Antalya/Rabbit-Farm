@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RabbitFarm.Models
 {
     using System.Collections.Generic;
 
@@ -13,14 +15,19 @@
             this.cageChanges = new HashSet<CageChange>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Range(0.0, double.MaxValue)]
         public double Width { get; set; }
 
+        [Range(0.0, double.MaxValue)]
         public double Height { get; set; }
 
+        [Range(0.0, double.MaxValue)]
         public double Length { get; set; }
 
+        [Required]
         public int FarmId { get; set; }
 
         public virtual Farm Farm { get; set; }
