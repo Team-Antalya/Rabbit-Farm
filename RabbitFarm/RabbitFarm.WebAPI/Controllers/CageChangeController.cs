@@ -4,9 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
+using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
+using System.Data.Entity;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
@@ -23,7 +26,9 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.CageChanges.All());
+            var cageChanges = this.data.CageChanges.All().Include(a => a.Farm).Include(a => a.Rabbit).Include(a => a.Cages);
+            var cageChangesViewModel = Mapper.Map<CageChangeModel>(cageChanges);
+            return Ok(cageChangesViewModel);
         }
 
         [HttpGet]
@@ -34,7 +39,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No CageChange with this id!");
             }
-            return Ok(cageChange);
+            var cageChangeViewModel = Mapper.Map<CageChangeModel>(cageChange);
+            return Ok(cageChangeViewModel);
         }
 
         [HttpPut]
@@ -48,7 +54,8 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(CageChange obj)
         {
             var newCageChange = this.data.CageChanges.Add(obj);
-            return Ok(newCageChange);
+            var cageChangeViewModel = Mapper.Map<CageChangeModel>(newCageChange);
+            return Ok(cageChangeViewModel);
         }
 
         [HttpDelete]

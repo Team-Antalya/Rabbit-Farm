@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
 using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
+using System.Data.Entity;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
@@ -22,7 +24,9 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Acquisitions.All());
+            var acquisitions = this.data.Acquisitions.All().Include(a => a.Farm);
+            var acquisitionsViewModel = Mapper.Map<AcquisitionModel>(acquisitions);
+            return Ok(acquisitionsViewModel);
         }
 
         [HttpGet]
@@ -33,7 +37,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No acquisition with this id!");
             }
-            return Ok(acquisition);
+            var acquisitionViewModel = Mapper.Map<AcquisitionModel>(acquisition);
+            return Ok(acquisitionViewModel);
         }
 
         [HttpPut]
@@ -47,6 +52,7 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Acquisition obj)
         {
             var newAcquisition = this.data.Acquisitions.Add(obj);
+            var acquisitionViewModel = Mapper.Map<AcquisitionModel>(newAcquisition);
             return Ok(newAcquisition);
         }
 

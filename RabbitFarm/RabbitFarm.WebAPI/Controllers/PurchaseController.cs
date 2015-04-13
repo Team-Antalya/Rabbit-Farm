@@ -4,9 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
+using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
+using System.Data.Entity;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
@@ -21,7 +24,9 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Purchases.All());
+            var purchases = this.data.Purchases.All().Include(a => a.Farm);
+            var purchasesViewModel = Mapper.Map<PurchaseModel>(purchases);
+            return Ok(purchasesViewModel);
         }
 
         [HttpGet]
@@ -32,7 +37,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No Purchase with this id!");
             }
-            return Ok(purchase);
+            var purchaseViewModel = Mapper.Map<PurchaseModel>(purchase);
+            return Ok(purchaseViewModel);
         }
 
         [HttpPut]
@@ -46,7 +52,8 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Purchase obj)
         {
             var newPurchase = this.data.Purchases.Add(obj);
-            return Ok(newPurchase);
+            var purchaseViewModel = Mapper.Map<PurchaseModel>(newPurchase);
+            return Ok(purchaseViewModel);
         }
 
         [HttpDelete]

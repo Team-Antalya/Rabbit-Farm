@@ -4,9 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
+using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
+using System.Data.Entity;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
@@ -21,7 +24,9 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Litters.All());
+            var litters = this.data.Litters.All().Include(a => a.Farm);
+            var littersViewModel = Mapper.Map<LitterModel>(litters);
+            return Ok(littersViewModel);
         }
 
         [HttpGet]
@@ -32,7 +37,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No Litter with this id!");
             }
-            return Ok(litter);
+            var litterViewModel = Mapper.Map<LitterModel>(litter);
+            return Ok(litterViewModel);
         }
 
         [HttpPut]
@@ -46,7 +52,8 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Litter obj)
         {
             var newLitter = this.data.Litters.Add(obj);
-            return Ok(newLitter);
+            var litterViewModel = Mapper.Map<LitterModel>(newLitter);
+            return Ok(litterViewModel);
         }
 
         [HttpDelete]

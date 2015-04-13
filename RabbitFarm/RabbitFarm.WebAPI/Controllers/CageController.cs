@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
 using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
+using System.Data.Entity;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
@@ -22,7 +24,9 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Cages.All());
+            var cages = this.data.Cages.All().Include(a => a.Farm).Include(a => a.CageChanges);
+            var cagesViewModel = Mapper.Map<CageModel>(cages);
+            return Ok(cagesViewModel);
         }
 
         [HttpGet]
@@ -33,7 +37,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No cage with this id!");
             }
-            return Ok(cage);
+            var cageViewModel = Mapper.Map<CageModel>(cage);
+            return Ok(cageViewModel);
         }
 
         [HttpPut]
@@ -47,7 +52,8 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Cage obj)
         {
             var newCage = this.data.Cages.Add(obj);
-            return Ok(newCage);
+            var cageViewModel = Mapper.Map<CageModel>(newCage);
+            return Ok(cageViewModel);
         }
 
         [HttpDelete]

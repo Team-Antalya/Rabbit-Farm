@@ -23,7 +23,7 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            var feedings = this.data.Feedings.All().Include(a => a.Farm).Include(a => a.Cage);
+            var feedings = this.data.Feedings.All().Include(a => a.Farm);
             var feedingsModelView = Mapper.Map<FeedingModel>(feedings);
 
             return Ok(feedingsModelView);
@@ -37,7 +37,8 @@ namespace RabbitFarm.WebAPI.Controllers
             {
                 return BadRequest("No Feeding with this id!");
             }
-            return Ok(feeding);
+            var feedingModelView = Mapper.Map<FeedingModel>(feeding);
+            return Ok(feedingModelView);
         }
 
         [HttpPut]
@@ -51,7 +52,8 @@ namespace RabbitFarm.WebAPI.Controllers
         public virtual IHttpActionResult Add(Feeding obj)
         {
             var newFeeding = this.data.Feedings.Add(obj);
-            return Ok(newFeeding);
+            var feedingModelView = Mapper.Map<FeedingModel>(newFeeding);
+            return Ok(feedingModelView);
         }
 
         [HttpDelete]

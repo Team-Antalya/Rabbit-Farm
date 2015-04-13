@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.WebAPI.Controllers
+﻿using System.Data.Entity;
+
+namespace RabbitFarm.WebAPI.Controllers
 {
     using System.Web.Http;
 
@@ -34,7 +36,8 @@
             {
                 return BadRequest("No acquisition with this id!");
             }
-            return Ok(farm);
+            var farmModelView = Mapper.Map<FarmModel>(farm);
+            return Ok(farmModelView);
         }
 
         [HttpPut]
@@ -48,7 +51,8 @@
         public virtual IHttpActionResult Add(Farm obj)
         {
             var newFarm = this.data.Farms.Add(obj);
-            return Ok(newFarm);
+            var farmModelView = Mapper.Map<FarmModel>(newFarm);
+            return Ok(farmModelView);
         }
 
         [HttpDelete]

@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.WebAPI.DataModels
+﻿using System.Collections.Generic;
+
+namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
 
@@ -11,6 +13,8 @@
         public Rabbit Rabbit { get; set; }
 
         public Farm Farm { get; set; }
+
+        public ICollection<Cage> Cages { get; set; }
 
         /*public static Expression<Func<CageChange, CageChangeModel>> CageChangesToViewModel
         {
