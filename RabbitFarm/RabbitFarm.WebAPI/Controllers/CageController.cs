@@ -10,7 +10,7 @@ using RabbitFarm.WebAPI.Infrastructure;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
-    public class CageController : RabbitFarmBaseApiController<CageModel>
+    public class CageController : RabbitFarmBaseApiController
     {
         public CageController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)

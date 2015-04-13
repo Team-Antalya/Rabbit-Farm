@@ -10,7 +10,7 @@ using RabbitFarm.WebAPI.Infrastructure;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
-    public class AcquisitionController : RabbitFarmBaseApiController<AcquisitionModel>
+    public class AcquisitionController : RabbitFarmBaseApiController
     {
         public AcquisitionController() :
             base(new RabbitFarmData(new RabbitFarmContext()), new AspNetUserProvider())
