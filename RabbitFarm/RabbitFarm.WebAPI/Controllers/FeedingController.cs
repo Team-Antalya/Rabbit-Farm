@@ -23,7 +23,7 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            var feedings = this.data.Feedings.All().Include(a => a.Farm);
+            var feedings = this.data.Feedings.All();
             var feedingsModelView = Mapper.Map<FeedingModel>(feedings);
 
             return Ok(feedingsModelView);
