@@ -9,16 +9,16 @@
 
     public class RabbitFarmContext : IdentityDbContext<User>
     {
-        //public const string ConnectionStringSQL = "Server=.;Database=RabbitFarm;Integrated Security=True;";
-        //public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
-        //public const string ConnectionStringLocalDB = "Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;";
+        public const string ConnectionStringSQL = "Server=.;Database=RabbitFarm;Integrated Security=True;";
+        public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
+        public const string ConnectionStringLocalDB = "Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;";
 
         // DefaultConnection
         // RabbitFarmConn
         public RabbitFarmContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(ConnectionStringSQL, throwIfV1Schema: false)
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
         }
 
         public static RabbitFarmContext Create()
