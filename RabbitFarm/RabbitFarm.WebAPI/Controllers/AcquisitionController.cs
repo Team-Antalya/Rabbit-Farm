@@ -10,16 +10,12 @@ using RabbitFarm.WebAPI.Infrastructure;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
-    public class AcquisitionController : RabbitFarmBaseApiController
+    public class AcquisitionController : RabbitFarmBaseApiController<AcquisitionModel>
     {
         public AcquisitionController() :
             base(new RabbitFarmData(new RabbitFarmContext()), new AspNetUserProvider())
         {
             
-        }
-        public IHttpActionResult GetAll()
-        {
-            return Ok(this.data.Acquisitions.All().Select(AcquisitionModel.AcquisitionToViewModel));
         }
     }
 }

@@ -95,7 +95,7 @@
             return this.context.SaveChanges();
         }
 
-        private IRepository<T> GetRepository<T>() where T : class
+        public IRepository<T> GetRepository<T>() where T : class
         {
             var typeOfModel = typeof(T);
             if (!this.repositories.ContainsKey(typeOfModel))

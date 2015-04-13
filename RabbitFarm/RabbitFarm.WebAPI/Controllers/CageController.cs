@@ -10,16 +10,12 @@ using RabbitFarm.WebAPI.Infrastructure;
 
 namespace RabbitFarm.WebAPI.Controllers
 {
-    public class CageController : RabbitFarmBaseApiController
+    public class CageController : RabbitFarmBaseApiController<CageModel>
     {
         public CageController() :
             base(new RabbitFarmData(new RabbitFarmContext()), new AspNetUserProvider())
         {
             
-        }
-        public IHttpActionResult GetAll()
-        {
-            return Ok(this.data.Cages.All().Select(CageModel.CagesToViewModel));
         }
     }
 }
