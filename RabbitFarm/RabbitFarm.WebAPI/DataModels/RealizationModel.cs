@@ -1,7 +1,6 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
-    using System.Linq.Expressions;
     using RabbitFarm.Models;
 
     public class RealizationModel
@@ -10,15 +9,15 @@
 
         public RealizationChannel RealizationChannel { get; set; }
 
-        public string Rabbit { get; set; }
+        public Rabbit Rabbit { get; set; }
 
         public double? LiveWeight { get; set; }
 
         public decimal? Price { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<Realization, RealizationModel>> RealizationsToViewModel
+        /*public static Expression<Func<Realization, RealizationModel>> RealizationsToViewModel
         {
             get
             {
@@ -32,6 +31,6 @@
                     Farm = r.Farm.Name
                 };
             }
-        }
+        }*/
     }
 }

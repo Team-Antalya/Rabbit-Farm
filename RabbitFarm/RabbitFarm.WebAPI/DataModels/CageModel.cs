@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using RabbitFarm.Models;
-
-namespace RabbitFarm.WebAPI.DataModels
+﻿namespace RabbitFarm.WebAPI.DataModels
 {
+    using System.Collections.Generic;
+
+    using RabbitFarm.Models;
+
     public class CageModel
     {
         public double Width { get; set; }
@@ -15,11 +12,11 @@ namespace RabbitFarm.WebAPI.DataModels
 
         public double Length { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
         public ICollection<CageChange> CageChanges;
 
-        public static Expression<Func<Cage, CageModel>> CagesToViewModel
+        /*public static Expression<Func<Cage, CageModel>> CagesToViewModel
         {
             get
             {
@@ -31,6 +28,6 @@ namespace RabbitFarm.WebAPI.DataModels
                     Farm = a.Farm.Name
                 };
             }
-        }
+        }*/
     }
 }

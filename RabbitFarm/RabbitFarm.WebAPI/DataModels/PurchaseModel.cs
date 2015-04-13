@@ -1,7 +1,5 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
-    using System;
-    using System.Linq.Expressions;
     using RabbitFarm.Models;
 
     public class PurchaseModel
@@ -21,9 +19,9 @@
 
         public string Lot { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<Purchase, PurchaseModel>> PurchasesToViewModel
+        /*public static Expression<Func<Purchase, PurchaseModel>> PurchasesToViewModel
         {
             get
             {
@@ -39,6 +37,6 @@
                     Farm = p.Farm.Name
                 };
             }
-        }
+        }*/
     }
 }

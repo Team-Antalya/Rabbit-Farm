@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace RabbitFarm.Models
+﻿namespace RabbitFarm.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Rabbit
     {
         [Key]

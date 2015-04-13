@@ -1,9 +1,6 @@
-﻿using RabbitFarm.Data;
-using RabbitFarm.Data.Migrations;
-
-namespace RabbitFarm.Console
+﻿namespace RabbitFarm.Console
 {
-    using Models;
+    using RabbitFarm.Data.Migrations;
 
     public class Program
     {

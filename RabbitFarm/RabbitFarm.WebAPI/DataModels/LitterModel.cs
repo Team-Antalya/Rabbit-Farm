@@ -1,22 +1,23 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
-    using System.Linq.Expressions;
+    using System.Collections.Generic;
+
     using RabbitFarm.Models;
 
     public class LitterModel
     {
         public DateTime BirthDate { get; set; }
 
-        public string Mother { get; set; }
+        public Rabbit Mother { get; set; }
 
-        public string Father { get; set; }
+        public Rabbit Father { get; set; }
 
-        public int Rabbits { get; set; }
+        public ICollection<Rabbit> Rabbits { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<Litter, LitterModel>> PurchasesToViewModel
+        /*public static Expression<Func<Litter, LitterModel>> PurchasesToViewModel
         {
             get
             {
@@ -29,6 +30,6 @@
                     Farm = l.Farm.Name,
                 };
             }
-        }
+        }*/
     }
 }

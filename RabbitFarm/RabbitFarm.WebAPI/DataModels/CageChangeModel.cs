@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using RabbitFarm.Models;
-
-namespace RabbitFarm.WebAPI.DataModels
+﻿namespace RabbitFarm.WebAPI.DataModels
 {
+    using System;
+
+    using RabbitFarm.Models;
+
     public class CageChangeModel
     {
         public DateTime StartingDate { get; set; }
 
-        public string Rabbit { get; set; }
+        public Rabbit Rabbit { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<CageChange, CageChangeModel>> CageChangesToViewModel
+        /*public static Expression<Func<CageChange, CageChangeModel>> CageChangesToViewModel
         {
             get
             {
@@ -26,6 +23,6 @@ namespace RabbitFarm.WebAPI.DataModels
                     Farm = a.Farm.Name
                 };
             }
-        }
+        }*/
     }
 }

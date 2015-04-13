@@ -1,13 +1,9 @@
-﻿using AutoMapper;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.DataModels;
-
-namespace RabbitFarm.WebAPI.App_Start
+﻿namespace RabbitFarm.WebAPI
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.DataModels;
+
+    using AutoMapper;
 
     public class AutoMapperConfig
     {

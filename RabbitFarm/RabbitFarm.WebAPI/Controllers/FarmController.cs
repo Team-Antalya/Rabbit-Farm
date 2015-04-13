@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using RabbitFarm.Data;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.Infrastructure;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Web.Http;
+
+    using RabbitFarm.Data;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.DataModels;
+    using RabbitFarm.WebAPI.Infrastructure;
+
+    using AutoMapper;
+
     public class FarmController : RabbitFarmBaseApiController
     {
         public FarmController(IUserProvider userProvider) :
@@ -21,7 +20,10 @@ namespace RabbitFarm.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Farms.All());
+            var farms = this.data.Farms.All();
+            var farmsModelView = Mapper.Map<FarmModel>(farms);
+
+            return Ok(farmsModelView);
         }
 
         [HttpGet]

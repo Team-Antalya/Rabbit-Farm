@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq.Expressions;
+
     using RabbitFarm.Models;
 
     public class AcquisitionModel

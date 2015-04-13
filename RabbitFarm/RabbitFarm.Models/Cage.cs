@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RabbitFarm.Models
+﻿namespace RabbitFarm.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Cage
     {

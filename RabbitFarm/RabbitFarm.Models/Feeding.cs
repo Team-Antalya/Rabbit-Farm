@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RabbitFarm.Models
+﻿namespace RabbitFarm.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
 
     public class Feeding
     {

@@ -1,7 +1,7 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
-    using System.Linq.Expressions;
+
     using RabbitFarm.Models;
 
     public class FeedingModel
@@ -10,9 +10,9 @@
 
         public double Amount { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<Feeding, FeedingModel>> PurchasesToViewModel
+        /*public static Expression<Func<Feeding, FeedingModel>> PurchasesToViewModel
         {
             get
             {
@@ -23,6 +23,6 @@
                     Farm = f.Farm.Name,
                 };
             }
-        }
+        }*/
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
-    using System.Linq.Expressions;
+
     using RabbitFarm.Models;
 
     public class RabbitModel
@@ -18,9 +18,9 @@
 
         public decimal? Realization { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public static Expression<Func<Rabbit, RabbitModel>> RabbitsToViewModel
+        /*public static Expression<Func<Rabbit, RabbitModel>> RabbitsToViewModel
         {
             get
             {
@@ -35,6 +35,6 @@
                     Farm = r.Farm.Name
                 };
             }
-        }
+        }*/
     }
 }

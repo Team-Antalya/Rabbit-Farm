@@ -1,10 +1,6 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
-    using System;
-    using System.Linq.Expressions;
-
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     using RabbitFarm.Models;
 
@@ -24,7 +20,7 @@
 
         public virtual ICollection<Feeding> Feedings { get; set; }
 
-        public static Expression<Func<Farm, FarmModel>> PurchasesToViewModel
+        /*public static Expression<Func<Farm, FarmModel>> PurchasesToViewModel
         {
             get
             {
@@ -33,6 +29,6 @@
 
                 };
             }
-        }
+        }*/
     }
 }

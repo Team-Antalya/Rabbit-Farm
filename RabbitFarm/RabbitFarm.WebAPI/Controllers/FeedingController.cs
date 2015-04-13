@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using RabbitFarm.Data;
 using RabbitFarm.Models;
+using RabbitFarm.WebAPI.DataModels;
 using RabbitFarm.WebAPI.Infrastructure;
 
 namespace RabbitFarm.WebAPI.Controllers
@@ -15,13 +18,15 @@ namespace RabbitFarm.WebAPI.Controllers
         public FeedingController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
-
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            return Ok(this.data.Feedings.All());
+            var feedings = this.data.Feedings.All().Include(a => a.Farm).Include(a => a.Cage);
+            var feedingsModelView = Mapper.Map<FeedingModel>(feedings);
+
+            return Ok(feedingsModelView);
         }
 
         [HttpGet]
