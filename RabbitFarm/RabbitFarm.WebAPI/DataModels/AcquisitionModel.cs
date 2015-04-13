@@ -10,11 +10,11 @@
 
         public AcqusitionSource Source { get; set; }
 
-        public string Rabbit { get; set; }
+        public Rabbit Rabbit { get; set; }
 
         public decimal Cost { get; set; }
 
-        public string Farm { get; set; }
+        public Farm Farm { get; set; }
 
         public static Expression<Func<Acquisition, AcquisitionModel>> AcquisitionToViewModel
         {
@@ -24,9 +24,9 @@
                 {
                     AcquisitionDate = a.AcquisitionDate,
                     Source = a.Source,
-                    Rabbit = a.Rabbit.Mark,
-                    Cost = a.Cost,
-                    Farm = a.Farm.Name
+                    //Rabbit = a.Rabbit.Mark,
+                    Cost = a.Cost
+                    //Farm = a.Farm.Name
                 };
             }
         }
