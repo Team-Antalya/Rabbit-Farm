@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using AutoMapper;
-using RabbitFarm.Data;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.DataModels;
-using RabbitFarm.WebAPI.Infrastructure;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Http;
+
+    using RabbitFarm.Data;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.DataModels;
+    using RabbitFarm.WebAPI.Infrastructure;
+
+    using AutoMapper;
+
     public class FeedingController : RabbitFarmBaseApiController
     {
         public FeedingController(IUserProvider userProvider) :
@@ -24,7 +21,7 @@ namespace RabbitFarm.WebAPI.Controllers
         public IHttpActionResult All()
         {
             var feedings = this.data.Feedings.All();
-            var feedingsModelView = Mapper.Map<FeedingModel>(feedings);
+            var feedingsModelView = Mapper.Map<ICollection<FeedingModel>>(feedings);
 
             return Ok(feedingsModelView);
         }

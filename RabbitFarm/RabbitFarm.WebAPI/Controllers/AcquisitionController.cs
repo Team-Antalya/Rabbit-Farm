@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using AutoMapper;
-using RabbitFarm.Data;
-using RabbitFarm.Models;
-using RabbitFarm.WebAPI.DataModels;
-using RabbitFarm.WebAPI.Infrastructure;
-using System.Data.Entity;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Web.Http;
+
+    using RabbitFarm.Data;
+    using RabbitFarm.Models;
+    using RabbitFarm.WebAPI.DataModels;
+    using RabbitFarm.WebAPI.Infrastructure;
+
+    using AutoMapper;
+
     public class AcquisitionController : RabbitFarmBaseApiController
     {
         public AcquisitionController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
-            
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
             var acquisitions = this.data.Acquisitions.All().Include(a => a.Farm);
-            var acquisitionsViewModel = Mapper.Map<AcquisitionModel>(acquisitions);
+            var acquisitionsViewModel = Mapper.Map<ICollection<AcquisitionModel>>(acquisitions);
             return Ok(acquisitionsViewModel);
         }
 

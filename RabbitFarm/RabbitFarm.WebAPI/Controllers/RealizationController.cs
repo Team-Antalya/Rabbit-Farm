@@ -1,5 +1,6 @@
 ﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Collections.Generic;
     using System.Web.Http;
 
     using RabbitFarm.Data;
@@ -19,7 +20,7 @@
         public IHttpActionResult All()
         {
             var realizations = this.data.Realizations.All();
-            var realizationsViewModel = Mapper.Map<Realization>(realizations);
+            var realizationsViewModel = Mapper.Map<ICollection<Realization>>(realizations);
 
             return Ok(realizationsViewModel);
         }

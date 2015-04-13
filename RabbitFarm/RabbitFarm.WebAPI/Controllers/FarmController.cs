@@ -1,7 +1,6 @@
-﻿using System.Data.Entity;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Collections.Generic;
     using System.Web.Http;
 
     using RabbitFarm.Data;
@@ -16,14 +15,13 @@ namespace RabbitFarm.WebAPI.Controllers
         public FarmController(IUserProvider userProvider) :
             base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
         {
-
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
             var farms = this.data.Farms.All();
-            var farmsModelView = Mapper.Map<FarmModel>(farms);
+            var farmsModelView = Mapper.Map<ICollection<FarmModel>>(farms);
 
             return Ok(farmsModelView);
         }
