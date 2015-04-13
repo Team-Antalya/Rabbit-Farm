@@ -7,9 +7,15 @@ namespace RabbitFarm.WebAPI.DataModels
 {
     public class AcquisitionModel
     {
-        public int Id { get; set; }
-
         public DateTime AcquisitionDate { get; set; }
+
+        public AcqusitionSource Source { get; set; }
+
+        public string Rabbit { get; set; }
+
+        public decimal Cost { get; set; }
+
+        public string Farm { get; set; }
 
         public static Expression<Func<Acquisition, AcquisitionModel>> AcquisitionToViewModel
         {
@@ -17,8 +23,11 @@ namespace RabbitFarm.WebAPI.DataModels
             {
                 return a => new AcquisitionModel
                 {
-                    Id = a.Id,
-                    AcquisitionDate = a.AcquisitionDate
+                    AcquisitionDate = a.AcquisitionDate,
+                    Source = a.Source,
+                    Rabbit = a.Rabbit.Mark,
+                    Cost = a.Cost,
+                    Farm = a.Farm.Name
                 };
             }
         }

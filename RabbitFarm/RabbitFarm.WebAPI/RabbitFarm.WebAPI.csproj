@@ -230,9 +230,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AcquisitionController.cs" />
+    <Compile Include="Controllers\CageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RabbitFarmBaseApiController.cs" />
     <Compile Include="DataModels\AcquisitionModel.cs" />
+    <Compile Include="DataModels\CageChangeModel.cs" />
+    <Compile Include="DataModels\CageModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
