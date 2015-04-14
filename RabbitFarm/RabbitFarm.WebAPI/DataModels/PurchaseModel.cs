@@ -4,7 +4,6 @@
 
     public class PurchaseModel
     {
-
         public string Name { get; set; }
 
         public PurchaseCategory PurchaseCategory { get; set; }
@@ -19,24 +18,6 @@
 
         public string Lot { get; set; }
 
-        public Farm Farm { get; set; }
-
-        /*public static Expression<Func<Purchase, PurchaseModel>> PurchasesToViewModel
-        {
-            get
-            {
-                return p => new PurchaseModel
-                {
-                    Name = p.Name,
-                    PurchaseCategory = p.PurchaseCategory,
-                    Unit = p.Unit,
-                    UnitPrice = p.UnitPrice,
-                    Amount = p.Amount,
-                    TotalPrice = p.TotalPrice,
-                    Lot = p.Lot,
-                    Farm = p.Farm.Name
-                };
-            }
-        }*/
+        public FarmModel Farm { get; set; }
     }
 }

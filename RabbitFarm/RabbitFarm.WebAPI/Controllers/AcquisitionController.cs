@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.WebAPI.Controllers
+﻿using System.Linq;
+
+namespace RabbitFarm.WebAPI.Controllers
 {
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -23,6 +25,7 @@
         {
             var acquisitions = this.data.Acquisitions.All().Include(a => a.Farm);
             var acquisitionsViewModel = Mapper.Map<ICollection<AcquisitionModel>>(acquisitions);
+
             return Ok(acquisitionsViewModel);
         }
 

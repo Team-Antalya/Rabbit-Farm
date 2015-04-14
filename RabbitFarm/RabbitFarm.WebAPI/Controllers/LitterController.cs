@@ -21,8 +21,9 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            var litters = this.data.Litters.All().Include(a => a.Farm);
+            var litters = this.data.Litters.All().Include(a => a.Farm).Include(a => a.Rabbits);
             var littersViewModel = Mapper.Map<ICollection<LitterModel>>(litters);
+
             return Ok(littersViewModel);
         }
 
