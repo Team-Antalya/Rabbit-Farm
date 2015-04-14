@@ -1,9 +1,11 @@
 ﻿namespace RabbitFarm.WebAPI.Controllers
 {
+    using System.Data.Entity;
     using System.Collections.Generic;
     using System.Web.Http;
 
     using RabbitFarm.Data;
+    using RabbitFarm.WebAPI.DataModels;
     using RabbitFarm.Models;
     using RabbitFarm.WebAPI.Infrastructure;
 
@@ -19,8 +21,8 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            var realizations = this.data.Realizations.All();
-            var realizationsViewModel = Mapper.Map<ICollection<Realization>>(realizations);
+            var realizations = this.data.Realizations.All().Include(a => a.Farm).Include(a => a.Rabbit);
+            var realizationsViewModel = Mapper.Map<ICollection<RealizationModel>>(realizations);
 
             return Ok(realizationsViewModel);
         }
@@ -34,7 +36,7 @@
                 return BadRequest("No Realization with this id!");
             }
 
-            var realizationViewModel = Mapper.Map<Realization>(realization);
+            var realizationViewModel = Mapper.Map<RealizationModel>(realization);
 
             return Ok(realizationViewModel);
         }
@@ -50,7 +52,7 @@
         public virtual IHttpActionResult Add(Realization obj)
         {
             var newRealization = this.data.Realizations.Add(obj);
-            var newRealizationViewModel = Mapper.Map<Realization>(newRealization);
+            var newRealizationViewModel = Mapper.Map<RealizationModel>(newRealization);
 
             return Ok(newRealizationViewModel);
         }

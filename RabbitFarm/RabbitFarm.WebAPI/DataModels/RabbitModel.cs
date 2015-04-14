@@ -14,8 +14,6 @@
 
         public AcquisitionModel Acquisition { get; set; }
 
-        public decimal? Realization { get; set; }
-
         public FarmModel Farm { get; set; }
     }
 }

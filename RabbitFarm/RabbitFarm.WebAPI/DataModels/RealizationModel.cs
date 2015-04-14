@@ -1,6 +1,7 @@
 ﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
+
     using RabbitFarm.Models;
 
     public class RealizationModel
