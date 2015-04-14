@@ -1,0 +1,31 @@
+<div class="row">
+    <header>
+        <h3>Purchase</h3>
+    </header>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+                <th>Total Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="purchase in data">
+                <td>{{ purchase['Name'] }}</td>
+                <td>{{ purchase['Category'] }}</td>
+                <td>{{ purchase['Unit'] }}</td>
+                <td>{{ purchase['UnitPrice'] }}</td>
+                <td>{{ purchase['Amount'] }}</td>
+                <td>{{ purchase['TotalPrice'] }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

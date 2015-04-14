@@ -1,0 +1,23 @@
+<div class="row">
+    <header>
+        <h3>Feedings</h3>
+    </header>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Feeding Date</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="feeding in data">
+                <td>{{ feeding['FeedingDate'] }}</td>
+                <td>{{ feeding['Amount'] }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Realization Date</th>
+            <th>Realization Channel</th>
+            <th>Rabbit Mark</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="realization in data">
+            <td>{{ realization['RealizationDate'] }}</td>
+            <td>{{ realization['RealizationChannel'] }}</td>
+            <td>{{ realization['Rabbit']['Mark'] }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

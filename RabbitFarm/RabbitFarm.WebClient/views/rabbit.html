@@ -1,0 +1,29 @@
+<div class="row">
+    <header>
+        <h3>Rabbits</h3>
+    </header>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Mark</th>
+            <th>Gender</th>
+            <th>Status</th>
+            <th>Acquisition Date</th>
+            <th>Acquisition Cost</th>
+            <th>Farm Name</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="rabbit in data">
+                <td>{{ rabbit['Mark'] }}</td>
+                <td>{{ rabbit['Gender'] }}</td>
+                <td>{{ rabbit['Status'] }}</td>
+                <td>{{ rabbit['Acquisition']['AcquisitionDate'] }}</td>
+                <td>{{ rabbit['Acquisition']['Cost'] }}</td>
+                <td>{{ rabbit['Farm']['Name'] }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

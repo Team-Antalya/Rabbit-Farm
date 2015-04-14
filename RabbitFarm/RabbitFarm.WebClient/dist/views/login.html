@@ -1,0 +1,65 @@
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <form name="loginForm" class="form-horizontal" method="post" role="form" novalidate
+              ng-submit="login(user, loginForm)">
+            <h4>Use a local account to log in.</h4>
+            <hr/>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : loginForm.email.$touched && loginForm.email.$invalid }">
+                <label class="col-md-2 control-label" for="email">Email</label>
+
+                <div class="col-md-6">
+
+                    <input type="email" id="email" name="email" class="form-control" required
+                           ng-model="user.email"/>
+
+                    <span class="text-danger" ng-show="loginForm.email.$touched && loginForm.email.$invalid">
+                        Please enter a valid email address!
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error' : loginForm.password.$touched && loginForm.password.$invalid }">
+                <label class="col-md-2 control-label" for="password">Password</label>
+
+                <div class="col-md-6">
+                    <input type="password" id="password" name="password" class="form-control" required="required"
+                           ng-model="user.password"/>
+                        <span class="text-danger"
+                              ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                            The Password field is required.
+                        </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember" ng-model="user.remember"/>
+                        <label for="remember">Remember me?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <input type="submit" value="Log in" class="btn btn-default" ng-disabled="loginForm.$invalid"/>
+                </div>
+            </div>
+            <p>
+                <a href="#/register">Register as a new user</a>
+            </p>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Use another service to log in.</h4>
+        <hr/>
+        <div>
+            <p>
+            </p>
+        </div>
+    </div>
+</div>

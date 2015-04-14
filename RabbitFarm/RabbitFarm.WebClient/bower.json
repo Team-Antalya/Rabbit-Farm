@@ -1,0 +1,19 @@
+{
+  "name": "AngularJS App",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.1",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-cookies": "latest",
+    "angular-loader": "latest",
+    "angular-mocks": "latest",
+    "requirejs-text": "latest",
+    "requirejs": "latest",
+    "jquery": "latest",
+    "bootstrap": "latest"
+  }
+}
