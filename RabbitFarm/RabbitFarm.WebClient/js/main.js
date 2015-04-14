@@ -8,7 +8,8 @@ require.config({
         angularMocks: 'libs/angular-mocks/angular-mocks',
         text: 'libs/requirejs-text/text',
         jquery: 'libs/jquery/dist/jquery',
-        bootstrap: 'libs/bootstrap/dist/js/bootstrap'
+        bootstrap: 'libs/bootstrap/dist/js/bootstrap',
+        bootstrapModal: 'libs/bootstrap-modal/js/bootstrap-modal'
     },
     shim: {
         angular: {exports: 'angular'},
@@ -24,6 +25,9 @@ require.config({
         },
         bootstrap: {
             deps: ['jquery']
+        },
+        bootstrapModal: {
+            deps: ['bootstrap']
         }
     },
     priority: [

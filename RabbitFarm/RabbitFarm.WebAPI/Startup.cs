@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
-using Owin;
+﻿using System.Reflection;
 using System.Web.Http;
+using Microsoft.Owin;
 using Ninject;
 using Ninject.Web.Common.OwinHost;
 using Ninject.Web.WebApi.OwinHost;
-using System.Reflection;
+using Owin;
 using RabbitFarm.Data;
+using RabbitFarm.WebAPI;
 using RabbitFarm.WebAPI.Infrastructure;
 
-[assembly: OwinStartup(typeof(RabbitFarm.WebAPI.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace RabbitFarm.WebAPI
 {

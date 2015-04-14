@@ -1,4 +1,6 @@
 @import "../js/libs/bootstrap/dist/css/bootstrap.css";
+@import "../js/libs/bootstrap-modal/css/bootstrap-modal-bs3patch.css";
+@import "../js/libs/bootstrap-modal/css/bootstrap-modal.css";
 
 [ng-cloak] {
     display: none;
