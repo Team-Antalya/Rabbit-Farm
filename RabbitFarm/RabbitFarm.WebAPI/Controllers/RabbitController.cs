@@ -1,8 +1,7 @@
-﻿using System.Data.Entity;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Web.Http;
 
     using RabbitFarm.Data;
