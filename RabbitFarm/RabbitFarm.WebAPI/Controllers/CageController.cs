@@ -40,24 +40,49 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Cage obj)
+        public IHttpActionResult Update(int id, [FromBody]CageModel obj)
         {
-            this.data.Cages.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var cageInDb = this.data.Cages.Find(id);
+            if (cageInDb == null)
+            {
+                return BadRequest("No cage with given id found!");
+            }
+            var cage = Mapper.Map<Cage>(obj);
+            cageInDb.Width= cage.Width;
+            cageInDb.Height = cage.Height;
+            cageInDb.Length = cage.Length;
+            cageInDb.FarmId = cage.FarmId;
+            this.data.SaveChanges();
             return Ok("Cage updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Cage obj)
+        public IHttpActionResult Add(CageModel obj)
         {
-            var newCage = this.data.Cages.Add(obj);
-            var cageViewModel = Mapper.Map<CageModel>(newCage);
-            return Ok(cageViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var cage = Mapper.Map<Cage>(obj);
+            this.data.Cages.Add(cage);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Cage obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Cages.Delete(obj);
+            var cageInDb = this.data.Cages.Find(id);
+            if (cageInDb == null)
+            {
+                return BadRequest("No cage with given id found!");
+            }
+            this.data.Cages.Delete(cageInDb);
+            this.data.SaveChanges();
             return Ok("Cage deleted!");
         }
     }

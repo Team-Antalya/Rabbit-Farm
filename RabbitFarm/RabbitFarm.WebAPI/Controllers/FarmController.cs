@@ -46,6 +46,10 @@
                 return BadRequest(this.ModelState);
             }
             var farmInDb = this.data.Farms.Find(id);
+            if (farmInDb == null)
+            {
+                return BadRequest("No farm with given id found!");
+            }
             var farm = Mapper.Map<Farm>(obj);
             farmInDb.Name = farm.Name;
             this.data.SaveChanges();

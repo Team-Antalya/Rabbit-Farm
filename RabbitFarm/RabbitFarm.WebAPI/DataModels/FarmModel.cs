@@ -5,7 +5,8 @@
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Farm Name is required")]
+        [StringLength(3, ErrorMessage = "Farm Name must be more than 3 characters")]
         public string Name { get; set; }
     }
 }
