@@ -147,7 +147,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 1,
                 Unit = Unit.Ton,
                 UnitPrice = 365,
-                TotalPrice = 365m,
                 FarmId = 1
             };
             var feedCorn2 = new Purchase()
@@ -157,7 +156,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 1.2,
                 Unit = Unit.Ton,
                 UnitPrice = 365,
-                TotalPrice = 438m,
                 FarmId = 2
             };
             var feedCorn3 = new Purchase()
@@ -167,7 +165,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 1.5,
                 Unit = Unit.Ton,
                 UnitPrice = 365,
-                TotalPrice = 547.5m,
                 FarmId = 3
             };
             var feedCorn4 = new Purchase()
@@ -177,7 +174,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 1.6,
                 Unit = Unit.Ton,
                 UnitPrice = 365,
-                TotalPrice = 584m,
                 FarmId = 4
             };
             context.Purchases.AddOrUpdate(feedCorn1);
@@ -193,7 +189,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 2.5,
                 Unit = Unit.Ton,
                 UnitPrice = 270,
-                TotalPrice = 675m,
                 FarmId = 1
             };
             var feedWheat2 = new Purchase()
@@ -203,7 +198,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 2.6,
                 Unit = Unit.Ton,
                 UnitPrice = 270,
-                TotalPrice = 702m,
                 FarmId = 2
             };
             var feedWheat3 = new Purchase()
@@ -213,7 +207,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 2.1,
                 Unit = Unit.Ton,
                 UnitPrice = 270,
-                TotalPrice = 567m,
                 FarmId = 3
             };
             var feedWheat4 = new Purchase()
@@ -223,7 +216,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 2,
                 Unit = Unit.Ton,
                 UnitPrice = 270,
-                TotalPrice = 540m,
                 FarmId = 4
             };
             var feedWheat5 = new Purchase()
@@ -233,7 +225,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 3.5,
                 Unit = Unit.Ton,
                 UnitPrice = 270,
-                TotalPrice = 945m,
                 FarmId = 5
             };
             context.Purchases.AddOrUpdate(feedWheat1);
@@ -250,7 +241,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 100,
                 Unit = Unit.Kg,
                 UnitPrice = 7,
-                TotalPrice = 700m,
                 FarmId = 5
             };
             var feedMix2 = new Purchase()
@@ -260,7 +250,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 50,
                 Unit = Unit.Kg,
                 UnitPrice = 8.5m,
-                TotalPrice = 425m,
                 FarmId = 5
             };
             var feedMix3 = new Purchase()
@@ -270,7 +259,6 @@ namespace RabbitFarm.Data.Migrations
                 Amount = 100,
                 Unit = Unit.Kg,
                 UnitPrice = 7,
-                TotalPrice = 700m,
                 FarmId = 2
             };
             context.Purchases.AddOrUpdate(feedMix1);
@@ -285,7 +273,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 20,
                 UnitPrice = 7.90m,
-                TotalPrice = 158m,
                 FarmId = 1
             };
             var toyEquipment2 = new Purchase()
@@ -294,7 +281,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 15,
                 UnitPrice = 7.90m,
-                TotalPrice = 118.5m,
                 FarmId = 2
             };
             var toyEquipment3 = new Purchase()
@@ -303,7 +289,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 10,
                 UnitPrice = 27.90m,
-                TotalPrice = 270.90m,
                 FarmId = 5
             };
             var drinkEquipment1 = new Purchase()
@@ -312,7 +297,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 40,
                 UnitPrice = 4.90m,
-                TotalPrice = 196m,
                 FarmId = 1
             };
             var drinkEquipment2 = new Purchase()
@@ -321,7 +305,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 45,
                 UnitPrice = 4.90m,
-                TotalPrice = 220.5m,
                 FarmId = 2
             };
             var drinkEquipment3 = new Purchase()
@@ -330,7 +313,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 60,
                 UnitPrice = 4.90m,
-                TotalPrice = 294m,
                 FarmId = 3
             };
             var drinkEquipment4 = new Purchase()
@@ -339,7 +321,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Equipment,
                 Amount = 35,
                 UnitPrice = 4.90m,
-                TotalPrice = 171.5m,
                 FarmId = 4
             };
             context.Purchases.AddOrUpdate(toyEquipment1);
@@ -358,7 +339,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 70,
                 UnitPrice = 2.40m,
-                TotalPrice = 168m,
                 FarmId = 1
             };
             var vaccinePestorin2 = new Purchase()
@@ -367,7 +347,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 55,
                 UnitPrice = 2.40m,
-                TotalPrice = 132m,
                 FarmId = 2
             };
             var vaccineMyxoren1 = new Purchase()
@@ -376,7 +355,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 60,
                 UnitPrice = 2.80m,
-                TotalPrice = 168m,
                 FarmId = 3
             };
             var vaccineMyxoren2 = new Purchase()
@@ -385,7 +363,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 65,
                 UnitPrice = 2.80m,
-                TotalPrice = 182m,
                 FarmId = 4
             };
             var vaccineMyxoren3 = new Purchase()
@@ -394,7 +371,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 80,
                 UnitPrice = 2.80m,
-                TotalPrice = 224m,
                 FarmId = 5
             };
             var vaccineErisin1 = new Purchase()
@@ -403,7 +379,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 20,
                 UnitPrice = 5.50m,
-                TotalPrice = 110m,
                 FarmId = 3
             };
             var vaccineErisin2 = new Purchase()
@@ -412,7 +387,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 15,
                 UnitPrice = 5.50m,
-                TotalPrice = 82.5m,
                 FarmId = 4
             };
             var vaccineErisin3 = new Purchase()
@@ -421,7 +395,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 30,
                 UnitPrice = 5.50m,
-                TotalPrice = 165m,
                 FarmId = 5
             };
             var vaccineCanverm1 = new Purchase()
@@ -430,7 +403,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 15,
                 UnitPrice = 6.10m,
-                TotalPrice = 91.5m,
                 FarmId = 1
             };
             var vaccineCanverm2 = new Purchase()
@@ -439,7 +411,6 @@ namespace RabbitFarm.Data.Migrations
                 PurchaseCategory = PurchaseCategory.Medicine,
                 Amount = 20,
                 UnitPrice = 6.10m,
-                TotalPrice = 122m,
                 FarmId = 2
             };
             context.Purchases.AddOrUpdate(vaccinePestorin1);

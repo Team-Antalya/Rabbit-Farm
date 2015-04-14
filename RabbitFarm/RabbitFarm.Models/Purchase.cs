@@ -4,6 +4,11 @@
 
     public class Purchase
     {
+        public Purchase()
+        {
+            this.TotalPrice = (decimal)this.Amount*this.UnitPrice;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -24,10 +29,12 @@
         [Required]
         [Range(1, double.MaxValue)]
         public double Amount { get; set; }
-
-        [Required]
-        [Range(0, double.MaxValue)]
-        public decimal TotalPrice { get; set; }
+        
+        public decimal TotalPrice
+        {
+            get { return (decimal)this.Amount * this.UnitPrice; }
+            private set { } 
+        }
 
         public string Lot { get; set; }
 

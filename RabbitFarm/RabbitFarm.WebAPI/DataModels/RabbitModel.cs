@@ -9,7 +9,7 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Rabbit Mark is required")]
-        [StringLength(3, ErrorMessage = "Rabbit Mark must be at least 3 characters")]
+        [MinLength(3, ErrorMessage = "Rabbit Mark must be at least 3 characters")]
         public string Mark { get; set; }
 
         [Required(ErrorMessage = "Rabbit Gender is required")]
