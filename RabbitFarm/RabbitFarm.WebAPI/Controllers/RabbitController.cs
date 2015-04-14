@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.WebAPI.Controllers
+﻿using System.Data.Entity;
+
+namespace RabbitFarm.WebAPI.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Http;
@@ -20,7 +22,7 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            var rabbit = this.data.Rabbits.All();
+            var rabbit = this.data.Rabbits.All().Include(a => a.Acquisition);
             var rabbitsViewModel = Mapper.Map<ICollection<RabbitModel>>(rabbit);
 
             return Ok(rabbitsViewModel);

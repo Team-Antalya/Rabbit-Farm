@@ -10,7 +10,7 @@
 
         public RabbitStatus Status { get; set; }
 
-        public int Litter { get; set; }
+        public LitterModel Litter { get; set; }
 
         public AcquisitionModel Acquisition { get; set; }
 
