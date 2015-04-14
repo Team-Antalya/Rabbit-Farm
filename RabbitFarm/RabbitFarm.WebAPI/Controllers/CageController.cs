@@ -69,6 +69,7 @@
             }
             var cage = Mapper.Map<Cage>(obj);
             this.data.Cages.Add(cage);
+            this.data.SaveChanges();
             return Ok(obj);
         }
 
@@ -81,6 +82,7 @@
                 return BadRequest("No cage with given id found!");
             }
             this.data.Cages.Delete(cageInDb);
+            this.data.SaveChanges();
             return Ok("Cage deleted!");
         }
     }
