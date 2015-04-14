@@ -21,6 +21,7 @@
 
         public virtual Purchase Purchase { get; set; }
 
+        [Required]
         public double Amount { get; set; }
 
         [Required]

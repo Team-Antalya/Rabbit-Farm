@@ -39,24 +39,51 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Feeding obj)
+        public IHttpActionResult Update(int id, FeedingModel obj)
         {
-            this.data.Feedings.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var feedingInDb = this.data.Feedings.Find(id);
+            if (feedingInDb == null)
+            {
+                return BadRequest("No Feeding with the given id found!");
+            }
+            var feeding = Mapper.Map<Feeding>(obj);
+            feedingInDb.FeedingDate = feeding.FeedingDate;
+            feedingInDb.Amount = feeding.Amount;
+            feedingInDb.CageId = feeding.CageId;
+            feedingInDb.FarmId = feeding.FarmId;
+            feedingInDb.PurchaseId = feeding.PurchaseId;
+            this.data.SaveChanges();
             return Ok("Feeding updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Feeding obj)
+        public IHttpActionResult Add(FeedingModel obj)
         {
-            var newFeeding = this.data.Feedings.Add(obj);
-            var feedingModelView = Mapper.Map<FeedingModel>(newFeeding);
-            return Ok(feedingModelView);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var feeding = Mapper.Map<Feeding>(obj);
+            this.data.Feedings.Add(feeding);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Feeding obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Feedings.Delete(obj);
+            var feedingInDb = this.data.Feedings.Find(id);
+            if (feedingInDb == null)
+            {
+                return BadRequest("No Feeding with the given id found!");
+            }
+            this.data.Feedings.Delete(feedingInDb);
+            this.data.SaveChanges();
             return Ok("Feeding deleted!");
         }
     }
