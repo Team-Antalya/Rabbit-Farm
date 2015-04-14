@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace RabbitFarm.WebAPI.Controllers
+﻿namespace RabbitFarm.WebAPI.Controllers
 {
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -42,10 +40,28 @@ namespace RabbitFarm.WebAPI.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Update(AcquisitionModel obj)
+        public IHttpActionResult Update(int id, [FromBody]AcquisitionModel obj)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            
+            var acquisitionDb = this.data.Acquisitions.Find(id);
+            if (acquisitionDb == null)
+            {
+                return BadRequest("No acquisition with the given id found!");
+            }
             var acquisition = Mapper.Map<Acquisition>(obj);
-            this.data.Acquisitions.Update(acquisition);
+            acquisitionDb.AcquisitionDate = acquisition.AcquisitionDate;
+            acquisitionDb.Source = acquisition.Source;
+            acquisitionDb.RabbitId = acquisition.RabbitId;
+            acquisitionDb.FarmId = acquisition.FarmId;
+            if (acquisition.Cost != 0)
+            {
+                acquisitionDb.Cost = acquisition.Cost;
+            }
+            
             this.data.SaveChanges();
             return Ok("Acquisition updated!");
         }
@@ -54,15 +70,25 @@ namespace RabbitFarm.WebAPI.Controllers
         public IHttpActionResult Add(AcquisitionModel obj)
         {
             var acquisition = Mapper.Map<Acquisition>(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
             this.data.Acquisitions.Add(acquisition);
             this.data.SaveChanges();
             return Ok(obj);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(Acquisition obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Acquisitions.Delete(obj);
+            var acquisitionDb = this.data.Acquisitions.Find(id);
+            if (acquisitionDb == null)
+            {
+                return BadRequest("No acquisition with the given id found!");
+            }
+            this.data.Acquisitions.Delete(acquisitionDb);
+            this.data.SaveChanges();
             return Ok("Acquisition deleted!");
         }
     }

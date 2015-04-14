@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RabbitFarm.WebAPI.DataModels
+﻿namespace RabbitFarm.WebAPI.DataModels
 {
+    using System.ComponentModel.DataAnnotations;
     public class FarmModel
     {
         public int Id { get; set; }
