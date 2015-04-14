@@ -42,22 +42,25 @@ namespace RabbitFarm.WebAPI.Controllers
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Acquisition obj)
+        public IHttpActionResult Update(AcquisitionModel obj)
         {
-            this.data.Acquisitions.Update(obj);
+            var acquisition = Mapper.Map<Acquisition>(obj);
+            this.data.Acquisitions.Update(acquisition);
+            this.data.SaveChanges();
             return Ok("Acquisition updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Acquisition obj)
+        public IHttpActionResult Add(AcquisitionModel obj)
         {
-            var newAcquisition = this.data.Acquisitions.Add(obj);
-            var acquisitionViewModel = Mapper.Map<AcquisitionModel>(newAcquisition);
-            return Ok(acquisitionViewModel);
+            var acquisition = Mapper.Map<Acquisition>(obj);
+            this.data.Acquisitions.Add(acquisition);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Acquisition obj)
+        public IHttpActionResult Delete(Acquisition obj)
         {
             this.data.Acquisitions.Delete(obj);
             return Ok("Acquisition deleted!");

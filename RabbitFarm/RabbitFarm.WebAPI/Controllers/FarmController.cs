@@ -32,31 +32,49 @@
             var farm = this.data.Farms.Find(id);
             if (farm == null)
             {
-                return BadRequest("No acquisition with this id!");
+                return BadRequest("No farm with this id!");
             }
             var farmModelView = Mapper.Map<FarmModel>(farm);
             return Ok(farmModelView);
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Farm obj)
+        public IHttpActionResult Update(int id, [FromBody]FarmModel obj)
         {
-            this.data.Farms.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var farmInDb = this.data.Farms.Find(id);
+            var farm = Mapper.Map<Farm>(obj);
+            farmInDb.Name = farm.Name;
+            this.data.SaveChanges();
             return Ok("Farm updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Farm obj)
+        public IHttpActionResult Add(FarmModel obj)
         {
-            var newFarm = this.data.Farms.Add(obj);
-            var farmModelView = Mapper.Map<FarmModel>(newFarm);
-            return Ok(farmModelView);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var farm = Mapper.Map<Farm>(obj);
+            this.data.Farms.Add(farm);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Farm obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Farms.Delete(obj);
+            var farmInDb = this.data.Farms.Find(id);
+            if (farmInDb == null)
+            {
+                return BadRequest("No farm with given id found!");
+            }
+            this.data.Farms.Delete(farmInDb);
+            this.data.SaveChanges();
             return Ok("Farm deleted!");
         }
     }
