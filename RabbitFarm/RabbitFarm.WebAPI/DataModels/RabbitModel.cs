@@ -5,7 +5,7 @@
     public class RabbitModel
     {
         public string Mark { get; set; }
-
+        
         public Gender Gender { get; set; }
 
         public RabbitStatus Status { get; set; }
