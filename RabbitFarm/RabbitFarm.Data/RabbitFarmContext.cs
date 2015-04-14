@@ -16,7 +16,7 @@
         // DefaultConnection
         // RabbitFarmConn
         public RabbitFarmContext()
-            : base("RabbitFarmConn", throwIfV1Schema: false)
+            : base(ConnectionStringSQL, throwIfV1Schema: false)
         {
             //Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
         }

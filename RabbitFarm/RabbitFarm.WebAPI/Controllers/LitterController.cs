@@ -40,24 +40,50 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Litter obj)
+        public IHttpActionResult Update(int id, LitterModel obj)
         {
-            this.data.Litters.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var litterInDb = this.data.Litters.Find(id);
+            if (litterInDb == null)
+            {
+                return BadRequest("No Litter with the given id found!");
+            }
+            var litter = Mapper.Map<Litter>(obj);
+            litterInDb.BirthDate = litter.BirthDate;
+            litterInDb.MotherId = litter.MotherId;
+            litterInDb.FatherId = litter.FatherId;
+            litterInDb.FarmId = litter.FarmId;
+            this.data.SaveChanges();
             return Ok("Litter updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Litter obj)
+        public IHttpActionResult Add(LitterModel obj)
         {
-            var newLitter = this.data.Litters.Add(obj);
-            var litterViewModel = Mapper.Map<LitterModel>(newLitter);
-            return Ok(litterViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var litter = Mapper.Map<Litter>(obj);
+            this.data.Litters.Add(litter);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Litter obj)
+        public virtual IHttpActionResult Delete(int id)
         {
-            this.data.Litters.Delete(obj);
+            var litterInDb = this.data.Litters.Find(id);
+            if (litterInDb == null)
+            {
+                return BadRequest("No Litter with the given id found!");
+            }
+            this.data.Litters.Delete(litterInDb);
+            this.data.SaveChanges();
             return Ok("Litter deleted!");
         }
     }
