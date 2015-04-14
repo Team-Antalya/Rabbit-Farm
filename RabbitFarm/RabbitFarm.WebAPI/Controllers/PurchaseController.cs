@@ -13,8 +13,8 @@
 
     public class PurchaseController : RabbitFarmBaseApiController
     {
-        public PurchaseController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public PurchaseController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 

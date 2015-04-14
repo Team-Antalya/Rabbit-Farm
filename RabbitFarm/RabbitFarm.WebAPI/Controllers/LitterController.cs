@@ -13,8 +13,8 @@
 
     public class LitterController : RabbitFarmBaseApiController
     {
-        public LitterController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public LitterController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 

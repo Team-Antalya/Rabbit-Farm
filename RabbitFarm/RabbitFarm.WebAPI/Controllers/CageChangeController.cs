@@ -13,8 +13,8 @@
 
     public class CageChangeController : RabbitFarmBaseApiController
     {
-        public CageChangeController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public CageChangeController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 

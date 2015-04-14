@@ -15,8 +15,8 @@ namespace RabbitFarm.WebAPI.Controllers
 
     public class AcquisitionController : RabbitFarmBaseApiController
     {
-        public AcquisitionController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public AcquisitionController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 
@@ -53,7 +53,7 @@ namespace RabbitFarm.WebAPI.Controllers
         {
             var newAcquisition = this.data.Acquisitions.Add(obj);
             var acquisitionViewModel = Mapper.Map<AcquisitionModel>(newAcquisition);
-            return Ok(newAcquisition);
+            return Ok(acquisitionViewModel);
         }
 
         [HttpDelete]

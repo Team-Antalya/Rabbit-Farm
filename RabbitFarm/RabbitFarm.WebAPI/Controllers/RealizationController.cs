@@ -13,8 +13,8 @@
 
     public class RealizationController : RabbitFarmBaseApiController
     {
-        public RealizationController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public RealizationController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 

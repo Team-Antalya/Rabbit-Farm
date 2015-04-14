@@ -14,8 +14,8 @@ namespace RabbitFarm.WebAPI.Controllers
 
     public class RabbitController : RabbitFarmBaseApiController
     {
-        public RabbitController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public RabbitController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 

@@ -12,8 +12,8 @@
 
     public class FarmController : RabbitFarmBaseApiController
     {
-        public FarmController(IUserProvider userProvider) :
-            base(new RabbitFarmData(new RabbitFarmContext()), userProvider)
+        public FarmController(IRabbitFarmData data, IUserProvider userProvider) :
+            base(data, userProvider)
         {
         }
 
