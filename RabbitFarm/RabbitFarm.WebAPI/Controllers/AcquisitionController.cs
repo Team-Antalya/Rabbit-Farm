@@ -46,20 +46,20 @@
             {
                 return BadRequest(this.ModelState);
             }
-            
-            var acquisitionDb = this.data.Acquisitions.Find(id);
-            if (acquisitionDb == null)
+
+            var acquisitionInDb = this.data.Acquisitions.Find(id);
+            if (acquisitionInDb == null)
             {
                 return BadRequest("No acquisition with the given id found!");
             }
             var acquisition = Mapper.Map<Acquisition>(obj);
-            acquisitionDb.AcquisitionDate = acquisition.AcquisitionDate;
-            acquisitionDb.Source = acquisition.Source;
-            acquisitionDb.RabbitId = acquisition.RabbitId;
-            acquisitionDb.FarmId = acquisition.FarmId;
+            acquisitionInDb.AcquisitionDate = acquisition.AcquisitionDate;
+            acquisitionInDb.Source = acquisition.Source;
+            acquisitionInDb.RabbitId = acquisition.RabbitId;
+            acquisitionInDb.FarmId = acquisition.FarmId;
             if (acquisition.Cost != 0)
             {
-                acquisitionDb.Cost = acquisition.Cost;
+                acquisitionInDb.Cost = acquisition.Cost;
             }
             
             this.data.SaveChanges();
@@ -82,12 +82,12 @@
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var acquisitionDb = this.data.Acquisitions.Find(id);
-            if (acquisitionDb == null)
+            var acquisitionInDb = this.data.Acquisitions.Find(id);
+            if (acquisitionInDb == null)
             {
                 return BadRequest("No acquisition with the given id found!");
             }
-            this.data.Acquisitions.Delete(acquisitionDb);
+            this.data.Acquisitions.Delete(acquisitionInDb);
             this.data.SaveChanges();
             return Ok("Acquisition deleted!");
         }

@@ -40,24 +40,49 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(CageChange obj)
+        public IHttpActionResult Update(int id, CageChangeModel obj)
         {
-            this.data.CageChanges.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var cageChangeInDb = this.data.CageChanges.Find(id);
+            if (cageChangeInDb == null)
+            {
+                return BadRequest("No CageChange with the given id found!");
+            }
+            var cageChange = Mapper.Map<CageChange>(obj);
+            cageChangeInDb.StartingDate = cageChange.StartingDate;
+            cageChangeInDb.RabbitId = cageChange.RabbitId;
+            cageChangeInDb.FarmId = cageChange.FarmId;
+            this.data.SaveChanges();
             return Ok("CageChange updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(CageChange obj)
+        public IHttpActionResult Add(CageChangeModel obj)
         {
-            var newCageChange = this.data.CageChanges.Add(obj);
-            var cageChangeViewModel = Mapper.Map<CageChangeModel>(newCageChange);
-            return Ok(cageChangeViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var cageChange = Mapper.Map<CageChange>(obj);
+            this.data.CageChanges.Add(cageChange);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(CageChange obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.CageChanges.Delete(obj);
+            var cageChange = this.data.CageChanges.Find(id);
+            if (cageChange == null)
+            {
+                return BadRequest("No CageChange with the given id found!");
+            }
+            this.data.CageChanges.Delete(cageChange);
+            this.data.SaveChanges();
             return Ok("CageChange deleted!");
         }
     }
