@@ -38,7 +38,7 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                     },
                     register = function (user) {
                         var d = $q.defer();
-                        $http.post(userServiceUrl + '/account/register', user)
+                        $http.post(userServiceUrl + 'api/account/register', user)
                             .success(function (userRegistrationData) {
                                 d.resolve(userRegistrationData);
                             })
