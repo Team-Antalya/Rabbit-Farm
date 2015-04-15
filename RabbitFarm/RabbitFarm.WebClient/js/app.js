@@ -72,9 +72,9 @@ define(
 
                 $rootScope.$on('$routeChangeStart', function (event, next, current) {
                     if (next && next.$$route && next.$$route.secure) {
-                        //if (!authService.user.isAuthenticated) {
-                        //    authService.redirectToLogin();
-                        //}
+                        /*if (!authService.user.isAuthenticated) {
+                            authService.redirectToLogin();
+                        }*/
                     }
                 });
             }])

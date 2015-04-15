@@ -14,9 +14,25 @@ define(['angular', 'services/resource'], function (angular) {
                     $scope.loading = false;
                 });
 
-                $scope.edit = function (rabbit) {
-                    console.log($('button[data-rabbit]'));
+                $scope.edit = function (id) {
+                    $scope.loading = true;
+
+                    resource('GET', 'Rabbit/Get/' + id).then(function (response) {
+                        $scope.rabbit = response;
+                    }, function (error) {
+                        console.log(error);
+                    }).finally(function () {
+                        $scope.loading = false;
+                    })
                 };
+
+                $scope.save = function (rabbit) {
+                    console.log(rabbit);
+                };
+
+                $scope.remove = function (id) {
+
+                }
             }
         ]
     )
