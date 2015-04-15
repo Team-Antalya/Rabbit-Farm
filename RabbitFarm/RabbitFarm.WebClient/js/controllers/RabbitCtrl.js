@@ -38,14 +38,16 @@ define(['angular', 'services/resource'], function (angular) {
                         $scope.loading = false;
                     })*/
 
-                    delete rabbit['id'];
-                    delete rabbit['litter'];
-
                     var rabbitToSave = {
-                        Mark: rabbit.Mark
+                        Mark: rabbit.Mark,
+                        Gender: rabbit.Gender,
+                        Status: rabbit.Status,
+                        LitterId: rabbit.LitterId,
+                        AcquisitionId: rabbit.AcquisitionId,
+                        FarmId: rabbit.FarmId
                     };
 
-                    console.log(rabbit);
+                    console.log(rabbitToSave);
                 };
 
                 $scope.remove = function (id) {
