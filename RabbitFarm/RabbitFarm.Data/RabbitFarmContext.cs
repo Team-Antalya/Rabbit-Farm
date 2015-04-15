@@ -49,25 +49,10 @@
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            /*modelBuilder.Entity<Acquisition>()
-               .HasOptional(r => r.Rabbit)
-               .WithRequired()
-               .WillCascadeOnDelete(true);
-
-            modelBuilder.Entity<Realization>()
-               .HasOptional(r => r.Rabbit)
+            /*modelBuilder.Entity<Farm>()
+               .HasOptional(r => r.Rabbits)
                .WithRequired()
                .WillCascadeOnDelete(true);*/
-
-            modelBuilder.Entity<Rabbit>()
-               .HasOptional(r => r.Acquisition)
-               .WithRequired()
-               .WillCascadeOnDelete(true);
-
-            modelBuilder.Entity<Rabbit>()
-               .HasOptional(r => r.Realization)
-               .WithRequired()
-               .WillCascadeOnDelete(true);
         }
     }
 }

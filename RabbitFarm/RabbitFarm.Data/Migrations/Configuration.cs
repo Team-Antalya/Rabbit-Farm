@@ -642,40 +642,39 @@ namespace RabbitFarm.Data.Migrations
             var litter1 = new Litter()
             {
                 BirthDate = new DateTime(2014, 3, 22),
-                Mother = rabbit5,
-                Father = rabbit6,
+                MotherId = 5,
+                FatherId = 6,
                 FarmId = 1
             };
             var litter2 = new Litter()
             {
                 BirthDate = new DateTime(2014, 4, 14),
-                Mother = rabbit4,
-                Father = rabbit7,
+                MotherId = 4,
+                FatherId = 7,
                 FarmId = 2
             };
             var litter3 = new Litter()
             {
                 BirthDate = new DateTime(2014, 12, 20),
-                Mother = rabbit3,
-                Father = rabbit8,
+                MotherId = 3,
+                FatherId = 8,
                 FarmId = 3
             };
 
             var litter4 = new Litter()
             {
                 BirthDate = new DateTime(2014, 12, 21),
-                Mother = rabbit2,
-                Father = rabbit9,
+                MotherId = 2,
+                FatherId = 9,
                 FarmId = 4
             };
             var litter5 = new Litter()
             {
                 BirthDate = new DateTime(2014, 12, 21),
-                Mother = rabbit1,
-                Father = rabbit10,
+                MotherId = 1,
+                FatherId = 10,
                 FarmId = 5
             };
-
 
             context.Litters.AddOrUpdate(litter1);
             context.Litters.AddOrUpdate(litter2);
@@ -690,7 +689,7 @@ namespace RabbitFarm.Data.Migrations
                 Mark = "21-42-53-21",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
-                Litter = litter1,
+                LitterId = 1,
                 FarmId = 1
             };
             var rabbit12 = new Rabbit()
@@ -698,7 +697,7 @@ namespace RabbitFarm.Data.Migrations
                 Mark = "32-25-42-12",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
-                Litter = litter2,
+                LitterId = 2,
                 FarmId = 2
             };
             var rabbit13 = new Rabbit()
@@ -706,7 +705,7 @@ namespace RabbitFarm.Data.Migrations
                 Mark = "32-25-42-12",
                 Gender = Gender.Female,
                 Status = RabbitStatus.InFarm,
-                Litter = litter2,
+                LitterId = 2,
                 FarmId = 2
             };
 

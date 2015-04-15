@@ -16,8 +16,6 @@
 
         public int RabbitId { get; set; }
 
-        public virtual Rabbit Rabbit { get; set; }
-
         [Range(0.0, double.MaxValue)]
         public decimal Cost { get; set; }
 

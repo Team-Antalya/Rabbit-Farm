@@ -21,11 +21,7 @@
 
         public int? MotherId { get; set; }
 
-        public virtual Rabbit Mother { get; set; }
-
         public int? FatherId { get; set; }
-
-        public virtual Rabbit Father { get; set; }
 
         public virtual ICollection<Rabbit> Rabbits
         {

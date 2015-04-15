@@ -18,8 +18,6 @@
 
         public int? LitterId { get; set; }
 
-        public virtual Litter Litter { get; set; }
-
         public int? AcquisitionId { get; set; }
         
         public virtual Acquisition Acquisition { get; set; }
