@@ -19,7 +19,7 @@ define(['angular', 'services/resource'], function (angular) {
 
                     resource('GET', 'Rabbit/Get/' + id).then(function (response) {
                         response.Acquisition.AcquisitionDate = new Date(response.Acquisition.AcquisitionDate.slice(0, 10));
-                        data.rabbit = response;
+                        $scope.rabbit = response;
                     }, function (error) {
                         alert(error);
                     }).finally(function () {
@@ -28,15 +28,7 @@ define(['angular', 'services/resource'], function (angular) {
                 };
 
                 $scope.save = function (rabbit) {
-                    /*$scope.loading = true;
-
-                    resource('POST', 'Rabbit/Add', rabbit).then(function (response) {
-
-                    }, function (error) {
-                        alert(error);
-                    }).finally(function () {
-                        $scope.loading = false;
-                    })*/
+                    $scope.loading = true;
 
                     var rabbitToSave = {
                         Mark: rabbit.Mark,
@@ -47,11 +39,24 @@ define(['angular', 'services/resource'], function (angular) {
                         FarmId: rabbit.FarmId
                     };
 
-                    console.log(rabbitToSave);
+                    resource('PUT', 'Rabbit/Update/' + rabbit.Id, rabbitToSave).then(function (response) {
+                        alert(response);
+                    }, function (error) {
+                        alert(error);
+                    }).finally(function () {
+                        $scope.loading = false;
+                    });
                 };
 
                 $scope.remove = function (id) {
+                    $scope.loading = true;
 
+                    resource('DELETE', 'Rabbit/Delete/' + id).then(function () {
+                    }, function (error) {
+                        alert(error);
+                    }).finally(function () {
+                        $scope.loading = false;
+                    })
                 }
             }
         ]
