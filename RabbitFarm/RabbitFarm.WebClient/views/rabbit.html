@@ -6,24 +6,79 @@
     <table class="table">
         <thead>
         <tr>
+            <th>Edit</th>
             <th>Mark</th>
             <th>Gender</th>
             <th>Status</th>
             <th>Acquisition Date</th>
             <th>Acquisition Cost</th>
-            <th>Farm Name</th>
         </tr>
         </thead>
 
         <tbody>
-            <tr ng-repeat="rabbit in data">
-                <td>{{ rabbit['Mark'] }}</td>
-                <td>{{ rabbit['Gender'] }}</td>
-                <td>{{ rabbit['Status'] }}</td>
-                <td>{{ rabbit['Acquisition']['AcquisitionDate'] }}</td>
-                <td>{{ rabbit['Acquisition']['Cost'] }}</td>
-                <td>{{ rabbit['Farm']['Name'] }}</td>
-            </tr>
+        <tr ng-repeat="rabbit in data">
+            <td>
+                <button class="glyphicon glyphicon-edit demo btn btn-primary btn-large" aria-hidden="true"
+                        data-toggle="modal" href="#edit" data-rabbit="{{ rabbit['Id'] }}"></button>
+            </td>
+            <td>{{ rabbit['Mark'] }}</td>
+            <td>{{ rabbit['Gender'] }}</td>
+            <td>{{ rabbit['Status'] }}</td>
+            <td>{{ rabbit['Acquisition']['AcquisitionDate'] }}</td>
+            <td>{{ rabbit['Acquisition']['Cost'] }}</td>
+        </tr>
         </tbody>
     </table>
+
+    <!-- Edit Modal -->
+    <div id="edit" class="modal fade" tabindex="-1">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Edit Rabbit</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="input-group">
+                    <label class="input-group-addon" id="rabbit-mark" for="mark">Mark</label>
+                    <input type="text" class="form-control" id="mark" aria-describedby="rabbit-mark" ng-model="rabbit.mark">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="rabbit-gender" for="gender">Gender</label>
+
+                    <select class="form-control" id="gender" aria-describedby="rabbit-gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="rabbit-status" for="status">Status</label>
+
+                    <select class="form-control" id="status" aria-describedby="rabbit-gender">
+                        <option value="InFarm">In Farm</option>
+                        <option value="Sold">Sold</option>
+                        <option value="Dead">Dead</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="rabbit-date" for="date">Date</label>
+                    <input type="text" class="form-control" id="date" aria-describedby="rabbit-date" placeholder="dd/mm/yyyy" ng-model="rabbit.date">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="rabbit-cost" for="cost">Cost</label>
+                    <input type="text" class="form-control" id="cost" aria-describedby="rabbit-cost" placeholder="0.00" ng-model="rabbit.cost">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="edit(rabbit)">Save changes</button>
+        </div>
+    </div>
+
 </div>

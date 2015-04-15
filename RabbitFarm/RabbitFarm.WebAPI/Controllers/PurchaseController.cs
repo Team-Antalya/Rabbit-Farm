@@ -39,24 +39,53 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Purchase obj)
+        public IHttpActionResult Update(int id, PurchaseModel obj)
         {
-            this.data.Purchases.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var purchaseInDb = this.data.Purchases.Find(id);
+            if (purchaseInDb == null)
+            {
+                return BadRequest("No Purchase with the given id found!");
+            }
+            var purchase = Mapper.Map<Purchase>(obj);
+            purchaseInDb.Name = purchase.Name;
+            purchaseInDb.PurchaseCategory = purchase.PurchaseCategory;
+            purchaseInDb.Unit = purchase.Unit;
+            purchaseInDb.UnitPrice = purchase.UnitPrice;
+            purchaseInDb.Amount = purchase.Amount;
+            purchaseInDb.Lot = purchase.Lot;
+            purchaseInDb.FarmId = purchase.FarmId;
+            this.data.SaveChanges();
             return Ok("Purchase updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Purchase obj)
+        public IHttpActionResult Add(PurchaseModel obj)
         {
-            var newPurchase = this.data.Purchases.Add(obj);
-            var purchaseViewModel = Mapper.Map<PurchaseModel>(newPurchase);
-            return Ok(purchaseViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var purchase = Mapper.Map<Purchase>(obj);
+            this.data.Purchases.Add(purchase);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Purchase obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Purchases.Delete(obj);
+            var purchaseInDb = this.data.Purchases.Find(id);
+            if (purchaseInDb == null)
+            {
+                return BadRequest("No Purchase with the given id found!");
+            }
+            this.data.Purchases.Delete(purchaseInDb);
+            this.data.SaveChanges();
             return Ok("Purchase deleted!");
         }
     }

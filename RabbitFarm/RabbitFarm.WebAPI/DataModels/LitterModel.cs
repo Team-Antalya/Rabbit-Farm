@@ -1,9 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RabbitFarm.WebAPI.DataModels
+﻿namespace RabbitFarm.WebAPI.DataModels
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class LitterModel
     {

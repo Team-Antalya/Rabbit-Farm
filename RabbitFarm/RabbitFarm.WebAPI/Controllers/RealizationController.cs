@@ -21,7 +21,7 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            var realizations = this.data.Realizations.All().Include(a => a.Farm).Include(a => a.Rabbit);
+            var realizations = this.data.Realizations.All().Include(a => a.Farm);
             var realizationsViewModel = Mapper.Map<ICollection<RealizationModel>>(realizations);
 
             return Ok(realizationsViewModel);
@@ -42,25 +42,52 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Realization obj)
+        public IHttpActionResult Update(int id, RealizationModel obj)
         {
-            this.data.Realizations.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var realizationInDb = this.data.Realizations.Find(id);
+            if (realizationInDb == null)
+            {
+                return BadRequest("No Realization with the given id found!");
+            }
+            var realization = Mapper.Map<Realization>(obj);
+            realizationInDb.RealizationDate = realization.RealizationDate;
+            realizationInDb.RealizationChannel = realization.RealizationChannel;
+            realizationInDb.RabbitId = realization.RabbitId;
+            realizationInDb.LiveWeight = realization.LiveWeight;
+            realizationInDb.Price = realization.Price;
+            realizationInDb.FarmId = realization.FarmId;
+            this.data.SaveChanges();
             return Ok("Realization updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Realization obj)
+        public IHttpActionResult Add(RealizationModel  obj)
         {
-            var newRealization = this.data.Realizations.Add(obj);
-            var newRealizationViewModel = Mapper.Map<RealizationModel>(newRealization);
-
-            return Ok(newRealizationViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var realization = Mapper.Map<Realization>(obj);
+            this.data.Realizations.Add(realization);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Realization obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Realizations.Delete(obj);
+            var realizationInDb = this.data.Realizations.Find(id);
+            if (realizationInDb == null)
+            {
+                return BadRequest("No Realization with the given id found!");
+            }
+            this.data.Realizations.Delete(realizationInDb);
+            this.data.SaveChanges();
             return Ok("Realization deleted!");
         }
     }

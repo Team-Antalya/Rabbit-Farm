@@ -41,25 +41,52 @@
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Update(Rabbit obj)
+        public IHttpActionResult Update(int id, RabbitModel obj)
         {
-            this.data.Rabbits.Update(obj);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var rabbitInDb = this.data.Rabbits.Find(id);
+            if (rabbitInDb == null)
+            {
+                return BadRequest("No Rabbit with the given id found!");
+            }
+            var rabbit = Mapper.Map<Rabbit>(obj);
+            rabbitInDb.Mark = rabbit.Mark;
+            rabbitInDb.Gender = rabbit.Gender;
+            rabbitInDb.Status = rabbit.Status;
+            rabbitInDb.LitterId = rabbit.LitterId;
+            rabbitInDb.AcquisitionId = rabbit.AcquisitionId;
+            rabbitInDb.FarmId = rabbit.FarmId;
+            this.data.SaveChanges();
             return Ok("Rabbit updated!");
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Add(Rabbit obj)
+        public IHttpActionResult Add(RabbitModel obj)
         {
-            var newRabbit = this.data.Rabbits.Add(obj);
-            var newRabbitViewModel = Mapper.Map<RabbitModel>(newRabbit);
-
-            return Ok(newRabbitViewModel);
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+            var rabbit = Mapper.Map<Rabbit>(obj);
+            this.data.Rabbits.Add(rabbit);
+            this.data.SaveChanges();
+            return Ok(obj);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(Rabbit obj)
+        public IHttpActionResult Delete(int id)
         {
-            this.data.Rabbits.Delete(obj);
+            var rabbitInDb = this.data.Rabbits.Find(id);
+            if (rabbitInDb == null)
+            {
+                return BadRequest("No Rabbit with the given id found!");
+            }
+            this.data.Rabbits.Delete(rabbitInDb);
+            this.data.SaveChanges();
             return Ok("Rabbit deleted!");
         }
     }

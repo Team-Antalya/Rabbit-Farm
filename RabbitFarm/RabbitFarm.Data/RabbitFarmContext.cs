@@ -16,7 +16,7 @@
         // DefaultConnection
         // RabbitFarmConn
         public RabbitFarmContext()
-            : base("RabbitFarmConn", throwIfV1Schema: false)
+            : base(ConnectionStringSQL, throwIfV1Schema: false)
         {
             //Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
         }
@@ -49,13 +49,10 @@
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            /*modelBuilder.Entity<Acquisition>()
-                .HasOptional(acq => acq.Rabbit)
-                .WithRequired(r => r.Acquisition);*/
-
-            modelBuilder.Entity<Rabbit>()
-               .HasOptional(r => r.Realization)
-               .WithRequired(realiz => realiz.Rabbit);
+            /*modelBuilder.Entity<Farm>()
+               .HasOptional(r => r.Rabbits)
+               .WithRequired()
+               .WillCascadeOnDelete(true);*/
         }
     }
 }

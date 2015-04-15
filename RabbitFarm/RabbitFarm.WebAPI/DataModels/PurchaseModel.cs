@@ -9,7 +9,7 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Purchase Name is required")]
-        [StringLength(3, ErrorMessage = "Purchase Name must be at least 3 characters")]
+        [MinLength(3, ErrorMessage = "Purchase Name must be at least 3 characters")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Purchase Category is required")]
@@ -26,11 +26,15 @@
         [Range(0, double.MaxValue, ErrorMessage = "Amount must be positive number")]
         public double Amount { get; set; }
 
-        [Required(ErrorMessage = "Purchase Total Price is required")]
-        [Range(0, double.MaxValue, ErrorMessage = "Total Price must be positive number")]
-        public decimal TotalPrice { get; set; }
+        public decimal TotalPrice
+        {
+            get
+            {
+                return (decimal)this.Amount * this.UnitPrice;
+            }
+        }
 
-        [StringLength(3, ErrorMessage = "Purchase Lot is required")]
+        [MinLength(3, ErrorMessage = "Purchase Lot is required")]
         public string Lot { get; set; }
 
         [Required(ErrorMessage = "FarmId is required")]

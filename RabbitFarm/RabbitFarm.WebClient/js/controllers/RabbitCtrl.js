@@ -12,7 +12,11 @@ define(['angular', 'services/resource'], function (angular) {
                     console.log(error);
                 }).finally(function () {
                     $scope.loading = false;
-                })
+                });
+
+                $scope.edit = function (rabbit) {
+                    console.log($('button[data-rabbit]'));
+                };
             }
         ]
     )
