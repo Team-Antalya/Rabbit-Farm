@@ -2,16 +2,22 @@
 
 define(['angular', 'services/account'], function (angular) {
     angular.module('App.Login', [])
-        .controller('LoginCtrl', ['$scope', 'account', function ($scope, account) {
-
-            $scope.login = function (user, form) {
-                if(form.$valid) {
-                    account.login(user);
+        .controller('LoginCtrl', ['$scope', 'account', 'authorization', '$location',
+            function ($scope, account, authorization, $location) {
+                $scope.login = function (user, form) {
+                    if (form.$valid) {
+                        account.login(user).then(
+                            function success(loginSuccessData) {
+                                authorization.setLocalUser(loginSuccessData);
+                                authorization.getAuthorizationHeaders();
+                                $location.path('/');
+                            },
+                            function error(loginErrorData) {
+                                console.dir(loginErrorData)
+                            }
+                        )
+                    }
                 }
-                else {
-                    console.log('Error');
-                }
-            }
-        }]
-    )
+            }]
+        )
 });

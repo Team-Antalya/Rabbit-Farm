@@ -2,22 +2,39 @@
 
 define(['angular', 'angularCookies', 'services/resource'], function (angular) {
     angular.module('App.Account', ['ngCookies'])
-        .factory('account', ['$rootScope', '$cookieStore', 'resource', '$http', '$q', 'service',
-            function ($rootScope, $cookieStore, resource, $http, $q, service) {
+        .factory('account', ['$rootScope', '$cookieStore', 'resource', '$http', '$q', 'service', 'authorization',
+            function ($rootScope, $cookieStore, resource, $http, $q, service, authorization) {
 
-                var userServiceUrl = service.url,
+                var userServiceUrl = service.url.replace('api/', ''),
                     login = function (user) {
-                        console.log(user);
-                        $http.post(userServiceUrl + '/Token', user)
+                        var d = $q.defer(),
+                            urlEncoded = {'Content-Type': 'application/x-www-form-urlencoded'};
+                        angular.extend(service.headers, urlEncoded);
+                        user.grant_type = 'password';
+                        $http.post(userServiceUrl + 'token', "grant_type=password&username=" + user.username + "&password=" + user.password, { headers: service.headers})
                             .success(function (userLoginData) {
                                 d.resolve(userLoginData);
                             })
                             .error(function (loginErr) {
                                 d.reject(loginErr);
                             });
+                        return d.promise;
                     },
                     logout = function () {
-                        console.log('Logged out');
+                        var d = $q.defer(),
+                            headers = authorization.getAuthorizationHeaders();
+                        $http.post(userServiceUrl + 'account/logout', {}, {headers: headers})
+                            .success(function (userLogoutData) {
+                                authorization.setLocalUser(undefined);
+                                authorization.removeAuthorizationHeaders();
+                                d.resolve(userLogoutData);
+                                console.log('logged out')
+                            })
+                            .error(function (logoutErr) {
+                                d.reject(logoutErr);
+                            });
+
+                        return d.promise;
                     },
                     register = function (user) {
                         var d = $q.defer();
@@ -28,14 +45,14 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                             .error(function (registrationErr) {
                                 d.reject(registrationErr);
                             });
-                        console.log(user);
+                        return d.promise;
                     },
                     redirect = function (path) {
                         console.log('Redirect');
 
                     },
                     isAuthenticated = function () {
-                        console.log(false);
+                        return !!authorization.getLocalUser();
                     };
 
                 return {

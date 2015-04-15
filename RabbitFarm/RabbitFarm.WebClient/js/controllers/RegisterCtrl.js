@@ -5,13 +5,12 @@ define(['angular', 'services/account'], function (angular) {
         .controller('RegisterCtrl', ['$scope', 'account', function ($scope, account) {
 
             $scope.register = function (user, form) {
-                if(form.$valid) {
+                if (form.$valid) {
                     account.register(user);
-                }
-                else {
-                    console.log('Error');
+
+
                 }
             }
         }]
-    )
+        )
 });

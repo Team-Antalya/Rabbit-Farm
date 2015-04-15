@@ -1,8 +1,8 @@
 'use strict';
 
 define(['angular', 'services/resource'], function (angular) {
-    angular.module('App.Home', []).controller('HomeCtrl', ['$scope', 'resource',
-            function ($scope, resource) {
+    angular.module('App.Home', []).controller('HomeCtrl', ['$scope', 'resource','account', 'authorization', '$location',
+            function ($scope, resource,account, authorization, $location) {
 
             }
         ]

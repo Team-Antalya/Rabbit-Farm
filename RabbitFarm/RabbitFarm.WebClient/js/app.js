@@ -8,6 +8,7 @@ define(
         'services/resource',
         'services/routeResolver',
         'services/account',
+        'services/authorization',
 
         'directives/activeLink',
 
@@ -25,23 +26,24 @@ define(
     function (angular) {
 
         return angular.module('App',
-            [ // Modules
-                'ngRoute',
-                'App.RouteResolver',
-                'App.Resource',
-                'App.Account',
+                [ // Modules
+                    'ngRoute',
+                    'App.RouteResolver',
+                    'App.Resource',
+                    'App.Account',
+                    'App.Authorization',
 
-                'App.Link',
+                    'App.Link',
 
-                'App.Home',
-                'App.Login',
-                'App.Register',
-                'App.Rabbit',
-                'App.Feeding',
-                'App.Purchase',
-                'App.Realization',
-                'App.Report'
-            ])
+                    'App.Home',
+                    'App.Login',
+                    'App.Register',
+                    'App.Rabbit',
+                    'App.Feeding',
+                    'App.Purchase',
+                    'App.Realization',
+                    'App.Report'
+                ])
             .config(['$routeProvider', 'routeResolverProvider',
                 function ($routeProvider, routeResolverProvider) {
 
@@ -81,10 +83,7 @@ define(
             })
             .constant('service', {
                 url: 'http://localhost:4741/api/',
-                headers: {
-                    //'X-Parse-Application-Id': 'LZDh2PdmAw839VX7DsoBCB9dMj700VfYfZNMRKDF',
-                    //'X-Parse-REST-API-Key': 'iZuEgvv58kEQ3YyaBK4VWOfaJH8AWFkt7xExgbrv'
-                }
+                headers: {}
             });
     }
 );
