@@ -10,7 +10,7 @@
 
         <tbody>
         <tr ng-repeat="realization in data">
-            <td>{{ realization['RealizationDate'] }}</td>
+            <td>{{ realization['RealizationDate']| date:'yyyy-MM-dd' }}</td>
             <td>{{ realization['RealizationChannel'] }}</td>
             <td>{{ realization['Rabbit']['Mark'] }}</td>
         </tr>

@@ -14,7 +14,7 @@
 
             <tbody>
             <tr ng-repeat="feeding in data">
-                <td>{{ feeding['FeedingDate'] }}</td>
+                <td>{{ feeding['FeedingDate']|date:'yyyy-MM-dd' }}</td>
                 <td>{{ feeding['Amount'] }}</td>
             </tr>
             </tbody>
