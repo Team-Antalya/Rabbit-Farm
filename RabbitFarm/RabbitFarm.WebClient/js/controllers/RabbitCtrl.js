@@ -18,15 +18,33 @@ define(['angular', 'services/resource'], function (angular) {
                     $scope.loading = true;
 
                     resource('GET', 'Rabbit/Get/' + id).then(function (response) {
-                        $scope.rabbit = response;
+                        response.Acquisition.AcquisitionDate = new Date(response.Acquisition.AcquisitionDate.slice(0, 10));
+                        data.rabbit = response;
                     }, function (error) {
-                        console.log(error);
+                        alert(error);
                     }).finally(function () {
                         $scope.loading = false;
-                    })
+                    }).then()
                 };
 
                 $scope.save = function (rabbit) {
+                    /*$scope.loading = true;
+
+                    resource('POST', 'Rabbit/Add', rabbit).then(function (response) {
+
+                    }, function (error) {
+                        alert(error);
+                    }).finally(function () {
+                        $scope.loading = false;
+                    })*/
+
+                    delete rabbit['id'];
+                    delete rabbit['litter'];
+
+                    var rabbitToSave = {
+                        Mark: rabbit.Mark
+                    };
+
                     console.log(rabbit);
                 };
 
