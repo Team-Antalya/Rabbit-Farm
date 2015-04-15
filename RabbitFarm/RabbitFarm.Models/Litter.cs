@@ -17,6 +17,7 @@
         public int Id { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         public int? MotherId { get; set; }

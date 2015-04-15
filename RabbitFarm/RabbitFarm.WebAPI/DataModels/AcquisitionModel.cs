@@ -10,6 +10,7 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Acquisition Date is required")]
+        [DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime AcquisitionDate { get; set; }
 
         [Required(ErrorMessage = "Acquisition Source is required")]

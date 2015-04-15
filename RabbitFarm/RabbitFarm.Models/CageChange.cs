@@ -17,6 +17,7 @@
         public int Id { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime StartingDate { get; set; }
 
         public virtual ICollection<Cage> Cages

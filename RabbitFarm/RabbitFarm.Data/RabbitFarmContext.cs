@@ -1,4 +1,6 @@
-﻿namespace RabbitFarm.Data
+﻿using System.Collections.Generic;
+
+namespace RabbitFarm.Data
 {
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
@@ -11,12 +13,12 @@
     {
         public const string ConnectionStringSQL = "Server=.;Database=RabbitFarm;Integrated Security=True;";
         public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
-        public const string ConnectionStringLocalDB = "Server=SKOEH-PC\\SQLEXPRESS;Database=RabbitFarm;Integrated Security=True;";
+        public const string ConnectionStringLocalDB = "Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;";
 
         // DefaultConnection
         // RabbitFarmConn
         public RabbitFarmContext()
-            : base("RabbitFarmConn", throwIfV1Schema: false)
+            : base(ConnectionStringSQL, throwIfV1Schema: false)
         {
             //Database.SetInitializer(new DropCreateDatabaseAlways<RabbitFarmContext>());
         }
@@ -48,11 +50,6 @@
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-            /*modelBuilder.Entity<Farm>()
-               .HasOptional(r => r.Rabbits)
-               .WithRequired()
-               .WillCascadeOnDelete(true);*/
         }
     }
 }

@@ -10,6 +10,7 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Realization Date is required")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime RealizationDate { get; set; }
 
         [Required(ErrorMessage = "Realization Channel is required")]

@@ -24,7 +24,7 @@
 
         public int? RealizationId { get; set; }
 
-        public Realization Realization { get; set; }
+        public virtual Realization Realization { get; set; }
 
         [Required]
         public int FarmId { get; set; }

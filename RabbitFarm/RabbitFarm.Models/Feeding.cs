@@ -9,6 +9,7 @@
         public int Id { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime FeedingDate { get; set; }
 
         [Required]
