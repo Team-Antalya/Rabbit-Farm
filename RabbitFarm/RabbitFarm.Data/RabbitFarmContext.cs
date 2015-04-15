@@ -12,7 +12,7 @@ namespace RabbitFarm.Data
     public class RabbitFarmContext : IdentityDbContext<User>
     {
         public const string ConnectionStringSQL = "Server=.;Database=RabbitFarm;Integrated Security=True;";
-        public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=Antalya;Persist Security Info=True;User ID=antalya;Password=Parola123;";
+        public const string ConnectionStringAzure = "Server=ibz4rymk74.database.windows.net;Database=RabbitFarm;Persist Security Info=True;User ID=antalya;Password=Parola123;";
         public const string ConnectionStringLocalDB = "Server=(localdb)\v11.0;Database=RabbitFarm;Integrated Security=True;";
 
         // DefaultConnection
@@ -50,6 +50,18 @@ namespace RabbitFarm.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Acquisition>()
+                .HasKey(x => x.Id)
+                .HasRequired(x => x.Rabbit)
+                .WithRequiredDependent(x => x.Acquisition)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Realization>()
+                .HasKey(x => x.Id)
+                .HasRequired(x => x.Rabbit)
+                .WithRequiredDependent(x => x.Realization)
+                .WillCascadeOnDelete(true);
         }
     }
 }

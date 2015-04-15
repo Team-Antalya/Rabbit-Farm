@@ -18,7 +18,6 @@
         [Required]
         public int RabbitId { get; set; }
 
-        [Required]
         public virtual Rabbit Rabbit { get; set; }
 
         [Range(0.0, double.MaxValue)]

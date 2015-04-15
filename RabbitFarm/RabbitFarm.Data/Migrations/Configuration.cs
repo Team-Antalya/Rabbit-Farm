@@ -483,59 +483,11 @@ namespace RabbitFarm.Data.Migrations
             context.Acquisitions.AddOrUpdate(acquisitionLitter1);
             context.Acquisitions.AddOrUpdate(acquisitionLitter2);
             context.Acquisitions.AddOrUpdate(acquisitionLitter3);
-/*            context.Acquisitions.AddOrUpdate(acquisitionLitter4);
+            context.Acquisitions.AddOrUpdate(acquisitionLitter4);
             context.Acquisitions.AddOrUpdate(acquisitionLitter5);
             context.Acquisitions.AddOrUpdate(acquisitionLitter6);
             context.Acquisitions.AddOrUpdate(acquisitionLitter7);
-            context.Acquisitions.AddOrUpdate(acquisitionLitter8);*/
-
-            //seed acquisitions Outer farm
-            /*var acquisitionOuterFarm1 = new Acquisition()
-            {
-                Id = 9,
-                AcquisitionDate = new DateTime(2014, 2, 18),
-                Cost = 20m,
-                Source = AcqusitionSource.OuterFarm,
-                FarmId = 5
-            };
-            var acquisitionOuterFarm2 = new Acquisition()
-            {
-                Id = 10,
-                AcquisitionDate = new DateTime(2014, 1, 7),
-                Cost = 15m,
-                Source = AcqusitionSource.OuterFarm,
-                FarmId = 4
-            };
-            var acquisitionOuterFarm3 = new Acquisition()
-            {
-                Id = 11,
-                AcquisitionDate = new DateTime(2014, 9, 13),
-                Cost = 20m,
-                Source = AcqusitionSource.OuterFarm,
-                FarmId = 3
-            };
-            var acquisitionOuterFarm4 = new Acquisition()
-            {
-                Id = 12,
-                AcquisitionDate = new DateTime(2014, 9, 17),
-                Cost = 20m,
-                Source = AcqusitionSource.OuterFarm,
-                FarmId = 1
-            };
-            var acquisitionOuterFarm5 = new Acquisition()
-            {
-                Id = 13,
-                AcquisitionDate = new DateTime(2014, 7, 7),
-                Cost = 10m,
-                Source = AcqusitionSource.OuterFarm,
-                FarmId = 2
-            };
-
-            context.Acquisitions.AddOrUpdate(acquisitionOuterFarm1);
-            context.Acquisitions.AddOrUpdate(acquisitionOuterFarm2);
-            context.Acquisitions.AddOrUpdate(acquisitionOuterFarm3);
-            context.Acquisitions.AddOrUpdate(acquisitionOuterFarm4);
-            context.Acquisitions.AddOrUpdate(acquisitionOuterFarm5);*/
+            context.Acquisitions.AddOrUpdate(acquisitionLitter8);
 
             context.SaveChanges();
         }
