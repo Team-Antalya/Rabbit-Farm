@@ -21,7 +21,7 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            var realizations = this.data.Realizations.All().Include(a => a.Farm).Include(a => a.Rabbit);
+            var realizations = this.data.Realizations.All().Include(a => a.Farm);
             var realizationsViewModel = Mapper.Map<ICollection<RealizationModel>>(realizations);
 
             return Ok(realizationsViewModel);

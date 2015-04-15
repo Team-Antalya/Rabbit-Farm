@@ -9,7 +9,7 @@ require.config({
         text: 'libs/requirejs-text/text',
         jquery: 'libs/jquery/dist/jquery',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap',
-        bootstrapModal: 'libs/bootstrap-modal/js/bootstrap-modal'
+        modal: 'libs/bootstrap-modal/js/bootstrap-modal'
     },
     shim: {
         angular: {exports: 'angular'},
@@ -26,7 +26,7 @@ require.config({
         bootstrap: {
             deps: ['jquery']
         },
-        bootstrapModal: {
+        modal: {
             deps: ['bootstrap']
         }
     },

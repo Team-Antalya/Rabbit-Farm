@@ -14,10 +14,7 @@
         [Required]
         public RealizationChannel RealizationChannel { get; set; }
 
-        [Required]
         public int RabbitId { get; set; }
-
-        public virtual Rabbit Rabbit { get; set; }
 
         [Range(0, double.MaxValue)]
         public double? LiveWeight { get; set; }
