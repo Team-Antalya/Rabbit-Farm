@@ -60,11 +60,13 @@ define(
                         .when('/register', route.resolve('Register'))
                         .otherwise({redirectTo: '/'});
                 }])
-            .run(['$location', '$rootScope', 'account', function ($location, $rootScope, account) {
+            .run(['$location', '$rootScope', 'account', 'authorization', function ($location, $rootScope, account, authorization) {
                 $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 
                     if (current.hasOwnProperty('$$route')) {
                         $rootScope.title = current.$$route.title;
+                        $rootScope.account = account;
+                        $rootScope.authorization = authorization;
                     }
                 });
 

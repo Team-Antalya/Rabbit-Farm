@@ -10,6 +10,7 @@ define(['angular', 'services/account'], function (angular) {
                             function success(loginSuccessData) {
                                 authorization.setLocalUser(loginSuccessData);
                                 authorization.getAuthorizationHeaders();
+
                                 $location.path('/');
                             },
                             function error(loginErrorData) {
@@ -17,7 +18,20 @@ define(['angular', 'services/account'], function (angular) {
                             }
                         )
                     }
+                };
+
+                $scope.logout = function () {
+                    account.logout().then(
+                        function success() {
+                            $location.path('/');
+                        },
+                        function error(logoutErrorMessage) {
+                            console.dir(logoutErrorMessage);
+                        }
+                    )
                 }
+
+
             }]
         )
 });

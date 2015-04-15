@@ -59,18 +59,18 @@
                         </ul>
                     </li>-->
                 </ul>
-                <ul class="nav navbar-nav navbar-right" ng-show="authorization.getAuthorizationHeaders()">
+                <ul class="nav navbar-nav navbar-right" ng-show="!account.isAuthenticated()">
                     <li><a href="#/login" data-active-link="active">Login</a></li>
                     <li><a href="#/register" data-active-link="active">Register</a></li>
                 </ul>
-               <ul class="nav navbar-nav navbar-right" ng-hide="!authorization.getAuthorizationHeaders()">
+               <ul class="nav navbar-nav navbar-right" ng-show="false">
                     <li><a href="#/login" data-active-link="active">My Account</a></li>
                 </ul>
                 <div data-ng-cloak data-ng-if="account.isAuthenticated()" class="nav navbar-nav pull-right">
                     <ul>
                         <li class="navbar-text navbar">
-                            <span class="user-greeting">{{authorization.getLocalUser().username}}</span>
-                            <a data-ng-click="authentication.logout()" href="#/logout">Logout</a>
+                            <span class="user-greeting">{{authorization.getLocalUser().userName}}</span>
+                            <a data-ng-click="account.logout()" href="#/">Logout</a>
                         </li>
                     </ul>
                 </div>

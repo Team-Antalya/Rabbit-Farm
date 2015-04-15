@@ -10,8 +10,10 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                         var d = $q.defer(),
                             urlEncoded = {'Content-Type': 'application/x-www-form-urlencoded'};
                         angular.extend(service.headers, urlEncoded);
-                        user.grant_type = 'password';
-                        $http.post(userServiceUrl + 'token', "grant_type=password&username=" + user.username + "&password=" + user.password, { headers: service.headers})
+
+                        $http.post(userServiceUrl + 'token',
+                            "grant_type=password&username=" + user.username + "&password=" + user.password,
+                            { headers: service.headers})
                             .success(function (userLoginData) {
                                 d.resolve(userLoginData);
                             })
@@ -20,25 +22,14 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                             });
                         return d.promise;
                     },
-                    logout = function () {
-                        var d = $q.defer(),
-                            headers = authorization.getAuthorizationHeaders();
-                        $http.post(userServiceUrl + 'account/logout', {}, {headers: headers})
-                            .success(function (userLogoutData) {
-                                authorization.setLocalUser(undefined);
-                                authorization.removeAuthorizationHeaders();
-                                d.resolve(userLogoutData);
-                                console.log('logged out')
-                            })
-                            .error(function (logoutErr) {
-                                d.reject(logoutErr);
-                            });
-
-                        return d.promise;
-                    },
                     register = function (user) {
-                        var d = $q.defer();
-                        $http.post(userServiceUrl + 'api/account/register', user)
+                        var d = $q.defer(),
+                            urlEncoded = {'Content-Type': 'application/x-www-form-urlencoded'};
+                        angular.extend(service.headers, urlEncoded);
+
+                        $http.post(userServiceUrl + 'api/account/register',
+                            'Email=' + user.email + '&password=' + user.password + '&confirmPassword=' + user.confirm,
+                            { headers: service.headers})
                             .success(function (userRegistrationData) {
                                 d.resolve(userRegistrationData);
                             })
@@ -49,7 +40,14 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                     },
                     redirect = function (path) {
                         console.log('Redirect');
+                    },
+                    logout = function () {
+                        var d = $q.defer();
+                        authorization.setLocalUser(undefined);
+                        authorization.removeAuthorizationHeaders();
+                        d.resolve();
 
+                        return d.promise;
                     },
                     isAuthenticated = function () {
                         return !!authorization.getLocalUser();
