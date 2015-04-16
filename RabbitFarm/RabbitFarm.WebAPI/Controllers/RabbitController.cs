@@ -1,7 +1,5 @@
 ﻿namespace RabbitFarm.WebAPI.Controllers
 {
-    using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Web.Http;
 
     using RabbitFarm.Data;
@@ -11,33 +9,11 @@
 
     using AutoMapper;
 
-    public class RabbitController : RabbitFarmBaseApiController
+    public class RabbitController : RabbitFarmBaseApiController<Rabbit, RabbitModel>
     {
         public RabbitController(IRabbitFarmData data, IUserProvider userProvider) :
             base(data, userProvider)
         {
-        }
-
-        [HttpGet]
-        public IHttpActionResult All()
-        {
-            var rabbit = this.data.Rabbits.All().Include(a => a.Acquisition);
-            var rabbitsViewModel = Mapper.Map<ICollection<RabbitModel>>(rabbit);
-
-            return Ok(rabbitsViewModel);
-        }
-
-        [HttpGet]
-        public IHttpActionResult Get(int id)
-        {
-            var rabbit = this.data.Rabbits.Find(id);
-            if (rabbit == null)
-            {
-                return BadRequest("No Rabbit with this id!");
-            }
-
-            var rabbitViewModel = Mapper.Map<RabbitModel>(rabbit);
-            return Ok(rabbitViewModel);
         }
 
         [HttpPut]
@@ -62,32 +38,6 @@
             rabbitInDb.FarmId = rabbit.FarmId;
             this.data.SaveChanges();
             return Ok("Rabbit updated!");
-        }
-
-        [HttpPost]
-        public IHttpActionResult Add(RabbitModel obj)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return BadRequest(this.ModelState);
-            }
-            var rabbit = Mapper.Map<Rabbit>(obj);
-            this.data.Rabbits.Add(rabbit);
-            this.data.SaveChanges();
-            return Ok(obj);
-        }
-
-        [HttpDelete]
-        public IHttpActionResult Delete(int id)
-        {
-            var rabbitInDb = this.data.Rabbits.Find(id);
-            if (rabbitInDb == null)
-            {
-                return BadRequest("No Rabbit with the given id found!");
-            }
-            this.data.Rabbits.Delete(rabbitInDb);
-            this.data.SaveChanges();
-            return Ok("Rabbit deleted!");
         }
     }
 }
