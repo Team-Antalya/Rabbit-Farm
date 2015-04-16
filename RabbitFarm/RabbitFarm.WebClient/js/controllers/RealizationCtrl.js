@@ -1,8 +1,8 @@
 'use strict';
 
 define(['angular', 'services/resource'], function (angular) {
-    angular.module('App.Realization', []).controller('RealizationCtrl', ['$scope', 'resource',
-            function ($scope, resource) {
+    angular.module('App.Realization', []).controller('RealizationCtrl', ['$scope', 'resource', 'service',
+            function ($scope, resource, service) {
 
                 $scope.loading = true;
 
@@ -21,7 +21,7 @@ define(['angular', 'services/resource'], function (angular) {
                     $scope.loading = true;
 
                     resource('GET', 'Realization/Get/' + id).then(function (response) {
-                        if(response.RealizationDate) {
+                        if (response.RealizationDate) {
                             response.RealizationDate = new Date(response.RealizationDate.slice(0, 10));
                         }
 

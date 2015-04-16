@@ -5,17 +5,19 @@ define(['angular'], function (angular) {
         .factory('resource', ['$http', '$q', 'service',
             function ($http, $q, service) {
 
-                return function (method, table, data) {
+                return function (method, table, data, noApi) {
                     var deferred = $q.defer();
 
                     $http({
                         method: method,
-                        url: service.url + table,
-                        //headers: service.headers,
+                        url: (noApi ? service.url.replace('api/', '') : service.url) + table,
+                        headers: service.headers,
                         data: data
-                    })
-                        .success(deferred.resolve)
-                        .error(deferred.reject);
+                    }).success(function (res) {
+                        deferred.resolve(res);
+                    }).error(function (res) {
+                        deferred.reject(res);
+                    });
 
                     return deferred.promise;
                 }

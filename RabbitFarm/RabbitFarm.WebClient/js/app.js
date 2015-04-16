@@ -12,8 +12,6 @@ define(
 
         'directives/activeLink',
 
-        'controllers/HomeCtrl',
-
         'controllers/RabbitCtrl',
         'controllers/FeedingCtrl',
         'controllers/PurchaseCtrl',
@@ -26,24 +24,23 @@ define(
     function (angular) {
 
         return angular.module('App',
-                [ // Modules
-                    'ngRoute',
-                    'App.RouteResolver',
-                    'App.Resource',
-                    'App.Account',
-                    'App.Authorization',
+            [ // Modules
+                'ngRoute',
+                'App.RouteResolver',
+                'App.Resource',
+                'App.Account',
+                'App.Authorization',
 
-                    'App.Link',
+                'App.Link',
 
-                    'App.Home',
-                    'App.Login',
-                    'App.Register',
-                    'App.Rabbit',
-                    'App.Feeding',
-                    'App.Purchase',
-                    'App.Realization',
-                    'App.Report'
-                ])
+                'App.Login',
+                'App.Register',
+                'App.Rabbit',
+                'App.Feeding',
+                'App.Purchase',
+                'App.Realization',
+                'App.Report'
+            ])
             .config(['$routeProvider', 'routeResolverProvider',
                 function ($routeProvider, routeResolverProvider) {
 
@@ -72,9 +69,9 @@ define(
 
                 $rootScope.$on('$routeChangeStart', function (event, next, current) {
                     if (next && next.$$route && next.$$route.secure) {
-                        /*if (!authService.user.isAuthenticated) {
-                            authService.redirectToLogin();
-                        }*/
+                        /*if (!authorization.isLogged()) {
+                            // DO NOT ENTER
+                         }*/
                     }
                 });
             }])

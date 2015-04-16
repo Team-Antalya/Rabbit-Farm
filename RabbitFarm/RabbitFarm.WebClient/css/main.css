@@ -2,7 +2,7 @@
 @import "../js/libs/bootstrap-modal/css/bootstrap-modal-bs3patch.css";
 @import "../js/libs/bootstrap-modal/css/bootstrap-modal.css";
 
-[ng-cloak] {
+[data-ng-cloak] {
     display: none;
 }
 

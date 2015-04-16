@@ -1,8 +1,8 @@
 'use strict';
 
 define(['angular', 'services/resource'], function (angular) {
-    angular.module('App.Purchase', []).controller('PurchaseCtrl', ['$scope', 'resource',
-            function ($scope, resource) {
+    angular.module('App.Purchase', []).controller('PurchaseCtrl', ['$scope', 'resource', 'service',
+            function ($scope, resource, service) {
 
                 $scope.loading = true;
 
@@ -21,7 +21,6 @@ define(['angular', 'services/resource'], function (angular) {
                     $scope.loading = true;
 
                     resource('GET', 'Purchase/Get/' + id).then(function (response) {
-                        console.log(response);
                         $scope.purchase = response;
                     }, function (error) {
                         console.log(error);
@@ -36,7 +35,9 @@ define(['angular', 'services/resource'], function (angular) {
                     var purchaseToSave = {};
 
                     resource('PUT', 'Purchase/Update/' + purchase.Id, purchaseToSave).then(function (response) {
-                        console.log(response);
+
+                        // TODO: Update
+
                     }, function (error) {
                         console.log(error);
                     }).finally(function () {

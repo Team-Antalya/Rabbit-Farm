@@ -25,9 +25,7 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
 
                 function isLogged() {
                     return !!this.getLocalUser();
-
                 }
-
 
                 function setAuthorizationHeaders(accessToken) {
                     angular.extend(service.headers , {Authorization: 'Bearer ' + accessToken},{});
@@ -55,6 +53,5 @@ define(['angular', 'angularCookies', 'services/resource'], function (angular) {
                 }
 
             }
-        ]
-        )
+        ])
 });

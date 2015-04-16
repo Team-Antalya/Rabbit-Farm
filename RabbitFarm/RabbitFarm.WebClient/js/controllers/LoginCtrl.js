@@ -2,37 +2,29 @@
 
 define(['angular', 'services/account'], function (angular) {
     angular.module('App.Login', [])
-        .controller('LoginCtrl', ['$scope', 'account', 'authorization', '$location',
-            function ($scope, account, authorization, $location) {
+        .controller('LoginCtrl', ['$scope', '$location', 'resource', 'service', 'authorization',
+            function ($scope, $location, resource, service, authorization) {
+
                 $scope.login = function (user, form) {
                     if (form.$valid) {
-                        account.login(user).then(
-                            function success(loginSuccessData) {
-                                authorization.setLocalUser(loginSuccessData);
-                                authorization.getAuthorizationHeaders();
+                        $scope.loading = true;
 
-                                $location.path('/');
-                            },
-                            function error(loginErrorData) {
-                                console.dir(loginErrorData)
-                            }
-                        )
+                        angular.extend(service.headers, {'Content-Type': 'application/x-www-form-urlencoded'});
+
+                        resource('POST', 'token', "grant_type=password&username=" +
+                        user.username + "&password=" + user.password, true).then(function (response) {
+                            authorization.setLocalUser(response);
+                            authorization.getAuthorizationHeaders();
+                            $location.path('/');
+                        }, function (error) {
+                            alert(error.error_description);
+                        }).finally(function () {
+                            $scope.loading = false;
+                            service.headers = {};
+                        });
                     }
                 };
-
-                $scope.logout = function () {
-                    account.logout().then(
-                        function success() {
-                            sessionStorage.clear();
-                            $location.path('/');
-                        },
-                        function error(logoutErrorMessage) {
-                            console.dir(logoutErrorMessage);
-                        }
-                    )
-                }
-
-
-            }]
-        )
+            }
+        ]
+    )
 });

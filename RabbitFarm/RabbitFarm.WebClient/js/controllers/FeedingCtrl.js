@@ -1,8 +1,8 @@
 'use strict';
 
 define(['angular', 'services/resource'], function (angular) {
-    angular.module('App.Feeding', []).controller('FeedingCtrl', ['$scope', 'resource',
-            function ($scope, resource) {
+    angular.module('App.Feeding', []).controller('FeedingCtrl', ['$scope', 'resource', 'service',
+            function ($scope, resource, service) {
 
                 $scope.loading = true;
 
