@@ -10,7 +10,7 @@
     using RabbitFarm.WebAPI.Infrastructure;
     using RabbitFarm.Data.Repositories;
 
-    [Authorize]
+    //[Authorize]
     public class RabbitFarmBaseApiController<I, O> : ApiController
         where I : class
         where O : class
@@ -73,7 +73,7 @@
             return Ok(String.Format("{0} deleted!", inputTypeName));
         }
 
-        private IRepository<I> GetDataProperty(string inputTypeName)
+        protected IRepository<I> GetDataProperty(string inputTypeName)
         {
             var prop = this.data.GetType().GetProperty(inputTypeName + "s");
             return (IRepository<I>)prop.GetValue(data);
