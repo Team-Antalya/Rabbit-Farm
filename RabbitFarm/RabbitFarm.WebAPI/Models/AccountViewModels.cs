@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RabbitFarm.WebAPI.Models
+﻿namespace RabbitFarm.WebAPI.Models
 {
+    using System.Collections.Generic;
     // Models returned by AccountController actions.
 
     public class ExternalLoginViewModel
