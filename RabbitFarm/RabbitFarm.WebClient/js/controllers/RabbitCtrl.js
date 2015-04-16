@@ -6,25 +6,31 @@ define(['angular', 'services/resource'], function (angular) {
 
                 $scope.loading = true;
 
-                resource('GET', 'Rabbit/All').then(function (response) {
-                    $scope.data = response;
-                }, function (error) {
-                    console.log(error);
-                }).finally(function () {
-                    $scope.loading = false;
-                });
+                $scope.getResources = function() {
+                    resource('GET', 'Rabbit/All').then(function (response) {
+                        $scope.data = response;
+                    }, function (error) {
+                        console.log(error);
+                    }).finally(function () {
+                        $scope.loading = false;
+                    });
+                };
+                $scope.getResources();
 
                 $scope.edit = function (id) {
                     $scope.loading = true;
 
                     resource('GET', 'Rabbit/Get/' + id).then(function (response) {
-                        response.Acquisition.AcquisitionDate = new Date(response.Acquisition.AcquisitionDate.slice(0, 10));
+                        if(response.Acquisition) {
+                            response.Acquisition.AcquisitionDate = new Date(response.Acquisition.AcquisitionDate.slice(0, 10));
+                        }
+
                         $scope.rabbit = response;
                     }, function (error) {
-                        alert(error);
+                        console.log(error);
                     }).finally(function () {
                         $scope.loading = false;
-                    }).then()
+                    })
                 };
 
                 $scope.save = function (rabbit) {
@@ -40,9 +46,9 @@ define(['angular', 'services/resource'], function (angular) {
                     };
 
                     resource('PUT', 'Rabbit/Update/' + rabbit.Id, rabbitToSave).then(function (response) {
-                        alert(response);
+                        console.log(response);
                     }, function (error) {
-                        alert(error);
+                        console.log(error);
                     }).finally(function () {
                         $scope.loading = false;
                     });
@@ -53,9 +59,10 @@ define(['angular', 'services/resource'], function (angular) {
 
                     resource('DELETE', 'Rabbit/Delete/' + id).then(function () {
                     }, function (error) {
-                        alert(error);
+                        console.log(error);
                     }).finally(function () {
                         $scope.loading = false;
+                        $scope.getResources();
                     })
                 }
             }

@@ -52,13 +52,11 @@ namespace RabbitFarm.Data
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Acquisition>()
-                .HasKey(x => x.Id)
                 .HasRequired(x => x.Rabbit)
                 .WithRequiredDependent(x => x.Acquisition)
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Realization>()
-                .HasKey(x => x.Id)
                 .HasRequired(x => x.Rabbit)
                 .WithRequiredDependent(x => x.Realization)
                 .WillCascadeOnDelete(true);

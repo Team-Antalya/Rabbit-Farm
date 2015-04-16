@@ -11,7 +11,7 @@ define(['angular'], function (angular) {
                     $http({
                         method: method,
                         url: service.url + table,
-                        headers: service.headers,
+                        //headers: service.headers,
                         data: data
                     })
                         .success(deferred.resolve)

@@ -65,23 +65,16 @@
                         <option value="Dead" ng-selected="rabbit['Status'] == 'Dead'">Dead</option>
                     </select>
                 </div>
-
-               <!-- <div class="input-group">
-                    <label class="input-group-addon" id="rabbit-date" for="date">Date</label>
-                    <input type="date" class="form-control" id="date" aria-describedby="rabbit-date"
-                           ng-model="rabbit.Acquisition.AcquisitionDate" ng-value="rabbit['Acquisition']['AcquisitionDate']">
-                </div>-->
-
                 <div class="input-group">
                     <label class="input-group-addon" id="rabbit-cost" for="cost">Cost</label>
-                    <input type="number" class="form-control" id="cost" aria-describedby="rabbit-cost" placeholder="0.00"
-                           ng-model="rabbit.Acquisition.Cost" ng-value="rabbit['Acquisition']['Cost']">
+                    <input type="number" class="form-control" id="cost" aria-describedby="rabbit-cost"
+                           ng-model="rabbit.Acquisition.Cost" ng-value="rabbit['Acquisition']['Cost'] || 0">
                 </div>
             </div>
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger pull-left" ng-click="remove(rabbit.Id)">Delete</button>
+            <button type="button" data-dismiss="modal" class="btn btn-danger pull-left" ng-click="remove(rabbit.Id)">Delete</button>
             <button type="button" data-dismiss="modal" class="btn">Close</button>
             <button type="button" class="btn btn-primary" ng-click="save(rabbit)">Save changes</button>
         </div>

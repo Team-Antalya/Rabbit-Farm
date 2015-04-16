@@ -3,8 +3,6 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using RabbitFarm.Models;
-
     public class FeedingModel
     {
         public int Id { get; set; }

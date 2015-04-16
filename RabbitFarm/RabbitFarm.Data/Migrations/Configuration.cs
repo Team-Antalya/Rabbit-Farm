@@ -917,8 +917,7 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 1,
                 LiveWeight = 2.3,
-                FarmId = 1,
-                Price = 0
+                FarmId = 1
             };
             var realizationDeath2 = new Realization()
             {
@@ -927,8 +926,7 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Death,
                 RabbitId = 7,
                 LiveWeight = 2.1,
-                FarmId = 2,
-                Price = 0
+                FarmId = 2
             };
             context.Realizations.AddOrUpdate(realizationDeath1);
             context.Realizations.AddOrUpdate(realizationDeath2);
@@ -965,8 +963,7 @@ namespace RabbitFarm.Data.Migrations
                 RealizationChannel = RealizationChannel.Slain,
                 RabbitId = 9,
                 LiveWeight = 3.4,
-                FarmId = 5,
-                Price = 0
+                FarmId = 5
             };
             context.Realizations.AddOrUpdate(realizationsSlain);
 

@@ -1,19 +1,81 @@
 <div class="row">
+    <header>
+        <h3>Realization</h3>
+    </header>
+
     <table class="table">
         <thead>
         <tr>
+            <th>Edit</th>
             <th>Realization Date</th>
-            <th>Realization Channel</th>
             <th>Rabbit Mark</th>
+            <th>Realization Channel</th>
+            <th>Live Weight</th>
+            <th>Amount</th>
         </tr>
         </thead>
 
         <tbody>
         <tr ng-repeat="realization in data">
+            <td>
+                <button class="glyphicon glyphicon-edit demo btn btn-primary btn-large" aria-hidden="true"
+                        data-toggle="modal" href="#edit" ng-click="edit(realization['Id'])"></button>
+            </td>
             <td>{{ realization['RealizationDate']| date:'yyyy-MM-dd' }}</td>
-            <td>{{ realization['RealizationChannel'] }}</td>
             <td>{{ realization['Rabbit']['Mark'] }}</td>
+            <td>{{ realization['RealizationChannel'] }}</td>
+            <td>{{ realization['LiveWeight'] }}</td>
+            <td>{{ realization['Price'] }}</td>
         </tr>
         </tbody>
     </table>
+
+    <!-- Edit Modal -->
+    <div id="edit" class="modal fade" tabindex="-1" data-width="760">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Edit Realization</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="input-group">
+                    <label class="input-group-addon" id="realization-date" for="date">Realization Date</label>
+                    <input type="date" class="form-control" id="date" aria-describedby="realization-date"
+                           ng-model="realization.RealizationDate" ng-value="realization['RealizationDate']">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="realization-channel" for="channel">Realization Channel</label>
+
+                    <select class="form-control" id="channel" aria-describedby="realization-channel"
+                            data-ng-model="realization.RealizationChannel">
+                        <option value="Death" ng-selected="realization['RealizationChannel'] == 'Death'">Death</option>
+                        <option value="Sold" ng-selected="realization['RealizationChannel'] == 'Sold'">Sold</option>
+                        <option value="Slain" ng-selected="realization['RealizationChannel'] == 'Slain'">Slain</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="realization-weight" for="weight">Live Weight</label>
+                    <input type="text" class="form-control" id="weight" aria-describedby="realization-weight"
+                           ng-model="realization.LiveWeight" ng-value="realization['LiveWeight']">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="realization-cost" for="price">Price</label>
+                    <input type="number" class="form-control" id="price" aria-describedby="realization-price"
+                           ng-model="realization.Price" ng-value="realization['Price']">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-danger pull-left" ng-click="remove(realization.Id)">
+                Delete
+            </button>
+            <button type="button" data-dismiss="modal" class="btn">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="save(realization)">Save changes</button>
+        </div>
+    </div>
 </div>

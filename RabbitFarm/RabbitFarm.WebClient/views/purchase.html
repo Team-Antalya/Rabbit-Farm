@@ -3,29 +3,100 @@
         <h3>Purchase</h3>
     </header>
 
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Unit</th>
-                <th>Unit Price</th>
-                <th>Amount</th>
-                <th>Total Price</th>
-            </tr>
-            </thead>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Unit</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
+            <th>Total Price</th>
+        </tr>
+        </thead>
 
-            <tbody>
-            <tr ng-repeat="purchase in data">
-                <td>{{ purchase['Name'] }}</td>
-                <td>{{ purchase['Category'] }}</td>
-                <td>{{ purchase['Unit'] }}</td>
-                <td>{{ purchase['UnitPrice'] }}</td>
-                <td>{{ purchase['Amount'] }}</td>
-                <td>{{ purchase['TotalPrice'] }}</td>
-            </tr>
-            </tbody>
-        </table>
+        <tbody>
+        <tr ng-repeat="purchase in data">
+            <td>
+                <button class="glyphicon glyphicon-edit demo btn btn-primary btn-large" aria-hidden="true"
+                        data-toggle="modal" href="#edit" ng-click="edit(purchase['Id'])"></button>
+            </td>
+            <td>{{ purchase['Name'] }}</td>
+            <td>{{ purchase['PurchaseCategory'] }}</td>
+            <td>{{ purchase['Unit'] }}</td>
+            <td>{{ purchase['UnitPrice'] }}</td>
+            <td>{{ purchase['Amount'] }}</td>
+            <td>{{ purchase['TotalPrice'] }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Edit Modal -->
+    <div id="edit" class="modal fade" tabindex="-1" data-width="760">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Edit Purchase</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-mark" for="mark">Name</label>
+                    <input type="text" class="form-control" id="mark" aria-describedby="purchase-mark"
+                           ng-model="purchase.Name" ng-value="purchase['Name']">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-category" for="category">Category</label>
+
+                    <select class="form-control" id="category" aria-describedby="purchase-category"
+                            data-ng-model="purchase.PurchaseCategory">
+                        <option value="Feed" ng-selected="purchase['PurchaseCategory'] == 'Feed'">Feed</option>
+                        <option value="Equipment" ng-selected="purchase['PurchaseCategory'] == 'Equipment'">Equipment</option>
+                        <option value="Medicine" ng-selected="purchase['PurchaseCategory'] == 'Medicine'">Medicine</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-unit" for="unit">Measure Unit</label>
+
+                    <select class="form-control" id="unit" aria-describedby="purchase-unit"
+                            data-ng-model="purchase.Unit">
+                        <option value="Gramm" ng-selected="purchase['Unit'] == 'Gramm'">Gramm</option>
+                        <option value="Kg" ng-selected="purchase['Unit'] == 'Kg'">Kg</option>
+                        <option value="Ton" ng-selected="purchase['Category'] == 'Ton'">Ton</option>
+                        <option value="CubicMillimeter" ng-selected="purchase['Category'] == 'CubicMillimeter'">CubicMillimeter</option>
+                        <option value="Liter" ng-selected="purchase['Category'] == 'Liter'">Liter</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-price" for="price">Unit Price</label>
+                    <input type="number" class="form-control" id="price" aria-describedby="purchase-price"
+                           ng-model="purchase.UnitPrice" ng-value="purchase['UnitPrice']">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-amount" for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" aria-describedby="purchase-amount"
+                           ng-model="purchase.Amount" ng-value="purchase['amount']">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-group-addon" id="purchase-total" for="total">Total Price</label>
+                    <input type="number" class="form-control" id="total" aria-describedby="purchase-total"
+                           ng-model="purchase.TotalPrice">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-danger pull-left" ng-click="remove(purchase.Id)">
+                Delete
+            </button>
+            <button type="button" data-dismiss="modal" class="btn">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="save(purchase)">Save changes</button>
+        </div>
     </div>
 </div>
