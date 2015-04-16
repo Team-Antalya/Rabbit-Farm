@@ -23,6 +23,7 @@ define(['angular', 'services/account'], function (angular) {
                 $scope.logout = function () {
                     account.logout().then(
                         function success() {
+                            sessionStorage.clear();
                             $location.path('/');
                         },
                         function error(logoutErrorMessage) {
